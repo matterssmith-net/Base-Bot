@@ -1,134 +1,285 @@
-import { join } from 'path'
-import { createBot, createProvider, createFlow, addKeyword, utils } from '@builderbot/bot'
-import { MysqlAdapter as Database } from '@builderbot/database-mysql'
+import { join } from 'node:path'
+import {
+    addKeyword,
+    createBot,
+    createFlow,
+    createProvider,
+    utils
+} from '@builderbot/bot'
+
 import { BaileysProvider as Provider } from '@builderbot/provider-baileys'
+import { MysqlAdapter as Database } from '@builderbot/database-mysql'
 
 const PORT = process.env.PORT ?? 3008
 
-const discordFlow = addKeyword('doc').addAnswer(
-    ['You can see the documentation here', '📄 https://builderbot.app/docs \n', 'Do you want to continue? *yes*'].join(
-        '\n'
-    ),
+/**
+ * Documentación
+ */
+const docsFlow = addKeyword('doc').addAnswer(
+    [
+        '📄 Documentación:',
+        'https://builderbot.app/docs',
+        '',
+        '¿Deseas continuar? Escribe *sí*'
+    ].join('\n'),
     { capture: true },
     async (ctx, { gotoFlow, flowDynamic }) => {
-        if (ctx.body.toLocaleLowerCase().includes('yes')) {
+
+        if (ctx.body.toLowerCase().includes('sí') || ctx.body.toLowerCase().includes('si')) {
             return gotoFlow(registerFlow)
         }
-        await flowDynamic('Thanks!')
-        return
+
+        await flowDynamic('¡Hasta luego!')
     }
 )
 
-const welcomeFlow = addKeyword(['hi', 'hello', 'hola'])
-    .addAnswer(`🙌 Hello welcome to this *Chatbot*`)
-    .addAnswer(
-        [
-            'I share with you the following links of interest about the project',
-            '👉 *doc* to view the documentation',
-        ].join('\n'),
-        { delay: 800, capture: true },
-        async (ctx, { fallBack }) => {
-            if (!ctx.body.toLocaleLowerCase().includes('doc')) {
-                return fallBack('You should type *doc*')
-            }
-            return
-        },
-        [discordFlow]
+/**
+ * Bienvenida
+ */
+const welcomeFlow = addKeyword([
+    'hola',
+    'hi',
+    'hello'
+])
+
+.addAnswer('🙌 ¡Bienvenido a BuilderBot!')
+
+.addAnswer(
+    [
+        'Comandos disponibles:',
+        '',
+        '📄 *doc* → Ver documentación'
+    ].join('\n'),
+    {
+        capture: true,
+        delay: 800
+    },
+    async (ctx, { fallBack }) => {
+
+        if (!ctx.body.toLowerCase().includes('doc')) {
+            return fallBack('Escribe *doc* para continuar.')
+        }
+
+    },
+    [docsFlow]
+)
+
+/**
+ * Registro
+ */
+const registerFlow = addKeyword(
+    utils.setEvent('REGISTER_FLOW')
+)
+
+.addAnswer(
+    '¿Cómo te llamas?',
+    { capture: true },
+    async (ctx, { state }) => {
+        await state.update({
+            name: ctx.body
+        })
+    }
+)
+
+.addAnswer(
+    '¿Cuántos años tienes?',
+    { capture: true },
+    async (ctx, { state }) => {
+        await state.update({
+            age: ctx.body
+        })
+    }
+)
+
+.addAction(async (_, { state, flowDynamic }) => {
+
+    await flowDynamic(
+        `Gracias ${state.get('name')}.\nEdad registrada: ${state.get('age')} años.`
     )
 
-const registerFlow = addKeyword(utils.setEvent('REGISTER_FLOW'))
-    .addAnswer(`What is your name?`, { capture: true }, async (ctx, { state }) => {
-        await state.update({ name: ctx.body })
-    })
-    .addAnswer('What is your age?', { capture: true }, async (ctx, { state }) => {
-        await state.update({ age: ctx.body })
-    })
-    .addAction(async (_, { flowDynamic, state }) => {
-        await flowDynamic(`${state.get('name')}, thanks for your information!: Your age: ${state.get('age')}`)
-    })
+})
 
-const fullSamplesFlow = addKeyword(['samples', utils.setEvent('SAMPLES')])
-    .addAnswer(`💪 I'll send you a lot files...`)
-    .addAnswer(`Send image from Local`, { media: join(process.cwd(), 'assets', 'sample.png') })
-    .addAnswer(`Send video from URL`, {
-        media: 'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYTJ0ZGdjd2syeXAwMjQ4aWdkcW04OWlqcXI3Ynh1ODkwZ25zZWZ1dCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LCohAb657pSdHv0Q5h/giphy.mp4',
-    })
-    .addAnswer(`Send audio from URL`, { media: 'https://cdn.freesound.org/previews/728/728142_11861866-lq.mp3' })
-    .addAnswer(`Send file from URL`, {
-        media: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
-    })
+/**
+ * Archivos de ejemplo
+ */
+const samplesFlow = addKeyword([
+    'samples',
+    utils.setEvent('SAMPLES')
+])
 
+.addAnswer('📁 Enviando archivos...')
+
+.addAnswer(
+    'Imagen local',
+    {
+        media: join(process.cwd(), 'assets', 'sample.png')
+    }
+)
+
+.addAnswer(
+    'Video',
+    {
+        media: 'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYTJ0ZGdjd2syeXAwMjQ4aWdkcW04OWlqcXI3Ynh1ODkwZ25zZWZ1dCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LCohAb657pSdHv0Q5h/giphy.mp4'
+    }
+)
+
+.addAnswer(
+    'Audio',
+    {
+        media: 'https://cdn.freesound.org/previews/728/728142_11861866-lq.mp3'
+    }
+)
+
+.addAnswer(
+    'PDF',
+    {
+        media: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+    }
+)
+
+/**
+ * Inicio
+ */
 const main = async () => {
-    const adapterFlow = createFlow([welcomeFlow, registerFlow, fullSamplesFlow])
-    
-    // If you experience ERRO AUTH issues, check the latest WhatsApp version at:
-    // https://wppconnect.io/whatsapp-versions/
-    // Example: version "2.3000.1035824857-alpha" -> [2, 3000, 1035824857]
-    const adapterProvider = createProvider(Provider, 
-		{ version: [2, 3000, 1035824857] } 
-	)
+
+    const adapterFlow = createFlow([
+        welcomeFlow,
+        registerFlow,
+        samplesFlow
+    ])
+
+    const adapterProvider = createProvider(Provider)
+
     const adapterDB = new Database({
         host: process.env.MYSQL_DB_HOST,
         user: process.env.MYSQL_DB_USER,
-        database: process.env.MYSQL_DB_NAME,
         password: process.env.MYSQL_DB_PASSWORD,
+        database: process.env.MYSQL_DB_NAME
     })
 
-    const { handleCtx, httpServer } = await createBot({
+    const {
+        handleCtx,
+        httpServer
+    } = await createBot({
+
         flow: adapterFlow,
         provider: adapterProvider,
-        database: adapterDB,
+        database: adapterDB
+
     })
 
+    /**
+     * Enviar mensaje
+     */
     adapterProvider.server.post(
         '/v1/messages',
         handleCtx(async (bot, req, res) => {
-            const { number, message, urlMedia } = req.body
-            await bot.sendMessage(number, message, { media: urlMedia ?? null })
-            return res.end('sended')
+
+            const {
+                number,
+                message,
+                urlMedia
+            } = req.body
+
+            await bot.sendMessage(
+                number,
+                message,
+                {
+                    media: urlMedia ?? null
+                }
+            )
+
+            res.end('Mensaje enviado')
+
         })
     )
 
+    /**
+     * Ejecutar flujo de registro
+     */
     adapterProvider.server.post(
         '/v1/register',
         handleCtx(async (bot, req, res) => {
-            const { number, name } = req.body
-            await bot.dispatch('REGISTER_FLOW', { from: number, name })
-            return res.end('trigger')
+
+            const { number } = req.body
+
+            await bot.dispatch(
+                'REGISTER_FLOW',
+                {
+                    from: number
+                }
+            )
+
+            res.end('Registro iniciado')
+
         })
     )
 
+    /**
+     * Ejecutar flujo de ejemplos
+     */
     adapterProvider.server.post(
         '/v1/samples',
         handleCtx(async (bot, req, res) => {
-            const { number, name } = req.body
-            await bot.dispatch('SAMPLES', { from: number, name })
-            return res.end('trigger')
+
+            const { number } = req.body
+
+            await bot.dispatch(
+                'SAMPLES',
+                {
+                    from: number
+                }
+            )
+
+            res.end('Ejemplos enviados')
+
         })
     )
 
+    /**
+     * Agregar / quitar blacklist
+     */
     adapterProvider.server.post(
         '/v1/blacklist',
         handleCtx(async (bot, req, res) => {
-            const { number, intent } = req.body
-            if (intent === 'remove') bot.blacklist.remove(number)
-            if (intent === 'add') bot.blacklist.add(number)
 
-            res.writeHead(200, { 'Content-Type': 'application/json' })
-            return res.end(JSON.stringify({ status: 'ok', number, intent }))
+            const {
+                number,
+                intent
+            } = req.body
+
+            if (intent === 'add')
+                bot.blacklist.add(number)
+
+            if (intent === 'remove')
+                bot.blacklist.remove(number)
+
+            res.json({
+                status: 'ok',
+                number,
+                intent
+            })
+
         })
     )
 
+    /**
+     * Listar blacklist
+     */
     adapterProvider.server.get(
         '/v1/blacklist/list',
         handleCtx(async (bot, req, res) => {
-            const blacklist = bot.blacklist.getList()
-            res.writeHead(200, { 'Content-Type': 'application/json' })
-            return res.end(JSON.stringify({ status: 'ok', blacklist }))
+
+            res.json({
+                status: 'ok',
+                blacklist: bot.blacklist.getList()
+            })
+
         })
     )
 
-    httpServer(+PORT)
+    httpServer(Number(PORT))
+
 }
 
 main()
