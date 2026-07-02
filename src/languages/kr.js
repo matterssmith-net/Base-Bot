@@ -9,6 +9,11 @@ export const kr = {
     services: {
       init: "서비스를 초기화하는 중...",
       ready: "서비스 준비 완료"
+    },
+
+    clean: {
+      start: "프로젝트를 정리하는 중...",
+      done: "정리 완료"
     }
   },
 

@@ -9,6 +9,11 @@ export const id = {
     services: {
       init: "Menginisialisasi layanan...",
       ready: "Layanan siap"
+    },
+
+    clean: {
+      start: "Membersihkan proyek...",
+      done: "Pembersihan selesai"
     }
   },
 

@@ -9,6 +9,11 @@ export const ph = {
     services: {
       init: "Sinisimulan ang mga serbisyo...",
       ready: "Handa na ang mga serbisyo"
+    },
+
+    clean: {
+      start: "Nililinis ang proyekto...",
+      done: "Natapos na ang paglilinis"
     }
   },
 

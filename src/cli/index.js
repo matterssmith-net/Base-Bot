@@ -4,13 +4,15 @@ import { Config } from "../core/config/index.js";
 import { Logger } from "../core/logger/index.js";
 import { Services } from "../core/services/index.js";
 import { Language } from "../languages/index.js";
+import { getRuntimeState } from "../core/runtime/index.js";
 
 export async function startCLI() {
   const container = new Container();
+  const { locale } = getRuntimeState();
 
   // core registrations
   container.register("config", () => new Config());
-  container.register("lang", () => new Language("en"));
+  container.register("lang", () => new Language(locale));
   container.register("logger", (c) => new Logger(c.get("config"), c.get("lang")));
   container.register("services", (c) => new Services(c));
 

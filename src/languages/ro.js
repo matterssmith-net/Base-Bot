@@ -9,6 +9,11 @@ export const ro = {
     services: {
       init: "Se inițializează serviciile...",
       ready: "Servicii pregătite"
+    },
+
+    clean: {
+      start: "Se curăță proiectul...",
+      done: "Curățarea finalizată"
     }
   },
 

@@ -9,6 +9,11 @@ export const es = {
     services: {
       init: "Inicializando servicios...",
       ready: "Servicios listos"
+    },
+
+    clean: {
+      start: "Limpiando proyecto...",
+      done: "Limpieza completa"
     }
   },
 

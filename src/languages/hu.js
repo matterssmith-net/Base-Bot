@@ -9,6 +9,11 @@ export const hu = {
     services: {
       init: "Szolgáltatások inicializálása...",
       ready: "Szolgáltatások készen állnak"
+    },
+
+    clean: {
+      start: "Projekt tisztítása...",
+      done: "Tisztítás befejezve"
     }
   },
 

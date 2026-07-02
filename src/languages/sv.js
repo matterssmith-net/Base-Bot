@@ -9,6 +9,11 @@ export const sv = {
     services: {
       init: "Initierar tjänster...",
       ready: "Tjänster klara"
+    },
+
+    clean: {
+      start: "Rensar projekt...",
+      done: "Rensning klar"
     }
   },
 

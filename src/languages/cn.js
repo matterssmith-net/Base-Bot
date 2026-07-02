@@ -9,6 +9,11 @@ export const cn = {
     services: {
       init: "正在初始化服务...",
       ready: "服务已就绪"
+    },
+
+    clean: {
+      start: "正在清理项目...",
+      done: "清理完成"
     }
   },
 

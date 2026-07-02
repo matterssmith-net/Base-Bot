@@ -9,6 +9,11 @@ export const vn = {
     services: {
       init: "Đang khởi tạo các dịch vụ...",
       ready: "Các dịch vụ đã sẵn sàng"
+    },
+
+    clean: {
+      start: "Đang dọn dẹp dự án...",
+      done: "Dọn dẹp hoàn tất"
     }
   },
 
