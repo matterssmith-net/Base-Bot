@@ -9,7 +9,7 @@ await lang.init();
 
 console.log(lang.t("system.clean.start"));
 
-// rmSync("node_modules", { recursive: true, force: true });
-// rmSync("package-lock.json", { force: true });
+rmSync("../node_modules", { recursive: true, force: true });
+rmSync("../package-lock.json", { force: true });
 
 console.log(lang.t("system.clean.done"));
