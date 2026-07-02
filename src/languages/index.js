@@ -43,14 +43,20 @@ export class Language {
     );
   }
 
-  t(path) {
-    const keys = path.split(".");
-    let value = this.dict[this.locale] || this.dict.en;
+  t(path, params = {}) {
+  const keys = path.split(".");
+  let value = this.dict[this.locale] || this.dict.en;
 
-    for (const key of keys) {
-      value = value?.[key];
-    }
-
-    return value || path;
+  for (const key of keys) {
+    value = value?.[key];
   }
+
+  if (typeof value !== "string") {
+    return path;
+  }
+
+  return value.replace(/\{(\w+)\}/g, (_, key) =>
+    params[key] ?? `{${key}}`
+  );
+}
 }

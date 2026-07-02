@@ -33,3 +33,22 @@ export function getRuntimeState() {
     return DEFAULT_STATE;
   }
 }
+
+export function updateRuntimeState(data = {}) {
+  try {
+    const state = {
+      ...DEFAULT_STATE,
+      ...data
+    };
+
+    writeFileSync(
+      RUNTIME_FILE,
+      JSON.stringify(state, null, 2),
+      "utf8"
+    );
+
+    return state;
+  } catch (err) {
+    throw new Error(`Error: ${err.message}`);
+  }
+}

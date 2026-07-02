@@ -11,6 +11,15 @@ export const sv = {
       ready: "Tjänster klara"
     },
 
+    runtime: {
+      current: "Aktuellt språk ",
+      prompt: "Ange språkkod (en, es...) eller tryck ENTER ",
+      timeout: "Väntar {seconds} sekunder... ",
+      timeoutReached: "Tiden har gått använder aktuellt språk ",
+      changed: "Språk ändrat till {locale} ",
+      invalid: "Språket '{locale}' är inte tillgängligt "
+    },
+
     clean: {
       start: "Rensar projekt...",
       done: "Rensning klar"

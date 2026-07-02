@@ -11,6 +11,15 @@ export const ph = {
       ready: "Handa na ang mga serbisyo"
     },
 
+    runtime: {
+      current: "Kasalukuyang wika ",
+      prompt: "Ilagay ang language code (en, es...) o pindutin ang ENTER ",
+      timeout: "Naghihintay ng {seconds} segundo... ",
+      timeoutReached: "Nag-timeout gagamitin ang kasalukuyang wika ",
+      changed: "Napalitan ang wika sa {locale} ",
+      invalid: "Hindi available ang wikang '{locale}' "
+    },
+
     clean: {
       start: "Nililinis ang proyekto...",
       done: "Natapos na ang paglilinis"

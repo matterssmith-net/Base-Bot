@@ -11,6 +11,15 @@ export const pl = {
       ready: "Usługi gotowe"
     },
 
+    runtime: {
+      current: "Aktualny język ",
+      prompt: "Wpisz kod języka (en, es...) lub naciśnij ENTER ",
+      timeout: "Oczekiwanie {seconds} sekund... ",
+      timeoutReached: "Przekroczono czas używana jest aktualna wersja języka ",
+      changed: "Język zmieniony na {locale} ",
+      invalid: "Język '{locale}' jest niedostępny "
+    },
+
     clean: {
       start: "Czyszczenie projektu...",
       done: "Czyszczenie zakończone"

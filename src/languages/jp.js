@@ -11,6 +11,15 @@ export const jp = {
       ready: "サービスの準備が完了しました"
     },
 
+    runtime: {
+      current: "現在の言語 ",
+      prompt: "言語コードを入力してください（en, es...）またはENTERを押してください ",
+      timeout: "{seconds}秒待機中... ",
+      timeoutReached: "タイムアウト 現在の言語を使用します ",
+      changed: "言語が{locale}に変更されました ",
+      invalid: "言語 '{locale}' は利用できません "
+    },
+
     clean: {
       start: "プロジェクトをクリーンアップしています...",
       done: "クリーンアップが完了しました"

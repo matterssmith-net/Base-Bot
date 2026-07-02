@@ -11,6 +11,15 @@ export const en = {
       ready: "Services ready"
     },
 
+    runtime: {
+      current: "Current language",
+      prompt: "Type a language code (en, es...) or press ENTER",
+      timeout: "Waiting {seconds} seconds...",
+      timeoutReached: "Timeout. Using current language",
+      changed: "Language changed to {locale}",
+      invalid: "Language '{locale}' is not available"
+    },
+
     clean: {
       start: "Cleaning project...",
       done: "Clean complete"

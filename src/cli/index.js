@@ -4,11 +4,23 @@ import { Config } from "../core/config/index.js";
 import { Logger } from "../core/logger/index.js";
 import { Services } from "../core/services/index.js";
 import { Language } from "../languages/index.js";
-import { getRuntimeState } from "../core/runtime/index.js";
+import { getRuntimeState, updateRuntimeState } from "../core/runtime/index.js";
+import { promptLocale } from "../cli/prompt.js";
 
 export async function startCLI() {
   const container = new Container();
-  const { locale } = getRuntimeState();
+
+  // 1. cargar runtime completo
+  const runtime = getRuntimeState();
+
+  // 2. permitir cambio interactivo
+  await promptLocale(runtime);
+
+  // 3. persistir cambios
+  updateRuntimeState(runtime);
+
+  // 4. usar locale final
+  const locale = runtime.locale;
 
   // core registrations
   container.register("config", () => new Config());

@@ -11,6 +11,15 @@ export const hu = {
       ready: "Szolgáltatások készen állnak"
     },
 
+    runtime: {
+      current: "Aktuális nyelv ",
+      prompt: "Írj be egy nyelvkódot (en, es...) vagy nyomj ENTER-t ",
+      timeout: "{seconds} másodperc várakozás... ",
+      timeoutReached: "Időtúllépés aktuális nyelv használata ",
+      changed: "Nyelv módosítva erre: {locale} ",
+      invalid: "A(z) '{locale}' nyelv nem elérhető "
+    },
+
     clean: {
       start: "Projekt tisztítása...",
       done: "Tisztítás befejezve"

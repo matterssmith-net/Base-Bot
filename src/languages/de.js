@@ -11,6 +11,15 @@ export const de = {
       ready: "Dienste bereit"
     },
 
+    runtime: {
+      current: "Aktuelle Sprache ",
+      prompt: "Sprache eingeben (en, es...) oder ENTER drücken ",
+      timeout: "Warten {seconds} Sekunden... ",
+      timeoutReached: "Zeit abgelaufen Sprache bleibt aktiv ",
+      changed: "Sprache geändert zu {locale} ",
+      invalid: "Sprache '{locale}' ist nicht verfügbar "
+    },
+
     clean: {
       start: "Projekt wird bereinigt...",
       done: "Bereinigung abgeschlossen"

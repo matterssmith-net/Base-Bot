@@ -11,6 +11,16 @@ export const cz = {
       ready: "Služby připraveny"
     },
 
+
+    runtime: {
+      current: "Aktuální jazyk",
+      prompt: "Zadejte kód jazyka (en, es...) nebo stiskněte ENTER",
+      timeout: "Čekání {seconds} sekund...",
+      timeoutReached: "Čas vypršel. Používá se aktuální jazyk",
+      changed: "Jazyk změněn na {locale}",
+      invalid: "Jazyk '{locale}' není dostupný"
+    },
+
     clean: {
       start: "Čištění projektu...",
       done: "Čištění dokončeno"

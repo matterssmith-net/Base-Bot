@@ -11,6 +11,15 @@ export const vn = {
       ready: "Các dịch vụ đã sẵn sàng"
     },
 
+    runtime: {
+      current: "Ngôn ngữ hiện tại ",
+      prompt: "Nhập mã ngôn ngữ (en, es...) hoặc nhấn ENTER ",
+      timeout: "Đang chờ {seconds} giây... ",
+      timeoutReached: "Hết thời gian sử dụng ngôn ngữ hiện tại ",
+      changed: "Đã đổi ngôn ngữ sang {locale} ",
+      invalid: "Ngôn ngữ '{locale}' không khả dụng "
+    },
+
     clean: {
       start: "Đang dọn dẹp dự án...",
       done: "Dọn dẹp hoàn tất"

@@ -11,6 +11,16 @@ export const fr = {
       ready: "Services prêts"
     },
 
+
+    runtime: {
+      current: "Langue actuelle ",
+      prompt: "Entrez un code de langue (en, es...) ou appuyez sur ENTRÉE ",
+      timeout: "Attente {seconds} secondes... ",
+      timeoutReached: "Temps écoulé langue actuelle conservée ",
+      changed: "Langue changée en {locale} ",
+      invalid: "La langue '{locale}' n'est pas disponible "
+    },
+
     clean: {
       start: "Nettoyage du projet...",
       done: "Nettoyage terminé"

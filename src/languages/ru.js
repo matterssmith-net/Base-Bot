@@ -11,6 +11,15 @@ export const ru = {
       ready: "Сервисы готовы"
     },
 
+    runtime: {
+      current: "Текущий язык ",
+      prompt: "Введите код языка (en, es...) или нажмите ENTER ",
+      timeout: "Ожидание {seconds} секунд... ",
+      timeoutReached: "Время вышло используется текущий язык ",
+      changed: "Язык изменён на {locale} ",
+      invalid: "Язык '{locale}' недоступен "
+    },
+
     clean: {
       start: "Очистка проекта...",
       done: "Очистка завершена"

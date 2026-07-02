@@ -11,6 +11,15 @@ export const th = {
       ready: "บริการพร้อมใช้งาน"
     },
 
+    runtime: {
+      current: "ภาษาปัจจุบัน ",
+      prompt: "ป้อนรหัสภาษา (en, es...) หรือกด ENTER ",
+      timeout: "กำลังรอ {seconds} วินาที... ",
+      timeoutReached: "หมดเวลา ใช้ภาษาปัจจุบัน ",
+      changed: "เปลี่ยนภาษาเป็น {locale} แล้ว ",
+      invalid: "ไม่รองรับภาษา '{locale}' "
+    },
+
     clean: {
       start: "กำลังทำความสะอาดโครงการ...",
       done: "การทำความสะอาดเสร็จสมบูรณ์"

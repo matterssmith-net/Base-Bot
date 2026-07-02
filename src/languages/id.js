@@ -11,6 +11,15 @@ export const id = {
       ready: "Layanan siap"
     },
 
+    runtime: {
+      current: "Bahasa saat ini ",
+      prompt: "Masukkan kode bahasa (en, es...) atau tekan ENTER ",
+      timeout: "Menunggu {seconds} detik... ",
+      timeoutReached: "Waktu habis menggunakan bahasa saat ini ",
+      changed: "Bahasa diubah ke {locale} ",
+      invalid: "Bahasa '{locale}' tidak tersedia "
+    },
+
     clean: {
       start: "Membersihkan proyek...",
       done: "Pembersihan selesai"

@@ -11,6 +11,15 @@ export const hi = {
       ready: "सेवाएँ तैयार हैं"
     },
 
+    runtime: {
+      current: "वर्तमान भाषा ",
+      prompt: "भाषा कोड दर्ज करें (en, es...) या ENTER दबाएँ ",
+      timeout: "{seconds} सेकंड प्रतीक्षा कर रहा है... ",
+      timeoutReached: "समय समाप्त वर्तमान भाषा का उपयोग किया जा रहा है ",
+      changed: "भाषा बदलकर {locale} कर दी गई है ",
+      invalid: "भाषा '{locale}' उपलब्ध नहीं है "
+    },
+
     clean: {
       start: "परियोजना को साफ़ किया जा रहा है...",
       done: "सफाई पूरी हुई"
