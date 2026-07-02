@@ -4,7 +4,11 @@ export const ph = {
   system: {
     started: "Nagsimula na ang sistema",
     ready: "Handa na ang sistema",
-    bootstrap: "Nagsimula ang bootstrap",
+
+    bootstrap: {
+      start: "Nagsimula ang bootstrap",
+      done: "Tapos na ang bootstrap"
+    },
 
     services: {
       init: "Sinisimulan ang mga serbisyo...",
@@ -13,7 +17,7 @@ export const ph = {
 
     runtime: {
       current: "Kasalukuyang wika ",
-      prompt: "Ilagay ang language code (en, es...) o pindutin ang ENTER ",
+      prompt: "Ilagay ang language code (br, cn, cz, de, en, es, fr, gr, hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) o pindutin ang ENTER ",
       timeout: "Naghihintay ng {seconds} segundo... ",
       timeoutReached: "Nag-timeout gagamitin ang kasalukuyang wika ",
       changed: "Napalitan ang wika sa {locale} ",

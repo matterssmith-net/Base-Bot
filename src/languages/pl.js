@@ -4,7 +4,11 @@ export const pl = {
   system: {
     started: "System uruchomiony",
     ready: "System gotowy",
-    bootstrap: "Uruchomiono bootstrap",
+
+    bootstrap: {
+      start: "Bootstrap uruchomiony",
+      done: "Bootstrap zakończony"
+    },
 
     services: {
       init: "Inicjalizacja usług...",
@@ -13,7 +17,7 @@ export const pl = {
 
     runtime: {
       current: "Aktualny język ",
-      prompt: "Wpisz kod języka (en, es...) lub naciśnij ENTER ",
+      prompt: "Wpisz kod języka (br, cn, cz, de, en, es, fr, gr, hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) lub naciśnij ENTER ",
       timeout: "Oczekiwanie {seconds} sekund... ",
       timeoutReached: "Przekroczono czas używana jest aktualna wersja języka ",
       changed: "Język zmieniony na {locale} ",

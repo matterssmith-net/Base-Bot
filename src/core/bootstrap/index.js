@@ -5,7 +5,7 @@ export async function bootstrap(container) {
   // 2. iniciar logger
   const logger = container.get("logger");
   const lang = container.get("lang");
-  logger.info(lang.t("system.bootstrap"));
+  logger.info(lang.t("system.bootstrap.start"));
 
   // 3. validar entorno
   if (!config) {
@@ -16,5 +16,5 @@ export async function bootstrap(container) {
   const services = container.get("services");
   await services.initialize?.();
 
-  logger.info(lang.t("system.ready"));
+  logger.info(lang.t("system.bootstrap.ready"));
 }

@@ -4,8 +4,12 @@ export const es = {
   system: {
     started: "Sistema iniciado",
     ready: "Sistema listo",
-    bootstrap: "Bootstrap iniciado",
 
+    bootstrap: {
+      start: "Bootstrap iniciado",
+      done: "Bootstrap completado"
+    },
+    
     services: {
       init: "Inicializando servicios...",
       ready: "Servicios listos"
@@ -13,7 +17,7 @@ export const es = {
 
     runtime: {
       current: "Idioma actual",
-      prompt: "Escribe un código de idioma (en, es...) o presiona ENTER.",
+      prompt: "Escribe un código de idioma (br, cn, cz, de, en, es, fr, gr, hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) o presiona ENTER.",
       timeout: "Esperando {seconds} segundos...",
       timeoutReached: "Tiempo agotado. Se usará el idioma actual.",
       changed: "Idioma cambiado a {locale}.",

@@ -4,7 +4,11 @@ export const sv = {
   system: {
     started: "Systemet startat",
     ready: "Systemet klart",
-    bootstrap: "Bootstrap startat",
+
+    bootstrap: {
+      start: "Bootstrap startat",
+      done: "Bootstrap klart"
+    },
 
     services: {
       init: "Initierar tjänster...",
@@ -13,7 +17,7 @@ export const sv = {
 
     runtime: {
       current: "Aktuellt språk ",
-      prompt: "Ange språkkod (en, es...) eller tryck ENTER ",
+      prompt: "Ange språkkod (br, cn, cz, de, en, es, fr, gr, hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) eller tryck ENTER ",
       timeout: "Väntar {seconds} sekunder... ",
       timeoutReached: "Tiden har gått använder aktuellt språk ",
       changed: "Språk ändrat till {locale} ",

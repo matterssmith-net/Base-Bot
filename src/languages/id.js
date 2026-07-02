@@ -4,7 +4,11 @@ export const id = {
   system: {
     started: "Sistem dimulai",
     ready: "Sistem siap",
-    bootstrap: "Bootstrap dimulai",
+
+    bootstrap: {
+      start: "Bootstrap dimulai",
+      done: "Bootstrap selesai"
+    },
 
     services: {
       init: "Menginisialisasi layanan...",
@@ -13,7 +17,7 @@ export const id = {
 
     runtime: {
       current: "Bahasa saat ini ",
-      prompt: "Masukkan kode bahasa (en, es...) atau tekan ENTER ",
+      prompt: "Masukkan kode bahasa (br, cn, cz, de, en, es, fr, gr, hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) atau tekan ENTER ",
       timeout: "Menunggu {seconds} detik... ",
       timeoutReached: "Waktu habis menggunakan bahasa saat ini ",
       changed: "Bahasa diubah ke {locale} ",

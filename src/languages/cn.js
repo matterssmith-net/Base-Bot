@@ -4,7 +4,11 @@ export const cn = {
   system: {
     started: "系统已启动",
     ready: "系统已就绪",
-    bootstrap: "引导程序已启动",
+
+    bootstrap: {
+      start: "引导程序已启动",
+      done: "引导完成"
+    },
 
     services: {
       init: "正在初始化服务...",
@@ -14,7 +18,7 @@ export const cn = {
 
     runtime: {
       current: "当前语言",
-      prompt: "输入语言代码（en、es...）或按 ENTER",
+      prompt: "输入语言代码（br, cn, cz, de, en, es, fr, gr, hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn）或按 ENTER",
       timeout: "等待 {seconds} 秒...",
       timeoutReached: "等待超时。使用当前语言",
       changed: "语言已切换为 {locale}",
