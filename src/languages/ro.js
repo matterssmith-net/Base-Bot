@@ -7,7 +7,7 @@ export const ro = {
 
     bootstrap: {
       start: "Bootstrap pornit",
-      done: "Bootstrap finalizat"
+      ready: "Bootstrap finalizat"
     },
 
     services: {
@@ -17,7 +17,8 @@ export const ro = {
 
     runtime: {
       current: "Limba curentă ",
-      prompt: "Introdu un cod de limbă (br, cn, cz, de, en, es, fr, gr, hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) sau apasă ENTER ",
+      prompt: "Introdu un cod de limbă (br, cn, cz, de, en, es, fr, gr, \n" +
+      "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) sau apasă ENTER ",
       timeout: "Se așteaptă {seconds} secunde... ",
       timeoutReached: "Timp expirat se folosește limba curentă ",
       changed: "Limba a fost schimbată în {locale} ",

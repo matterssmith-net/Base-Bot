@@ -1,4 +1,3 @@
-import readline from "readline";
 import { Language } from "../languages/index.js";
 import { createInterface } from "node:readline/promises";
 import { stdin, stdout } from "node:process";
@@ -11,8 +10,9 @@ export async function promptLocale(runtime) {
 
   console.log("");
   console.log("========================================");
-  console.log("        Base-Bot Runtime");
-  console.log("========================================");
+  console.log("            Base-Bot Runtime");
+  console.log("========================================");  
+  console.log("");
   console.log(`${lang.t("system.runtime.current")}: ${runtime.locale}`);
   console.log("");
   console.log(lang.t("system.runtime.prompt"));
@@ -33,6 +33,7 @@ export async function promptLocale(runtime) {
   } catch (err) {
     if (err.name === "AbortError" || err.name === "TimeoutError") {
       console.log(lang.t("system.runtime.timeoutReached"));
+      console.log("");
     } else {
       throw err;
     }
@@ -40,7 +41,12 @@ export async function promptLocale(runtime) {
     rl.close();
   }
 
+  if (typeof answer !== "string") {
+    return;
+  }
+
   const locale = answer.trim().toLowerCase();
+  console.log("");
 
   if (!locale) {
     return;
@@ -64,6 +70,8 @@ export async function promptLocale(runtime) {
       locale
     }));
   }
-
+  
+  console.log("");
+  console.log("========================================");
   console.log("");
 }

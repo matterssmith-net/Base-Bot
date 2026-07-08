@@ -7,7 +7,7 @@ export const th = {
 
     bootstrap: {
       start: "เริ่มต้น Bootstrap แล้ว",
-      done: "Bootstrap เสร็จสิ้น"
+      ready: "Bootstrap เสร็จสิ้น"
     },
 
     services: {
@@ -17,7 +17,8 @@ export const th = {
 
     runtime: {
       current: "ภาษาปัจจุบัน ",
-      prompt: "ป้อนรหัสภาษา (br, cn, cz, de, en, es, fr, gr, hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) หรือกด ENTER ",
+      prompt: "ป้อนรหัสภาษา (br, cn, cz, de, en, es, fr, gr, \n" +
+      "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) หรือกด ENTER ",
       timeout: "กำลังรอ {seconds} วินาที... ",
       timeoutReached: "หมดเวลา ใช้ภาษาปัจจุบัน ",
       changed: "เปลี่ยนภาษาเป็น {locale} แล้ว ",

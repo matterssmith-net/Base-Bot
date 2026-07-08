@@ -7,7 +7,7 @@ export const jp = {
 
     bootstrap: {
       start: "ブートストラップを開始しました",
-      done: "ブートストラップ完了"
+      ready: "ブートストラップ完了"
     },
 
     services: {
@@ -17,7 +17,8 @@ export const jp = {
 
     runtime: {
       current: "現在の言語 ",
-      prompt: "言語コードを入力してください（br, cn, cz, de, en, es, fr, gr, hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn）またはENTERを押してください ",
+      prompt: "言語コードを入力してください（br, cn, cz, de, en, es, fr, gr, \n" +
+      "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn）またはENTERを押してください ",
       timeout: "{seconds}秒待機中... ",
       timeoutReached: "タイムアウト 現在の言語を使用します ",
       changed: "言語が{locale}に変更されました ",

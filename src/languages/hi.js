@@ -7,7 +7,7 @@ export const hi = {
 
     bootstrap: {
       start: "बूटस्ट्रैप शुरू हुआ",
-      done: "बूटस्ट्रैप पूरा हुआ"
+      ready: "बूटस्ट्रैप पूरा हुआ"
     },
 
     services: {
@@ -17,7 +17,8 @@ export const hi = {
 
     runtime: {
       current: "वर्तमान भाषा ",
-      prompt: "भाषा कोड दर्ज करें (br, cn, cz, de, en, es, fr, gr, hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) या ENTER दबाएँ ",
+      prompt: "भाषा कोड दर्ज करें (br, cn, cz, de, en, es, fr, gr, \n" +
+      "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) या ENTER दबाएँ ",
       timeout: "{seconds} सेकंड प्रतीक्षा कर रहा है... ",
       timeoutReached: "समय समाप्त वर्तमान भाषा का उपयोग किया जा रहा है ",
       changed: "भाषा बदलकर {locale} कर दी गई है ",

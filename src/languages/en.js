@@ -7,7 +7,7 @@ export const en = {
 
     bootstrap: {
       start: "Bootstrap started",
-      done: "Bootstrap complete"
+      ready: "Bootstrap complete"
     },
 
     services: {
@@ -17,7 +17,8 @@ export const en = {
 
     runtime: {
       current: "Current language",
-      prompt: "Type a language code (br, cn, cz, de, en, es, fr, gr, hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) or press ENTER",
+      prompt: "Type a language code (br, cn, cz, de, en, es, fr, gr, \n" +
+      "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) or press ENTER",
       timeout: "Waiting {seconds} seconds...",
       timeoutReached: "Timeout. Using current language",
       changed: "Language changed to {locale}",

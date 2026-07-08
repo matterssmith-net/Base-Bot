@@ -7,7 +7,7 @@ export const nl = {
 
     bootstrap: {
       start: "Bootstrap gestart",
-      done: "Bootstrap voltooid"
+      ready: "Bootstrap voltooid"
     },
 
     services: {
@@ -17,7 +17,8 @@ export const nl = {
 
     runtime: {
       current: "Huidige taal ",
-      prompt: "Voer een taalcode in (br, cn, cz, de, en, es, fr, gr, hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) of druk op ENTER ",
+      prompt: "Voer een taalcode in (br, cn, cz, de, en, es, fr, gr, \n" +
+      "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) of druk op ENTER ",
       timeout: "{seconds} seconden wachten... ",
       timeoutReached: "Time-out huidige taal blijft actief ",
       changed: "Taal gewijzigd naar {locale} ",

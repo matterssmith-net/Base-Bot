@@ -7,7 +7,7 @@ export const uk = {
 
     bootstrap: {
       start: "Bootstrap запущено",
-      done: "Bootstrap завершено"
+      ready: "Bootstrap завершено"
     },
 
     services: {
@@ -17,7 +17,8 @@ export const uk = {
 
     runtime: {
       current: "Поточна мова ",
-      prompt: "Введіть код мови (br, cn, cz, de, en, es, fr, gr, hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) або натисніть ENTER ",
+      prompt: "Введіть код мови (br, cn, cz, de, en, es, fr, gr, \n" +
+      "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) або натисніть ENTER ",
       timeout: "Очікування {seconds} секунд... ",
       timeoutReached: "Час вийшов використовується поточна мова ",
       changed: "Мову змінено на {locale} ",

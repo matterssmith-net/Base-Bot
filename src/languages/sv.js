@@ -7,7 +7,7 @@ export const sv = {
 
     bootstrap: {
       start: "Bootstrap startat",
-      done: "Bootstrap klart"
+      ready: "Bootstrap klart"
     },
 
     services: {
@@ -17,7 +17,8 @@ export const sv = {
 
     runtime: {
       current: "Aktuellt språk ",
-      prompt: "Ange språkkod (br, cn, cz, de, en, es, fr, gr, hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) eller tryck ENTER ",
+      prompt: "Ange språkkod (br, cn, cz, de, en, es, fr, gr, \n" +
+      "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) eller tryck ENTER ",
       timeout: "Väntar {seconds} sekunder... ",
       timeoutReached: "Tiden har gått använder aktuellt språk ",
       changed: "Språk ändrat till {locale} ",

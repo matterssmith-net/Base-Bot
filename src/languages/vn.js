@@ -7,7 +7,7 @@ export const vn = {
 
     bootstrap: {
       start: "Bootstrap đã khởi động",
-      done: "Bootstrap đã hoàn tất"
+      ready: "Bootstrap đã hoàn tất"
     },
 
     services: {
@@ -17,7 +17,8 @@ export const vn = {
 
     runtime: {
       current: "Ngôn ngữ hiện tại ",
-      prompt: "Nhập mã ngôn ngữ (br, cn, cz, de, en, es, fr, gr, hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) hoặc nhấn ENTER ",
+      prompt: "Nhập mã ngôn ngữ (br, cn, cz, de, en, es, fr, gr, \n" +
+      "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) hoặc nhấn ENTER ",
       timeout: "Đang chờ {seconds} giây... ",
       timeoutReached: "Hết thời gian sử dụng ngôn ngữ hiện tại ",
       changed: "Đã đổi ngôn ngữ sang {locale} ",

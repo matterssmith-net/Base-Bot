@@ -7,7 +7,7 @@ export const hu = {
 
     bootstrap: {
       start: "Bootstrap elindult",
-      done: "Bootstrap befejeződött"
+      ready: "Bootstrap befejeződött"
     },
 
     services: {
@@ -17,7 +17,8 @@ export const hu = {
 
     runtime: {
       current: "Aktuális nyelv ",
-      prompt: "Írj be egy nyelvkódot (br, cn, cz, de, en, es, fr, gr, hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) vagy nyomj ENTER-t ",
+      prompt: "Írj be egy nyelvkódot (br, cn, cz, de, en, es, fr, gr, \n" +
+      "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) vagy nyomj ENTER-t ",
       timeout: "{seconds} másodperc várakozás... ",
       timeoutReached: "Időtúllépés aktuális nyelv használata ",
       changed: "Nyelv módosítva erre: {locale} ",

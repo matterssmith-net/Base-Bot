@@ -4,9 +4,9 @@ import { Config } from "../src/core/config/index.js";
 import { Container } from "../src/core/container/index.js";
 
 
-console.log("\n======================");
-console.log("[HEALTH CHECK]");
-console.log("======================\n");
+console.log("\n========================================"); 
+console.log("            [HEALTH CHECK]");
+console.log("========================================\n"); 
 
 const status = {
   core: {},
@@ -97,15 +97,15 @@ const allGood =
   status.config.loaded &&
   status.container.ok;
 
-status.overall = allGood ? "HEALTHY" : "DEGRADED";
+status.overall = allGood ? "✅ HEALTHY" : "❌ DEGRADED";
 
-console.log("\n======================");
-console.log("[SUMMARY]");
-console.log(status);
-console.log("======================\n");
+console.log("\n========================================");
+console.log("            [SUMMARY]");
+console.log("           " + status.overall);
+console.log("========================================\n");
 
 console.log(
   allGood
-    ? "SYSTEM HEALTHY"
-    : "SYSTEM DEGRADED"
+    ? "✅ SYSTEM HEALTHY"
+    : "❌ SYSTEM DEGRADED"
 );

@@ -7,7 +7,7 @@ export const gr = {
 
     bootstrap: {
       start: "Η εκκίνηση Bootstrap ξεκίνησε",
-      done: "Η εκκίνηση Bootstrap ολοκληρώθηκε"
+      ready: "Η εκκίνηση Bootstrap ολοκληρώθηκε"
     },
 
     services: {
@@ -17,7 +17,8 @@ export const gr = {
 
     runtime: {
       current: "Τρέχουσα γλώσσα ",
-      prompt: "Πληκτρολογήστε κωδικό γλώσσας (br, cn, cz, de, en, es, fr, gr, hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) ή πατήστε ENTER ",
+      prompt: "Πληκτρολογήστε κωδικό γλώσσας (br, cn, cz, de, en, es, fr, gr, \n" +
+      "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) ή πατήστε ENTER ",
       timeout: "Αναμονή {seconds} δευτερόλεπτα... ",
       timeoutReached: "Έληξε ο χρόνος χρήση τρέχουσας γλώσσας ",
       changed: "Η γλώσσα άλλαξε σε {locale} ",

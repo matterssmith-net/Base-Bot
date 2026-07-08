@@ -7,7 +7,7 @@ export const id = {
 
     bootstrap: {
       start: "Bootstrap dimulai",
-      done: "Bootstrap selesai"
+      ready: "Bootstrap selesai"
     },
 
     services: {
@@ -17,7 +17,8 @@ export const id = {
 
     runtime: {
       current: "Bahasa saat ini ",
-      prompt: "Masukkan kode bahasa (br, cn, cz, de, en, es, fr, gr, hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) atau tekan ENTER ",
+      prompt: "Masukkan kode bahasa (br, cn, cz, de, en, es, fr, gr, \n" +
+      "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) atau tekan ENTER ",
       timeout: "Menunggu {seconds} detik... ",
       timeoutReached: "Waktu habis menggunakan bahasa saat ini ",
       changed: "Bahasa diubah ke {locale} ",

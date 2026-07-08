@@ -6,6 +6,7 @@ import { Services } from "../core/services/index.js";
 import { Language } from "../languages/index.js";
 import { getRuntimeState, updateRuntimeState } from "../core/runtime/index.js";
 import { promptLocale } from "../cli/prompt.js";
+import { runWatchdog } from "../../scripts/watchdog.js";
 
 export async function startCLI() {
   const container = new Container();
@@ -41,7 +42,15 @@ export async function startCLI() {
   await services.initialize();
 
   logger.info(lang.t("system.ready"));
+
+  console.log("");
+  console.log("========================================");
+  console.log("               Base-Bot");
+  console.log("========================================");
+  console.log("");
 }
+
+await runWatchdog();
 
 startCLI().catch((err) => {
   console.error("Error:", err);

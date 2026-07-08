@@ -7,7 +7,7 @@ export const ru = {
 
     bootstrap: {
       start: "Bootstrap запущен",
-      done: "Bootstrap завершён"
+      ready: "Bootstrap завершён"
     },
 
     services: {
@@ -17,7 +17,8 @@ export const ru = {
 
     runtime: {
       current: "Текущий язык ",
-      prompt: "Введите код языка (br, cn, cz, de, en, es, fr, gr, hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) или нажмите ENTER ",
+      prompt: "Введите код языка (br, cn, cz, de, en, es, fr, gr, \n" +
+      "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) или нажмите ENTER ",
       timeout: "Ожидание {seconds} секунд... ",
       timeoutReached: "Время вышло используется текущий язык ",
       changed: "Язык изменён на {locale} ",
