@@ -73,5 +73,7 @@ export async function promptLocale(runtime) {
   
   console.log("");
   console.log("========================================");
+  console.log("            Base-Bot Start");
+  console.log("========================================");
   console.log("");
 }
