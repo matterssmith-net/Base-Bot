@@ -9,7 +9,8 @@ const RUNTIME_FILE = join(__dirname, "../../../runtime.state.json");
 const DEFAULT_STATE = {
   locale: "en",
   mode: "dev",
-  debug: true
+  debug: true,
+  provider: "baileys"
 };
 
 export function getRuntimeState() {

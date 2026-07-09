@@ -21,14 +21,19 @@ export class Logger {
     }
   }
 
-  _log(level, message, meta) {
-    const payload = {
-      level,
-      message,
-      meta,
-      timestamp: new Date().toISOString()
-    };
+  _log(level, message, meta = {}) {
+    const timestamp = new Date()
+      .toISOString()
+      .replace("T", " ")
+      .replace("Z", "");
 
-    console.log(JSON.stringify(payload));
+    let output =
+      `[${timestamp}] [${level}] ${message}`;
+
+    if (Object.keys(meta).length > 0) {
+      output += ` ${JSON.stringify(meta)}`;
+    }
+
+    console.log(output);
   }
 }

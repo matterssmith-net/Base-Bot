@@ -46,9 +46,14 @@ export async function promptLocale(runtime) {
   }
 
   const locale = answer.trim().toLowerCase();
-  console.log("");
 
   if (!locale) {
+    console.log("");
+    console.log("========================================");
+    console.log("            Base-Bot Info");
+    console.log("========================================");
+    console.log("");
+
     return;
   }
 
@@ -62,10 +67,12 @@ export async function promptLocale(runtime) {
 
     runtime.locale = locale;
 
+    console.log("");
     console.log(test.t("system.runtime.changed", {
       locale
     }));
   } catch {
+    console.log("");
     console.log(lang.t("system.runtime.invalid", {
       locale
     }));
@@ -73,7 +80,7 @@ export async function promptLocale(runtime) {
   
   console.log("");
   console.log("========================================");
-  console.log("            Base-Bot Start");
+  console.log("            Base-Bot Info");
   console.log("========================================");
   console.log("");
 }

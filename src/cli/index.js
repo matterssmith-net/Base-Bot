@@ -1,3 +1,5 @@
+import { ProviderManager } from "../providers/manager/index.js";
+import { registerDefaultProviders } from "../providers/index.js";
 import { bootstrap } from "../core/bootstrap/index.js";
 import { Container } from "../core/container/index.js";
 import { Config } from "../core/config/index.js";
@@ -29,6 +31,12 @@ export async function startCLI() {
   container.register("logger", (c) => new Logger(c.get("config"), c.get("lang")));
   container.register("services", (c) => new Services(c));
 
+  container.register("provider", () => {
+    const manager = new ProviderManager();
+    registerDefaultProviders(manager);
+    return manager;
+  });
+
   await container.get("lang").init();
   
   const logger = container.get("logger");
@@ -41,13 +49,23 @@ export async function startCLI() {
   const services = container.get("services");
   await services.initialize();
 
-  logger.info(lang.t("system.ready"));
+  const provider = container.get("provider");
+  await provider.initialize(runtime.provider);
+  await provider.connect();
 
+  logger.info(lang.t("system.ready"));
+  
   console.log("");
   console.log("========================================");
-  console.log("               Base-Bot");
+  console.log("            Base-Bot Baileys");
   console.log("========================================");
   console.log("");
+
+  // console.log("");
+  // console.log("========================================");
+  // console.log("               Base-Bot");
+  // console.log("========================================");
+  // console.log("");
 }
 
 await runWatchdog();
