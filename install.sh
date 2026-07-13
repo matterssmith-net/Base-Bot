@@ -147,9 +147,6 @@ else
     exit 1
 fi
 
-echo -e "\033[01;32m\033[01mChanging to the repository directory!!\n\033[0m" 
-cd Base-Bot
-
 if [ -f package.json ]; then
     echo -e "\e[35mInstalling NPM\n\e[0m"
 
