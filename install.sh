@@ -128,10 +128,22 @@ echo -e "\e[35m
 
 echo -e "\033[1;35m"
 
-if git clone https://github.com/matterssmith-net/Base-Bot.git; then
-    echo -e "\033[01;32m\033[01mThe clone has been downloaded and installed successfully.\n\033[0m"
+REPO="https://github.com/matterssmith-net/Base-Bot.git"
+BRANCH="master"
+
+if {
+    if [ ! -d ".git" ]; then
+        echo -e "\e[35mInitializing repository...\e[0m"
+        git init &&
+        git remote add origin "$REPO"
+    fi &&
+    echo -e "\e[35mDownloading latest files...\e[0m" &&
+    git fetch origin &&
+    git checkout -B "$BRANCH" "origin/$BRANCH"
+}; then
+    echo -e "\033[01;32m\033[01mRepository synchronized successfully.\n\033[0m"
 else
-    echo -e "\033[0;34mCould not Clone Bot Base. Check your Internet connection and try again. If the error continues, clone it manually!!033[0m"
+    echo -e "\033[0;34mCould not synchronize the repository. Check your Internet connection and try again. If the error continues, update it manually!!\033[0m"
     exit 1
 fi
 
