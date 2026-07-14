@@ -90,6 +90,8 @@ install_() {
 echo -e "\033[33m\033[0m Updating Termux..."
 pkg update -y && pkg upgrade -y
 
+install_ pkg git
+
 REPO="https://github.com/matterssmith-net/Base-Bot.git"
 BRANCH="master"
 TMP_DIR="$(mktemp -d)"
@@ -131,7 +133,6 @@ while true; do
 done &
 echo -e "\033[01;91mSound not available.\n\033[0m"
 
-install_ pkg git
 install_ pkg nodejs-lts
 install_ npm pino
 
