@@ -25,23 +25,62 @@ echo -e "\e[35m
 ░▀▀▀▄▄ ▒█▀▀▀ ░▒█░░ 　 ░▒█░░ ▒█▀▀█ ▒█▀▀▀ 　 ░▀▀▀▄▄ ▒█░░░ ▒█▄▄▀ ▒█▀▀▀ ▒█▀▀▀ ▒█▒█▒█ 
 ▒█▄▄▄█ ▒█▄▄▄ ░▒█░░ 　 ░▒█░░ ▒█░▒█ ▒█▄▄▄ 　 ▒█▄▄▄█ ▒█▄▄█ ▒█░▒█ ▒█▄▄▄ ▒█▄▄▄ ▒█░░▀█\n\e[0m"
 
+install_() {
+    local manager="$1"
+    local package="$2"
+
+    echo -e "\e[35mInstalling ${package}\n\e[0m"
+
+    case "$manager:$package" in
+
+        pkg:*)
+            check="command -v ${package%%-*} >/dev/null 2>&1"
+            cmd="pkg install -y $package"
+            ;;
+
+        npm:install)
+            [ -f package.json ] || {
+                echo -e "\033[0;31mpackage.json not found.\033[0m"
+                exit 1
+            }
+            check=""
+            cmd="npm install"
+            ;;
+
+        npm:*)
+            check="npm list -g --depth=0 $package >/dev/null 2>&1"
+            cmd="npm install -g $package"
+            ;;
+
+        *)
+            echo -e "\033[0;31mUnknown installer: $manager $package\033[0m"
+            exit 1
+            ;;
+    esac
+
+    if [ -n "$check" ] && eval "$check"; then
+        echo -e "\033[01;33m${package} was already installed previously.\033[0m"
+        return 0
+    fi
+
+    output=$(eval "$cmd" 2>&1)
+    status=$?
+
+    if [ $status -eq 0 ]; then
+        echo -e "\033[01;32m${package} has been installed successfully.\n\033[0m"
+        return 0
+    fi
+
+    echo -e "\033[0;31m${package} could not be installed.\033[0m"
+    echo "$output"
+
+    exit 1
+}
+
 echo -e "\033[33m\033[0m Updating Termux..."
 pkg update -y && pkg upgrade -y
 
-echo -e "\e[35mInstalling MPV\n\e[0m"
-
-if command -v mpv >/dev/null 2>&1; then
-    echo -e "\033[01;33mMPV was already installed previously.\033[0m"
-else
-    if pkg install mpv -y 2>&1 | grep -Eiq '(command not found|unable to locate package|E: Could not get lock|debconf: delaying package configuration|Package not found|Failed to fetch|404 Not Found|Hash sum mismatch|503 Service Unavailable|504 Gateway Timeout|408 Request Timeout|Connection timed out|Temporary failure resolving)'; then
-        echo -e "\033[01;32m\033[01mMPV has been installed successfully.\n\033[0m"
-    else
-        error=$(pkg install mpv 2>&1 >/dev/null)
-        echo -e "\033[0;31mError: $error\033[0m" 
-        echo -e "\033[0;34mMPV could not be installed. Check your Internet connection and try again. If the error continues, install it manually!!\033[0m" 
-        exit 1
-    fi
-fi
+install_ pkg mpv
 
 mp3_array=("https://qu.ax/PreU.mp3" "https://qu.ax/kKXA.mp3" "https://qu.ax/cFSp.mp3" "https://qu.ax/CQRm.mp3" "https://qu.ax/kDSY.mp3" "https://qu.ax/AQLB.mp3" "https://qu.ax/EspE.mp3" "https://qu.ax/ifKO.mp3" "https://qu.ax/EUDu.mp3" "https://qu.ax/SRNs.mp3" "https://qu.ax/WvfK.mp3" "https://qu.ax/lbff.mp3")
 random_mp3=${mp3_array[$RANDOM % ${#mp3_array[@]}]}
@@ -64,50 +103,9 @@ echo -e "\033[01;32m\033[01m
 ▒█░▒█ ▒█▀▀▀ ▒█▄▄█ ▒█▀▀▀ ▒█▒█▒█ ▒█░▒█ ▒█▀▀▀ ▒█▒█▒█ ▒█░░░ ▒█░ ▒█▀▀▀ ░▀▀▀▄▄
 ▒█▄▄▀ ▒█▄▄▄ ▒█░░░ ▒█▄▄▄ ▒█░░▀█ ▒█▄▄▀ ▒█▄▄▄ ▒█░░▀█ ▒█▄▄█ ▄█▄ ▒█▄▄▄ ▒█▄▄▄█\n\033[0m"
 
-echo -e "\e[35mInstalling Git\n\e[0m"
-
-if command -v git >/dev/null 2>&1; then
-    echo -e "\033[01;33mGit was already installed previously.\033[0m"
-else
-    if pkg install git -y 2>&1 | grep -Eiq '(command not found|unable to locate package|E: Could not get lock|debconf: delaying package configuration|Package not found|Failed to fetch|404 Not Found|Hash sum mismatch|503 Service Unavailable|504 Gateway Timeout|408 Request Timeout|Connection timed out|Temporary failure resolving)'; then
-        echo -e "\033[01;32m\033[01mGit has been installed successfully.\n\033[0m"
-    else
-        error=$(pkg install git 2>&1 >/dev/null)
-        echo -e "\033[0;31mError: $error\033[0m" 
-        echo -e "\033[0;34mGit could not be installed. Check your Internet connection and try again. If the error continues, install it manually!!\033[0m" 
-        exit 1
-    fi
-fi
- 
-echo -e "\e[35mInstalling Node.js\n\e[0m"
-
-if command -v node >/dev/null 2>&1; then
-    echo -e "\033[01;33mNode.js was already installed previously.\033[0m"
-else
-    if pkg install nodejs-lts -y 2>&1 | grep -Eiq '(command not found|unable to locate package|E: Could not get lock|debconf: delaying package configuration|Package not found|Failed to fetch|404 Not Found|Hash sum mismatch|503 Service Unavailable|504 Gateway Timeout|408 Request Timeout|Connection timed out|Temporary failure resolving)'; then
-        echo -e "\033[01;32m\033[01mNode.js has been installed successfully.\n\033[0m"
-    else
-        error=$(pkg install nodejs-lts >/dev/null)
-        echo -e "\033[0;31mError: $error\033[0m" 
-        echo -e "\033[0;34mNode.js could not be installed. Check your Internet connection and try again. If the error continues, install it manually!!\033[0m" 
-        exit 1
-    fi
-fi
- 
-echo -e "\e[35mInstalling Pino\n\e[0m"
-
-if npm list -g pino >/dev/null 2>&1; then
-    echo -e "\033[01;33mPino was already installed previously.\033[0m"
-else
-    if npm install pino -y 2>&1 | grep -Eiq '(command not found|unable to locate package|E: Could not get lock|debconf: delaying package configuration|Package not found|Failed to fetch|404 Not Found|Hash sum mismatch|503 Service Unavailable|504 Gateway Timeout|408 Request Timeout|Connection timed out|Temporary failure resolving)'; then
-        echo -e "\033[01;32m\033[01mPino has been installed successfully.\n\033[0m"
-    else
-        error=$(npm install pino 2>&1 >/dev/null)
-        echo -e "\033[0;31mError: $error\033[0m" 
-        echo -e "\033[0;34mPino could not be installed. Check your Internet connection and try again. If the error continues, install it manually!!\033[0m" 
-        exit 1
-    fi
-fi
+install_ pkg git
+install_ pkg nodejs-lts
+install_ npm pino
 
 echo -e "\e[36m
 
@@ -147,21 +145,7 @@ else
     exit 1
 fi
 
-if [ -f package.json ]; then
-    echo -e "\e[35mInstalling NPM\n\e[0m"
-
-    echo -e "\033[0;34mNPM will be installed automatically. Wait a moment please.\n\033[0m"
-    if npm install 2>&1 | grep -Eiq '(command not found|unable to locate package|E: Could not get lock|debconf: delaying package configuration|Package not found|Failed to fetch|404 Not Found|Hash sum mismatch|503 Service Unavailable|504 Gateway Timeout|408 Request Timeout|Connection timed out|Temporary failure resolving)'; then
-        error=$(npm install 2>&1 >/dev/null)
-        echo -e "\033[0;31mError: $error\033[0m" 
-        echo -e "\033[0;34mNPM couldn't be installed. Check your Internet connection and try again. If the error continues, install it manually!!\033[0m" 
-    else
-        echo -e "\033[01;32m\033[01mNPM has been installed successfully.\n\033[0m" 
-    fi
-else
-    echo -e "\033[31mPackage.json file not found! Put the installer in the same folder as the bot.\033[0m"
-    exit 1
-fi
+install_ npm install
 
 clear
 echo -e "\e[36m
