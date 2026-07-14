@@ -25,6 +25,16 @@ echo -e "\e[35m
 ░▀▀▀▄▄ ▒█▀▀▀ ░▒█░░ 　 ░▒█░░ ▒█▀▀█ ▒█▀▀▀ 　 ░▀▀▀▄▄ ▒█░░░ ▒█▄▄▀ ▒█▀▀▀ ▒█▀▀▀ ▒█▒█▒█ 
 ▒█▄▄▄█ ▒█▄▄▄ ░▒█░░ 　 ░▒█░░ ▒█░▒█ ▒█▄▄▄ 　 ▒█▄▄▄█ ▒█▄▄█ ▒█░▒█ ▒█▄▄▄ ▒█▄▄▄ ▒█░░▀█\n\e[0m"
 
+echo -e "\033[01;32m\033[01m
+
+▀█▀ ▒█▄░▒█ ▒█▀▀▀█ ▀▀█▀▀ ░█▀▀█ ▒█░░░ ▒█░░░ ▀█▀ ▒█▄░▒█ ▒█▀▀█
+▒█░ ▒█▒█▒█ ░▀▀▀▄▄ ░▒█░░ ▒█▄▄█ ▒█░░░ ▒█░░░ ▒█░ ▒█▒█▒█ ▒█░▄▄
+▄█▄ ▒█░░▀█ ▒█▄▄▄█ ░▒█░░ ▒█░▒█ ▒█▄▄█ ▒█▄▄█ ▄█▄ ▒█░░▀█ ▒█▄▄█
+
+▒█▀▀▄ ▒█▀▀▀ ▒█▀▀█ ▒█▀▀▀ ▒█▄░▒█ ▒█▀▀▄ ▒█▀▀▀ ▒█▄░▒█ ▒█▀▀█ ▀█▀ ▒█▀▀▀ ▒█▀▀▀█
+▒█░▒█ ▒█▀▀▀ ▒█▄▄█ ▒█▀▀▀ ▒█▒█▒█ ▒█░▒█ ▒█▀▀▀ ▒█▒█▒█ ▒█░░░ ▒█░ ▒█▀▀▀ ░▀▀▀▄▄
+▒█▄▄▀ ▒█▄▄▄ ▒█░░░ ▒█▄▄▄ ▒█░░▀█ ▒█▄▄▀ ▒█▄▄▄ ▒█░░▀█ ▒█▄▄█ ▄█▄ ▒█▄▄▄ ▒█▄▄▄█\n\033[0m"
+
 install_() {
     local manager="$1"
     local package="$2"
@@ -80,6 +90,34 @@ install_() {
 echo -e "\033[33m\033[0m Updating Termux..."
 pkg update -y && pkg upgrade -y
 
+REPO="https://github.com/matterssmith-net/Base-Bot.git"
+BRANCH="master"
+TMP_DIR="$(mktemp -d)"
+
+echo -e "\e[35mChecking installer updates...\e[0m"
+
+if git clone --depth=1 --branch "$BRANCH" "$REPO" "$TMP_DIR" >/dev/null 2>&1; then
+
+    if ! cmp -s "./install.sh" "$TMP_DIR/install.sh"; then
+        echo -e "\033[01;32mA new installer version was found. Restarting installer...\033[0m"
+
+        cp -f "$TMP_DIR/install.sh" "./install.sh"
+        chmod +x "./install.sh"
+
+        rm -rf "$TMP_DIR"
+
+        exec bash "./install.sh" "$@"
+    fi
+
+    rm -rf "$TMP_DIR"
+    echo -e "\033[01;33mInstaller is already up to date.\033[0m"
+
+else
+    rm -rf "$TMP_DIR"
+    echo -e "\033[0;34mCould not check for installer updates. Check your Internet connection and try again. If the error continues, update it manually!!\033[0m"
+    exit 1
+fi
+
 install_ pkg mpv
 
 mp3_array=("https://qu.ax/PreU.mp3" "https://qu.ax/kKXA.mp3" "https://qu.ax/cFSp.mp3" "https://qu.ax/CQRm.mp3" "https://qu.ax/kDSY.mp3" "https://qu.ax/AQLB.mp3" "https://qu.ax/EspE.mp3" "https://qu.ax/ifKO.mp3" "https://qu.ax/EUDu.mp3" "https://qu.ax/SRNs.mp3" "https://qu.ax/WvfK.mp3" "https://qu.ax/lbff.mp3")
@@ -92,16 +130,6 @@ while true; do
     wait
 done &
 echo -e "\033[01;91mSound not available.\n\033[0m"
- 
-echo -e "\033[01;32m\033[01m
-
-▀█▀ ▒█▄░▒█ ▒█▀▀▀█ ▀▀█▀▀ ░█▀▀█ ▒█░░░ ▒█░░░ ▀█▀ ▒█▄░▒█ ▒█▀▀█
-▒█░ ▒█▒█▒█ ░▀▀▀▄▄ ░▒█░░ ▒█▄▄█ ▒█░░░ ▒█░░░ ▒█░ ▒█▒█▒█ ▒█░▄▄
-▄█▄ ▒█░░▀█ ▒█▄▄▄█ ░▒█░░ ▒█░▒█ ▒█▄▄█ ▒█▄▄█ ▄█▄ ▒█░░▀█ ▒█▄▄█
-
-▒█▀▀▄ ▒█▀▀▀ ▒█▀▀█ ▒█▀▀▀ ▒█▄░▒█ ▒█▀▀▄ ▒█▀▀▀ ▒█▄░▒█ ▒█▀▀█ ▀█▀ ▒█▀▀▀ ▒█▀▀▀█
-▒█░▒█ ▒█▀▀▀ ▒█▄▄█ ▒█▀▀▀ ▒█▒█▒█ ▒█░▒█ ▒█▀▀▀ ▒█▒█▒█ ▒█░░░ ▒█░ ▒█▀▀▀ ░▀▀▀▄▄
-▒█▄▄▀ ▒█▄▄▄ ▒█░░░ ▒█▄▄▄ ▒█░░▀█ ▒█▄▄▀ ▒█▄▄▄ ▒█░░▀█ ▒█▄▄█ ▄█▄ ▒█▄▄▄ ▒█▄▄▄█\n\033[0m"
 
 install_ pkg git
 install_ pkg nodejs-lts
@@ -125,9 +153,6 @@ echo -e "\e[35m
 ╚═╝░░  ╚═╝╚═╝░░╚══╝╚═════╝░░░░╚═╝░░░╚═╝░░╚═╝╚══════╝╚══════╝╚═╝╚═╝░░╚══╝░╚═════╝░\n\e[0m"
 
 echo -e "\033[1;35m"
-
-REPO="https://github.com/matterssmith-net/Base-Bot.git"
-BRANCH="master"
 
 if {
     if [ ! -d ".git" ]; then
