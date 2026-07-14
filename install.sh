@@ -41,7 +41,7 @@ install_() {
     local manager="$1"
     local package="$2"
 
-    echo -e "\e[35mInstalling ${package}\n\e[0m"
+    echo -e "\n\e[35mInstalling ${package}\n\e[0m"
 
     case "$manager:$package" in
 
