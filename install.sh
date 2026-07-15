@@ -98,7 +98,7 @@ echo -e "\033[01;32m\033[01m
 echo -e "\033[33m\033[0m Updating Termux..."
 pkg update -y && pkg upgrade -y
 
-install_ pkg git
+_install pkg git
 
 echo -e "\e[35mChecking installer updates...\e[0m"
 
@@ -124,7 +124,7 @@ else
     exit 1
 fi
 
-install_ pkg mpv
+_install pkg mpv
 
 mp3_array=("https://qu.ax/PreU.mp3" "https://qu.ax/kKXA.mp3" "https://qu.ax/cFSp.mp3" "https://qu.ax/CQRm.mp3" "https://qu.ax/kDSY.mp3" "https://qu.ax/AQLB.mp3" "https://qu.ax/EspE.mp3" "https://qu.ax/ifKO.mp3" "https://qu.ax/EUDu.mp3" "https://qu.ax/SRNs.mp3" "https://qu.ax/WvfK.mp3" "https://qu.ax/lbff.mp3")
 random_mp3=${mp3_array[$RANDOM % ${#mp3_array[@]}]}
