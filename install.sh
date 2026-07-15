@@ -108,6 +108,10 @@ if git clone --depth=1 --branch "$BRANCH" "$REPO" "$TMP_DIR" >/dev/null 2>&1; th
         echo -e "\033[01;32mA new installer version was found. Restarting installer...\033[0m"
 
         cp -f "$TMP_DIR/install.sh" "./install.sh"
+
+        # Convert CRLF -> LF
+        sed -i 's/\r$//' "./install.sh"
+
         chmod +x "./install.sh"
 
         rm -rf "$TMP_DIR"
