@@ -161,17 +161,21 @@ echo -e "\033[1;35m"
 
 echo -e "\e[35mDownloading latest files...\e[0m"
 
-if {
-    git clone --depth=1 --branch "$BRANCH" "$REPO" "$TMP_DIR" >/dev/null 2>&1 &&
+if git clone --depth=1 --branch "$BRANCH" "$REPO" "$TMP_DIR" >/dev/null 2>&1; then
 
-    find "$TMP_DIR" -mindepth 1 \
-        ! -path "$TMP_DIR/.git*" \
-        ! -name "install.sh" \
-        -exec cp -Rf {} . \; &&
+    (
+        cd "$TMP_DIR" || exit 1
+
+        tar \
+            --exclude=".git" \
+            --exclude="install.sh" \
+            -cf - .
+    ) | tar -xf -
 
     rm -rf "$TMP_DIR"
-}; then
+
     echo -e "\033[01;32mRepository synchronized successfully.\033[0m"
+
 else
     rm -rf "$TMP_DIR"
     echo -e "\033[0;34mCould not synchronize the repository. Check your Internet connection and try again. If the error continues, update it manually!!\033[0m"
