@@ -104,8 +104,6 @@ echo -e "\e[35mChecking installer updates...\e[0m"
 
 if git clone --depth=1 --branch "$BRANCH" "$REPO" "$TMP_DIR" >/dev/null 2>&1; then
 
-    cmp -l "./install.sh" "$TMP_DIR/install.sh" | head
-
     if ! cmp -s "./install.sh" "$TMP_DIR/install.sh"; then
         echo -e "\033[01;32mA new installer version was found. Restarting installer...\033[0m"
 
