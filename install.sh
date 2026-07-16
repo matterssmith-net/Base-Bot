@@ -218,4 +218,8 @@ echo -e "\033[01;32m\033[01mStarting Base Bot!!\n\033[0m"
 sync
 sleep 1
 
+echo "========== runtime.state.json =========="
+cat runtime.state.json
+echo "========================================"
+
 npm start
