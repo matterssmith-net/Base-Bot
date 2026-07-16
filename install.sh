@@ -141,6 +141,8 @@ fi
 
 _install pkg mpv
 
+echo -e "\033[1;35m"
+
 mp3_array=("https://qu.ax/PreU.mp3" "https://qu.ax/kKXA.mp3" "https://qu.ax/cFSp.mp3" "https://qu.ax/CQRm.mp3" "https://qu.ax/kDSY.mp3" "https://qu.ax/AQLB.mp3" "https://qu.ax/EspE.mp3" "https://qu.ax/ifKO.mp3" "https://qu.ax/EUDu.mp3" "https://qu.ax/SRNs.mp3" "https://qu.ax/WvfK.mp3" "https://qu.ax/lbff.mp3")
 random_mp3=${mp3_array[$RANDOM % ${#mp3_array[@]}]}
 mp3_file="/data/data/com.termux/files/usr/tmp/basebot_install.mp3"
@@ -150,7 +152,7 @@ while true; do
     sleep 2
     wait
 done &
-echo -e "\033[01;91mSound not available.\n\033[0m"
+echo -e "\033[01;91m\nSound not available.\n\033[0m"
 
 _install pkg nodejs-lts
 _install npm pino
@@ -176,7 +178,7 @@ $line0
 
 echo -e "\033[1;35m"
 
-echo -e "\e[35mDownloading latest files...\e[0m"
+echo -e "\e[35mDownloading latest files...\n\e[0m"
 
 if git clone --depth=1 --branch "$BRANCH" "$REPO" "$TMP_DIR" >/dev/null 2>&1; then
 
@@ -216,12 +218,6 @@ sleep 15 && pkill mpv > /dev/null 2>&1 && sleep 2 && rm -f "/data/data/com.termu
 echo -e "\033[01;32m\033[01mStarting Base Bot!!\n\033[0m"
 
 node scripts/update-runtime.js
-
-sync
-sleep 1
-
-echo "========== runtime.state.json =========="
-cat runtime.state.json
-echo "========================================"
+sync && sleep 1
 
 npm start
