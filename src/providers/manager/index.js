@@ -11,6 +11,8 @@ export class ProviderManager {
   }
 
   async initialize(name) {
+    console.log("initialize(name) =", name);
+    
     const Provider = this.registry.get(name);
 
     this.provider = new Provider();

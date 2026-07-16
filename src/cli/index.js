@@ -49,6 +49,9 @@ export async function startCLI() {
   const services = container.get("services");
   await services.initialize();
 
+  console.log("runtime =", runtime);
+  console.log("runtime.provider =", runtime.provider);
+
   const provider = container.get("provider");
   await provider.initialize(runtime.provider);
   await provider.connect();
