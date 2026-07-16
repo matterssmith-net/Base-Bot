@@ -9,10 +9,13 @@ export async function promptLocale(runtime) {
   await lang.init();
 
   console.log("");
-  console.log("========================================");
-  console.log("            Base-Bot Runtime");
-  console.log("========================================");  
+  console.log("____________________________________________________________");
   console.log("");
+  console.log("▒█▀▀█ ▒█░▒█ ▒█▄░▒█ ▀▀█▀▀ ▀█▀ ▒█▀▄▀█ ▒█▀▀▀");
+  console.log("▒█▄▄▀ ▒█░▒█ ▒█▒█▒█ ░▒█░░ ▒█░ ▒█▒█▒█ ▒█▀▀▀");
+  console.log("▒█░▒█ ░▀▄▄▀ ▒█░░▀█ ░▒█░░ ▄█▄ ▒█░░▒█ ▒█▄▄▄");
+  console.log("");
+
   console.log(`${lang.t("system.runtime.current")}: ${runtime.locale}`);
   console.log("");
   console.log(lang.t("system.runtime.prompt"));
@@ -34,6 +37,12 @@ export async function promptLocale(runtime) {
     if (err.name === "AbortError" || err.name === "TimeoutError") {
       console.log(lang.t("system.runtime.timeoutReached"));
       console.log("");
+      console.log("________________________________________");
+      console.log("");
+      console.log("▀█▀ ▒█▄░▒█ ░█▀▀▀ ▒█▀▀▀█");
+      console.log("▒█░ ▒█▒█▒█ ░█▀▀▀ ▒█░░▒█");
+      console.log("▄█▄ ▒█░░▀█ ░█─── ▒█▄▄▄█");
+      console.log("");
     } else {
       throw err;
     }
@@ -49,9 +58,11 @@ export async function promptLocale(runtime) {
 
   if (!locale) {
     console.log("");
-    console.log("========================================");
-    console.log("            Base-Bot Info");
-    console.log("========================================");
+    console.log("________________________________________");
+    console.log("");
+    console.log("▀█▀ ▒█▄░▒█ ░█▀▀▀ ▒█▀▀▀█");
+    console.log("▒█░ ▒█▒█▒█ ░█▀▀▀ ▒█░░▒█");
+    console.log("▄█▄ ▒█░░▀█ ░█─── ▒█▄▄▄█");
     console.log("");
 
     return;
@@ -79,8 +90,10 @@ export async function promptLocale(runtime) {
   }
   
   console.log("");
-  console.log("========================================");
-  console.log("            Base-Bot Info");
-  console.log("========================================");
+  console.log("________________________________________");
+  console.log("");
+  console.log("▀█▀ ▒█▄░▒█ ░█▀▀▀ ▒█▀▀▀█");
+  console.log("▒█░ ▒█▒█▒█ ░█▀▀▀ ▒█░░▒█");
+  console.log("▄█▄ ▒█░░▀█ ░█─── ▒█▄▄▄█");
   console.log("");
 }
