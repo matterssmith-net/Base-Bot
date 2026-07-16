@@ -24,26 +24,6 @@ export function getRuntimeState() {
       return DEFAULT_STATE;
     }
 
-    const state = JSON.parse(readFileSync(RUNTIME_FILE, "utf8"));
-
-    const runtime = {
-      ...DEFAULT_STATE,
-      ...state
-    };
-
-    console.log("RUNTIME_FILE:", RUNTIME_FILE);
-    console.log("state:", state);
-    console.log("runtime:", runtime);
-
-const raw = readFileSync(RUNTIME_FILE, "utf8");
-
-console.log("RAW:");
-console.log(raw);
-
-const state2 = JSON.parse(raw);
-
-console.log("STATE:", state2);
-
     return JSON.parse(readFileSync(RUNTIME_FILE, "utf8"));
   } catch (err) {
     console.error(err);
