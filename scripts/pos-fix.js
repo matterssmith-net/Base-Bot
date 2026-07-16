@@ -1,11 +1,16 @@
 import fs from "fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { getRuntimeState, updateRuntimeState } from "../src/core/runtime/index.js";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const runtime = getRuntimeState();
 updateRuntimeState(runtime);
 
 const files = [
-    "../node_modules/libsignal/src/session_record.js"
+    path.join(__dirname, "../node_modules/libsignal/src/session_record.js")
 ];
 
 for (const file of files) {
