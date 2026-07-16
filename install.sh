@@ -219,6 +219,6 @@ sleep 15 && pkill mpv > /dev/null 2>&1 && sleep 2 && rm -f "/data/data/com.termu
 node scripts/pos-fix.js
 sync && sleep 1
 
-echo -e "\033[01;32m\033[01m\nStarting Base Bot!!\n\033[0m"
+echo -e "\033[01;32m\033[01m\nStarting Base Bot!!\033[0m"
 
 npm start
