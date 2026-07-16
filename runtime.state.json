@@ -1,5 +1,6 @@
 {
   "locale": "en",
   "mode": "dev",
-  "debug": true
+  "debug": true,
+  "provider": "baileys"
 }
