@@ -1,4 +1,8 @@
 import fs from "fs";
+import { getRuntimeState, updateRuntimeState } from "./src/core/runtime/index.js";
+
+const runtime = getRuntimeState();
+updateRuntimeState(runtime);
 
 const files = [
     "node_modules/libsignal/src/session_record.js"
