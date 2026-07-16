@@ -111,7 +111,7 @@ pkg update -y && pkg upgrade -y
 
 _install pkg git
 
-echo -e "\e[35mChecking installer updates...\e[0m"
+echo -e "\e[35m\nChecking installer updates...\e[0m"
 
 if git clone --depth=1 --branch "$BRANCH" "$REPO" "$TMP_DIR" >/dev/null 2>&1; then
 
