@@ -40,9 +40,9 @@ const raw = readFileSync(RUNTIME_FILE, "utf8");
 console.log("RAW:");
 console.log(raw);
 
-const state = JSON.parse(raw);
+const state2 = JSON.parse(raw);
 
-console.log("STATE:", state);
+console.log("STATE:", state2);
 
     return JSON.parse(readFileSync(RUNTIME_FILE, "utf8"));
   } catch (err) {
