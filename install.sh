@@ -215,6 +215,8 @@ $line3
 sleep 15 && pkill mpv > /dev/null 2>&1 && sleep 2 && rm -f "/data/data/com.termux/files/usr/tmp/basebot_install.mp3" &
 echo -e "\033[01;32m\033[01mStarting Base Bot!!\n\033[0m"
 
+node scripts/migrate-runtime.js
+
 sync
 sleep 1
 
