@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "noEmit": true,
+    "checkJs": false
+  },
+  "include": [
+    "src/cli/index.js",
+    "src.js"
+  ]
+}
