@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
     "allowJs": true,
+    "checkJs": false,
     "noEmit": true,
-    "checkJs": false
+    "skipLibCheck": true
   },
-  "include": [
-    "src/cli/index.js",
-    "src.js"
+  "exclude": [
+    "node_modules"
   ]
 }
