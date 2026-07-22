@@ -89,7 +89,7 @@ set INSTALLER=install.bat
 
 set "RAW_REPO=%REPO%"
 set "RAW_REPO=%RAW_REPO:https://github.com/=%"
-set "RAW_REPO=https://raw.githubusercontent.com/%RAW_REPO:.git=%"
+set "RAW_REPO=%RAW_REPO:.git=%"
 
 ::==================================================
 :: ###                   Check Administrator ###
@@ -168,9 +168,13 @@ echo.
 
 if not exist "%TMP_DIR%" mkdir "%TMP_DIR%"
 
-curl -L --fail ^
+echo %RAW_REPO%
+echo https://raw.githubusercontent.com/%RAW_REPO%/refs/heads/%BRANCH%/%INSTALLER%
+pause
+
+curl.exe -L --fail ^
     -o "%TMP_DIR%\%INSTALLER%" ^
-    "https://raw.githubusercontent.com/%RAW_REPO%/refs/heads/%BRANCH%/%INSTALLER%" >nul 2>&1
+    "https://raw.githubusercontent.com/%RAW_REPO%/refs/heads/%BRANCH%/%INSTALLER%"
 
 set "_el=%errorlevel%"
 
