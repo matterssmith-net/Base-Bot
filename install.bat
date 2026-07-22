@@ -228,8 +228,6 @@ if %_el% EQU 1 (
     exit /b
 )
 
-rd /s /q "%TMP_DIR%"
-
 echo.
 echo Installer is already up to date.
 echo.
@@ -314,8 +312,6 @@ color 1F
 echo.
 echo "Downloading latest files..."
 echo.
-
-if exist "%TMP_DIR%" rd /s /q "%TMP_DIR%"
 
 git clone --depth=1 --branch "%BRANCH%" "%REPO%" "%TMP_DIR%" >nul 2>&1
 
