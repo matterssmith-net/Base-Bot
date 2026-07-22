@@ -178,7 +178,7 @@ curl -L --fail ^
 
 set "_el=%errorlevel%"
 
-if %_el% NEQ 0 (
+if %_el% EQU 1 (
     color 4F
     echo.
     echo Could not check for installer updates.
