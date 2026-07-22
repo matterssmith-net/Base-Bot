@@ -204,9 +204,18 @@ if not exist "%TMP_DIR%\install.bat" (
     exit /b 1
 )
 
-fc /b "%~f0" "%TMP_DIR%\install.bat" >nul
+fc /b "%~f0" "%TMP_DIR%\%INSTALLER%" >nul
 
 set "_el=%errorlevel%"
+
+if %_el% EQU 2 (
+    color 4F
+    echo.
+    echo Unable to compare installer files.
+    if exist "%TMP_DIR%" rd /s /q "%TMP_DIR%"
+    %_Pause%
+    exit /b 1
+)
 
 if %_el% EQU 1 (
     color 1F
@@ -215,17 +224,14 @@ if %_el% EQU 1 (
     echo Restarting installer...
     echo.
 
-    copy /y "%TMP_DIR%\install.bat" "%~f0" >nul
+    copy /y "%TMP_DIR%\%INSTALLER%" "%~f0" >nul
 
     timeout /t 1 /nobreak >nul
 
     rd /s /q "%TMP_DIR%"
 
-    timeout /t 2 >nul
-
-    start "" cmd /c "\"%~f0\""
-
-    exit /b
+    cmd /c "%~f0"
+    exit
 )
 
 echo.
@@ -313,7 +319,30 @@ echo.
 echo "Downloading latest files..."
 echo.
 
-git clone --depth=1 --branch "%BRANCH%" "%REPO%" "%TMP_DIR%" >nul 2>&1
+if exist "%TMP_DIR%" rd /s /q "%TMP_DIR%"
+if not exist "%TMP_DIR%" mkdir "%TMP_DIR%"
+
+git clone ^
+    --depth=1 ^
+    --branch "%BRANCH%" ^
+    "%REPO%" ^
+    "%TMP_DIR%"
+
+set "_el=%errorlevel%"
+
+if %_el% NEQ 0 (
+    color 4F
+    echo.
+    echo Could not clone repository.
+    if exist "%TMP_DIR%" rd /s /q "%TMP_DIR%"
+    %_Pause%
+    color 0F
+    echo.
+    echo /^>
+    echo.
+    timeout /t 1 >nul
+    exit /b 1
+)
 
 set "_el=%errorlevel%"
 if "%_el%" == 1 (
