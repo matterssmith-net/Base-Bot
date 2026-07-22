@@ -1,6 +1,6 @@
 <!-- : Begin batch script
 @setlocal DisableDelayedExpansion
-@echo on
+@echo off
 
 cls
 mode con cols=80 lines=32
@@ -167,10 +167,6 @@ echo Checking installer updates...
 echo.
 
 if not exist "%TMP_DIR%" mkdir "%TMP_DIR%"
-
-echo %RAW_REPO%
-echo https://raw.githubusercontent.com/%RAW_REPO%/refs/heads/%BRANCH%/%INSTALLER%
-pause
 
 curl.exe -L --fail ^
     -o "%TMP_DIR%\%INSTALLER%" ^
