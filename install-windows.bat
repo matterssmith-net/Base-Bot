@@ -85,7 +85,7 @@ set REPO=https://github.com/matterssmith-net/Base-Bot.git
 set BRANCH=master
 
 set "TMP_DIR=%TEMP%\BaseBot_%RANDOM%"
-set INSTALLER=install.bat
+set INSTALLER=install-windows.bat
 
 set "RAW_REPO=%REPO%"
 set "RAW_REPO=%RAW_REPO:https://github.com/=%"
@@ -189,7 +189,7 @@ if %_el% EQU 1 (
     exit /b 1
 )
 
-if not exist "%TMP_DIR%\install.bat" (
+if not exist "%TMP_DIR%\%INSTALLER%" (
     rd /s /q "%TMP_DIR%"
 
     color 4F
@@ -367,7 +367,7 @@ robocopy "%TMP_DIR%" "%CD%" ^
     /NJS ^
     /NP ^
     /XD ".git" ^
-    /XF "install.bat" >nul
+    /XF "%INSTALLER%" >nul
 
 set "_el=%errorlevel%"
 

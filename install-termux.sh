@@ -6,7 +6,7 @@ REPO="https://github.com/matterssmith-net/Base-Bot.git"
 BRANCH="master"
 
 TMP_DIR="$(mktemp -d)"
-INSTALLER="install.sh"
+INSTALLER="install-termux.sh"
 
 line0="====================================================================================="
 line1="____________________________________________________________"
@@ -115,19 +115,19 @@ echo -e "\e[35m\nChecking installer updates...\n\e[0m"
 
 if git clone --depth=1 --branch "$BRANCH" "$REPO" "$TMP_DIR" >/dev/null 2>&1; then
 
-    if ! cmp -s "./install.sh" "$TMP_DIR/install.sh"; then
+    if ! cmp -s "./$INSTALLER" "$TMP_DIR/$INSTALLER"; then
         echo -e "\033[01;32mA new installer version was found. Restarting installer...\033[0m"
 
-        cp -f "$TMP_DIR/install.sh" "./install.sh"
+        cp -f "$TMP_DIR/$INSTALLER" "./$INSTALLER"
 
         # Convert CRLF -> LF
-        sed -i 's/\r$//' "./install.sh"
+        sed -i 's/\r$//' "./$INSTALLER"
 
-        chmod +x "./install.sh"
+        chmod +x "./$INSTALLER"
 
         rm -rf "$TMP_DIR"
 
-        exec bash "./install.sh" "$@"
+        exec bash "./$INSTALLER" "$@"
     fi
 
     rm -rf "$TMP_DIR"
@@ -187,7 +187,7 @@ if git clone --depth=1 --branch "$BRANCH" "$REPO" "$TMP_DIR" >/dev/null 2>&1; th
 
         tar \
             --exclude=".git" \
-            --exclude="install.sh" \
+            --exclude="$INSTALLER" \
             -cf - .
     ) | tar -xf -
 
