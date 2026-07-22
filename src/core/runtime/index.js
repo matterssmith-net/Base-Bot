@@ -6,7 +6,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const RUNTIME_FILE = join(__dirname, "../../../runtime.state.json");
 
-const DEFAULT_STATE = {
+export const DEFAULT_STATE = {
   locale: "en",
   mode: "dev",
   debug: true,

@@ -7,7 +7,7 @@ import { Logger } from "../core/logger/index.js";
 import { Services } from "../core/services/index.js";
 import { Language } from "../languages/index.js";
 import { getRuntimeState, updateRuntimeState } from "../core/runtime/index.js";
-import { promptLocale } from "../cli/prompt.js";
+import { configureRuntime } from "../core/runtime/configure.js";
 import { runWatchdog } from "../../scripts/watchdog.js";
 
 export async function startCLI() {
@@ -17,7 +17,7 @@ export async function startCLI() {
   const runtime = getRuntimeState();
 
   // 2. permitir cambio interactivo
-  await promptLocale(runtime);
+  await configureRuntime(runtime);
 
   // 3. persistir cambios
   updateRuntimeState(runtime);
@@ -48,7 +48,8 @@ export async function startCLI() {
 
   const services = container.get("services");
   await services.initialize();
-
+
+
   const provider = container.get("provider");
   await provider.initialize(runtime.provider);
   await provider.connect();
@@ -62,12 +63,6 @@ export async function startCLI() {
   console.log("▒█▀▀▄ ▒█▄▄█ ▒█░ ▒█░░░ ▒█▀▀▀ ▒█▄▄▄█ ░▀▀▀▄▄");
   console.log("▒█▄▄█ ▒█░▒█ ▄█▄ ▒█▄▄█ ▒█▄▄▄ ░░▒█░░ ▒█▄▄▄█");
   console.log("");
-
-  // console.log("");
-  // console.log("========================================");
-  // console.log("               Base-Bot");
-  // console.log("========================================");
-  // console.log("");
 }
 
 console.log("");
