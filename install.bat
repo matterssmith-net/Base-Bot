@@ -87,8 +87,9 @@ set BRANCH=master
 set "TMP_DIR=%TEMP%\BaseBot_%RANDOM%"
 set INSTALLER=install.bat
 
-set "RAW_REPO=%REPO:https://github.com/=https://raw.githubusercontent.com/%"
-set "RAW_REPO=%RAW_REPO:.git=%"
+set "RAW_REPO=%REPO%"
+set "RAW_REPO=%RAW_REPO:https://github.com/=%"
+set "RAW_REPO=https://raw.githubusercontent.com/%RAW_REPO:.git=%"
 
 ::==================================================
 :: ###                   Check Administrator ###
@@ -165,16 +166,11 @@ echo.
 echo Checking installer updates...
 echo.
 
-echo REPO=%REPO%
-echo RAW_REPO=%RAW_REPO%
-echo URL=%RAW_REPO%/%BRANCH%/%INSTALLER%
-pause
-
 if not exist "%TMP_DIR%" mkdir "%TMP_DIR%"
 
 curl -L --fail ^
     -o "%TMP_DIR%\%INSTALLER%" ^
-    "%RAW_REPO%/%BRANCH%/%INSTALLER%" >nul 2>&1
+    "https://raw.githubusercontent.com/%RAW_REPO%/refs/heads/%BRANCH%/%INSTALLER%" >nul 2>&1
 
 set "_el=%errorlevel%"
 
