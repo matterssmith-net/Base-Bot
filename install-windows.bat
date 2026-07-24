@@ -596,7 +596,7 @@ echo.
 :: Update Winget sources
 ::---------------------------------------
 
-winget source update >
+winget source update
 
 ::---------------------------------------
 :: Update installed applications
