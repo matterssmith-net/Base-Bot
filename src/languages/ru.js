@@ -16,13 +16,32 @@ export const ru = {
     },
 
     runtime: {
-      current: "Текущий язык ",
-      prompt: "Введите код языка (br, cn, cz, de, en, es, fr, gr, \n" +
-      "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) или нажмите ENTER ",
-      timeout: "Ожидание {seconds} секунд... ",
-      timeoutReached: "Время вышло используется текущий язык ",
-      changed: "Язык изменён на {locale} ",
-      invalid: "Язык '{locale}' недоступен "
+      locale: {
+        current: "Язык. Текущее состояние",
+        prompt: "Введите вариант (br, cn, cz, de, en, es, fr, gr, \n" +
+          "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) или нажмите ENTER.",
+      },
+
+      mode: {
+        current: "Pежим. Текущее состояние",
+        prompt: "Введите вариант (dev) или нажмите ENTER.",
+      },
+
+      debug: {
+        current: "Отладка. Текущее состояние",
+        prompt: "Введите вариант (true, false) или нажмите ENTER.",
+      },
+
+      provider: {
+        current: "Провайдер. Текущее состояние",
+        prompt: "Введите вариант (baileys) или нажмите ENTER.",
+      },
+
+      changed: "Изменено на {ops}.",
+      invalid: "Вариант '{ops}' недоступен.",
+      timeout: "Ожидание {seconds} секунд...",
+      timeoutReached: "Время ожидания истекло. Будет использован текущий вариант.",
+      emptyInput: "Будет использован текущий вариант."
     },
 
     clean: {

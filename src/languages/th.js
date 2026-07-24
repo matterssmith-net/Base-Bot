@@ -16,13 +16,32 @@ export const th = {
     },
 
     runtime: {
-      current: "ภาษาปัจจุบัน ",
-      prompt: "ป้อนรหัสภาษา (br, cn, cz, de, en, es, fr, gr, \n" +
-      "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) หรือกด ENTER ",
-      timeout: "กำลังรอ {seconds} วินาที... ",
-      timeoutReached: "หมดเวลา ใช้ภาษาปัจจุบัน ",
-      changed: "เปลี่ยนภาษาเป็น {locale} แล้ว ",
-      invalid: "ไม่รองรับภาษา '{locale}' "
+      locale: {
+        current: "ภาษา. สถานะปัจจุบัน",
+        prompt: "ป้อนตัวเลือก (br, cn, cz, de, en, es, fr, gr, \n" +
+          "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) หรือกด ENTER.",
+      },
+
+      mode: {
+        current: "โหมด. สถานะปัจจุบัน",
+        prompt: "ป้อนตัวเลือก (dev) eller หรือกด ENTER.",
+      },
+
+      debug: {
+        current: "การแก้ไขข้อผิดพลาด. สถานะปัจจุบัน",
+        prompt: "ป้อนตัวเลือก (true, false) หรือกด ENTER.",
+      },
+
+      provider: {
+        current: "ผู้ให้บริการ. สถานะปัจจุบัน",
+        prompt: "ป้อนตัวเลือก (baileys) หรือกด ENTER.",
+      },
+
+      changed: "เปลี่ยนเป็น {ops}",
+      invalid: "ตัวเลือก '{ops}' ไม่พร้อมใช้งาน",
+      timeout: "กำลังรอ {seconds} วินาที...",
+      timeoutReached: "หมดเวลา จะใช้ตัวเลือกปัจจุบัน",
+      emptyInput: "จะใช้ตัวเลือกปัจจุบัน"
     },
 
     clean: {

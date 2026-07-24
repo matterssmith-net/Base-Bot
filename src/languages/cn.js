@@ -17,13 +17,32 @@ export const cn = {
 
 
     runtime: {
-      current: "当前语言",
-      prompt: "输入语言代码（br, cn, cz, de, en, es, fr, gr, \n" + 
-      "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn）或按 ENTER",
+      locale: {
+        current: "语言。当前状态",
+        prompt: "请输入一个选项 (br, cn, cz, de, en, es, fr, gr, \n" +
+          "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) 或按 ENTER。",
+      },
+
+      mode: {
+        current: "模式。当前状态",
+        prompt: "请输入一个选项 (dev) 或按 ENTER。",
+      },
+
+      debug: {
+        current: "调试。当前状态",
+        prompt: "请输入一个选项 (true, false) 或按 ENTER。",
+      },
+
+      provider: {
+        current: "提供程序。当前状态",
+        prompt: "请输入一个选项 (baileys) 或按 ENTER。",
+      },
+
+      changed: "已更改为 {ops}。",
+      invalid: "选项 '{ops}' 不可用。",
       timeout: "等待 {seconds} 秒...",
-      timeoutReached: "等待超时。使用当前语言",
-      changed: "语言已切换为 {locale}",
-      invalid: "语言“{locale}”不可用"
+      timeoutReached: "等待超时。将使用当前选项。",
+      emptyInput: "将使用当前选项。"
     },
 
     clean: {

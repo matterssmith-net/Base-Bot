@@ -16,13 +16,32 @@ export const pl = {
     },
 
     runtime: {
-      current: "Aktualny język ",
-      prompt: "Wpisz kod języka (br, cn, cz, de, en, es, fr, gr, \n" +
-      "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) lub naciśnij ENTER ",
-      timeout: "Oczekiwanie {seconds} sekund... ",
-      timeoutReached: "Przekroczono czas używana jest aktualna wersja języka ",
-      changed: "Język zmieniony na {locale} ",
-      invalid: "Język '{locale}' jest niedostępny "
+      locale: {
+        current: "Język. Aktualny stan",
+        prompt: "Wpisz opcję (br, cn, cz, de, en, es, fr, gr, \n" +
+          "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) lub naciśnij ENTER.",
+      },
+
+      mode: {
+        current: "Tryb. Aktualny stan",
+        prompt: "Wpisz opcję (dev) lub naciśnij ENTER.",
+      },
+
+      debug: {
+        current: "Debugowanie. Aktualny stan",
+        prompt: "Wpisz opcję (true, false) lub naciśnij ENTER.",
+      },
+
+      provider: {
+        current: "Dostawca. Aktualny stan",
+        prompt: "Wpisz opcję (baileys) lub naciśnij ENTER.",
+      },
+
+      changed: "Zmieniono na {ops}.",
+      invalid: "Opcja '{ops}' jest niedostępna.",
+      timeout: "Oczekiwanie {seconds} sekund...",
+      timeoutReached: "Przekroczono czas. Zostanie użyta aktualna opcja.",
+      emptyInput: "Zostanie użyta aktualna opcja."
     },
 
     clean: {

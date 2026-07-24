@@ -16,13 +16,32 @@ export const jp = {
     },
 
     runtime: {
-      current: "現在の言語 ",
-      prompt: "言語コードを入力してください（br, cn, cz, de, en, es, fr, gr, \n" +
-      "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn）またはENTERを押してください ",
-      timeout: "{seconds}秒待機中... ",
-      timeoutReached: "タイムアウト 現在の言語を使用します ",
-      changed: "言語が{locale}に変更されました ",
-      invalid: "言語 '{locale}' は利用できません "
+      locale: {
+        current: "言語。現在の状態",
+        prompt: "オプションを入力してください (br, cn, cz, de, en, es, fr, gr, \n" +
+          "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) または ENTER を押してください。",
+      },
+
+      mode: {
+        current: "モード。現在の状態",
+        prompt: "オプション (dev) を入力するか、ENTER を押してください。",
+      },
+
+      debug: {
+        current: "デバッグ。現在の状態",
+        prompt: "オプション (true, false) を入力するか、ENTER を押してください。",
+      },
+
+      provider: {
+        current: "プロバイダー。現在の状態",
+        prompt: "オプション (baileys) を入力するか、ENTER を押してください。",
+      },
+
+      changed: "{ops} に変更されました。",
+      invalid: "オプション '{ops}' は利用できません。",
+      timeout: "{seconds} 秒待機中...",
+      timeoutReached: "時間切れです。現在のオプションを使用します。",
+      emptyInput: "現在のオプションを使用します。"
     },
 
     clean: {

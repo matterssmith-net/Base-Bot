@@ -16,13 +16,32 @@ export const uk = {
     },
 
     runtime: {
-      current: "Поточна мова ",
-      prompt: "Введіть код мови (br, cn, cz, de, en, es, fr, gr, \n" +
-      "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) або натисніть ENTER ",
-      timeout: "Очікування {seconds} секунд... ",
-      timeoutReached: "Час вийшов використовується поточна мова ",
-      changed: "Мову змінено на {locale} ",
-      invalid: "Мова '{locale}' недоступна "
+      locale: {
+        current: "Мова. Поточний стан",
+        prompt: "Введіть варіант (br, cn, cz, de, en, es, fr, gr, \n" +
+          "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) або натисніть ENTER.",
+      },
+
+      mode: {
+        current: "Pежим. Поточний стан",
+        prompt: "Введіть варіант (dev) або натисніть ENTER.",
+      },
+
+      debug: {
+        current: "Налагодження. Поточний стан",
+        prompt: "Введіть варіант (true, false) або натисніть ENTER.",
+      },
+
+      provider: {
+        current: "Провайдер. Поточний стан",
+        prompt: "Введіть варіант (baileys) або натисніть ENTER.",
+      },
+
+      changed: "Змінено на {ops}.",
+      invalid: "Варіант '{ops}' недоступний.",
+      timeout: "Очікування {seconds} секунд...",
+      timeoutReached: "Час очікування минув. Буде використано поточний варіант.",
+      emptyInput: "Буде використано поточний варіант."
     },
 
     clean: {

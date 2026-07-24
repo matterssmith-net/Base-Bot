@@ -17,13 +17,32 @@ export const cz = {
 
 
     runtime: {
-      current: "Aktuální jazyk",
-      prompt: "Zadejte kód jazyka (br, cn, cz, de, en, es, fr, gr, \n" +
-      "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) nebo stiskněte ENTER",
+      locale: {
+        current: "Jazyk. Aktuální stav",
+        prompt: "Zadejte možnost (br, cn, cz, de, en, es, fr, gr, \n" +
+          "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) nebo stiskněte ENTER.",
+      },
+
+      mode: {
+        current: "Režim. Aktuální stav",
+        prompt: "Zadejte možnost (dev) nebo stiskněte ENTER.",
+      },
+
+      debug: {
+        current: "Ladění. Aktuální stav",
+        prompt: "Zadejte možnost (true, false) nebo stiskněte ENTER.",
+      },
+
+      provider: {
+        current: "Poskytovatel. Aktuální stav",
+        prompt: "Zadejte možnost (baileys) nebo stiskněte ENTER.",
+      },
+
+      changed: "Změněno na {ops}.",
+      invalid: "Možnost '{ops}' není k dispozici.",
       timeout: "Čekání {seconds} sekund...",
-      timeoutReached: "Čas vypršel. Používá se aktuální jazyk",
-      changed: "Jazyk změněn na {locale}",
-      invalid: "Jazyk '{locale}' není dostupný"
+      timeoutReached: "Čas vypršel. Bude použita aktuální možnost.",
+      emptyInput: "Bude použita aktuální možnost."
     },
 
     clean: {

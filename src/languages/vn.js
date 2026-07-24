@@ -16,13 +16,32 @@ export const vn = {
     },
 
     runtime: {
-      current: "Ngôn ngữ hiện tại ",
-      prompt: "Nhập mã ngôn ngữ (br, cn, cz, de, en, es, fr, gr, \n" +
-      "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) hoặc nhấn ENTER ",
-      timeout: "Đang chờ {seconds} giây... ",
-      timeoutReached: "Hết thời gian sử dụng ngôn ngữ hiện tại ",
-      changed: "Đã đổi ngôn ngữ sang {locale} ",
-      invalid: "Ngôn ngữ '{locale}' không khả dụng "
+      locale: {
+        current: "Ngôn ngữ. Trạng thái hiện tại",
+        prompt: "Nhập tùy chọn (br, cn, cz, de, en, es, fr, gr, \n" +
+          "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) hoặc nhấn ENTER.",
+      },
+
+      mode: {
+        current: "Chế độ. Trạng thái hiện tại",
+        prompt: "Nhập tùy chọn (dev) hoặc nhấn ENTER.",
+      },
+
+      debug: {
+        current: "Gỡ lỗi. Trạng thái hiện tại",
+        prompt: "Nhập tùy chọn (true, false) hoặc nhấn ENTER.",
+      },
+
+      provider: {
+        current: "Nhà cung cấp. Trạng thái hiện tại",
+        prompt: "Nhập tùy chọn (baileys) hoặc nhấn ENTER.",
+      },
+
+      changed: "Đã thay đổi thành {ops}.",
+      invalid: "Tùy chọn '{ops}' không khả dụng.",
+      timeout: "Đang chờ {seconds} giây...",
+      timeoutReached: "Hết thời gian. Tùy chọn hiện tại sẽ được sử dụng.",
+      emptyInput: "Tùy chọn hiện tại sẽ được sử dụng."
     },
 
     clean: {

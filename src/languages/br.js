@@ -17,13 +17,32 @@ export const br = {
 
     
     runtime: {
-      urrent: "Idioma atual",
-      prompt: "Digite um código de idioma (br, cn, cz, de, en, es, fr, gr, \n" +
-      "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) ou pressione ENTER",
+      locale: {
+        current: "Idioma. Estado atual",
+        prompt: "Digite uma opção (br, cn, cz, de, en, es, fr, gr, \n" +
+          "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) ou pressione ENTER.",
+      },
+
+      mode: {
+        current: "Modo. Estado atual",
+        prompt: "Digite uma opção (dev) ou pressione ENTER.",
+      },
+
+      debug: {
+        current: "Depuração. Estado atual",
+        prompt: "Digite uma opção (true, false) ou pressione ENTER.",
+      },
+
+      provider: {
+        current: "Provedor. Estado atual",
+        prompt: "Digite uma opção (baileys) ou pressione ENTER.",
+      },
+
+      changed: "Alterado para {ops}.",
+      invalid: "A opção '{ops}' não está disponível.",
       timeout: "Aguardando {seconds} segundos...",
-      timeoutReached: "Tempo esgotado. Usando o idioma atual",
-      changed: "Idioma alterado para {locale}",
-      invalid: "O idioma '{locale}' não está disponível"
+      timeoutReached: "Tempo esgotado. A opção atual será utilizada.",
+      emptyInput: "A opção atual será usada."
     },
 
     clean: {

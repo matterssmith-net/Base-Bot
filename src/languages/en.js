@@ -16,13 +16,32 @@ export const en = {
     },
 
     runtime: {
-      current: "Current language",
-      prompt: "Type a language code (br, cn, cz, de, en, es, fr, gr, \n" +
-      "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) or press ENTER",
+      locale: {
+        current: "Language. Current status",
+        prompt: "Type an option (br, cn, cz, de, en, es, fr, gr, \n" +
+          "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) or press ENTER.",
+      },
+
+      mode: {
+        current: "Mode. Current status",
+        prompt: "Type an option (dev) or press ENTER.",
+      },
+
+      debug: {
+        current: "Debug. Current status",
+        prompt: "Type an option (true, false) or press ENTER.",
+      },
+
+      provider: {
+        current: "Provider. Current status",
+        prompt: "Type an option (baileys) or press ENTER.",
+      },
+
+      changed: "Changed to {ops}.",
+      invalid: "Option '{ops}' is not available.",
       timeout: "Waiting {seconds} seconds...",
-      timeoutReached: "Timeout. Using current language",
-      changed: "Language changed to {locale}",
-      invalid: "Language '{locale}' is not available"
+      timeoutReached: "Timeout reached. The current option will be used.",
+      emptyInput: "The current option will be used."
     },
 
     clean: {

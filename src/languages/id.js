@@ -16,13 +16,32 @@ export const id = {
     },
 
     runtime: {
-      current: "Bahasa saat ini ",
-      prompt: "Masukkan kode bahasa (br, cn, cz, de, en, es, fr, gr, \n" +
-      "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) atau tekan ENTER ",
-      timeout: "Menunggu {seconds} detik... ",
-      timeoutReached: "Waktu habis menggunakan bahasa saat ini ",
-      changed: "Bahasa diubah ke {locale} ",
-      invalid: "Bahasa '{locale}' tidak tersedia "
+      locale: {
+        current: "Bahasa. Status saat ini",
+        prompt: "Masukkan pilihan (br, cn, cz, de, en, es, fr, gr, \n" +
+          "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) atau tekan ENTER.",
+      },
+
+      mode: {
+        current: "Mode. Status saat ini",
+        prompt: "Masukkan pilihan (dev) atau tekan ENTER.",
+      },
+
+      debug: {
+        current: "Debug. Status saat ini",
+        prompt: "Masukkan pilihan (true, false) atau tekan ENTER.",
+      },
+
+      provider: {
+        current: "Penyedia. Status saat ini",
+        prompt: "Masukkan pilihan (baileys) atau tekan ENTER.",
+      },
+
+      changed: "Diubah ke {ops}.",
+      invalid: "Pilihan '{ops}' tidak tersedia.",
+      timeout: "Menunggu {seconds} detik...",
+      timeoutReached: "Waktu habis. Pilihan saat ini akan digunakan.",
+      emptyInput: "Pilihan saat ini akan digunakan."
     },
 
     clean: {

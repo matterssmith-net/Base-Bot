@@ -16,13 +16,32 @@ export const kr = {
     },
 
     runtime: {
-      current: "현재 언어 ",
-      prompt: "언어 코드를 입력하세요 (br, cn, cz, de, en, es, fr, gr, \n" +
-      "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) 또는 ENTER를 누르세요 ",
-      timeout: "{seconds}초 대기 중... ",
-      timeoutReached: "시간 초과 현재 언어를 사용합니다 ",
-      changed: "언어가 {locale}로 변경되었습니다 ",
-      invalid: "언어 '{locale}'를 사용할 수 없습니다 "
+      locale: {
+        current: "언어. 현재 상태",
+        prompt: "옵션을 입력하세요 (br, cn, cz, de, en, es, fr, gr, \n" +
+          "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) 또는 ENTER를 누르세요.",
+      },
+
+      mode: {
+        current: "모드. 현재 상태",
+        prompt: "옵션 (dev)을 입력하거나 ENTER를 누르세요.",
+      },
+
+      debug: {
+        current: "디버그. 현재 상태",
+        prompt: "옵션 (true, false)을 입력하거나 ENTER를 누르세요.",
+      },
+
+      provider: {
+        current: "공급자. 현재 상태",
+        prompt: "옵션 (baileys)을 입력하거나 ENTER를 누르세요.",
+      },
+
+      changed: "{ops}(으)로 변경되었습니다.",
+      invalid: "옵션 '{ops}'을(를) 사용할 수 없습니다.",
+      timeout: "{seconds}초 대기 중...",
+      timeoutReached: "시간이 초과되었습니다. 현재 옵션을 사용합니다.",
+      emptyInput: "현재 옵션을 사용합니다."
     },
 
     clean: {

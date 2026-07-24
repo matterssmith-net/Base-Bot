@@ -16,13 +16,32 @@ export const hu = {
     },
 
     runtime: {
-      current: "Aktuális nyelv ",
-      prompt: "Írj be egy nyelvkódot (br, cn, cz, de, en, es, fr, gr, \n" +
-      "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) vagy nyomj ENTER-t ",
-      timeout: "{seconds} másodperc várakozás... ",
-      timeoutReached: "Időtúllépés aktuális nyelv használata ",
-      changed: "Nyelv módosítva erre: {locale} ",
-      invalid: "A(z) '{locale}' nyelv nem elérhető "
+      locale: {
+        current: "Nyelv. Aktuális állapot",
+        prompt: "Adjon meg egy lehetőséget (br, cn, cz, de, en, es, fr, gr, \n" +
+          "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn), vagy nyomja meg az ENTER billentyűt.",
+      },
+
+      mode: {
+        current: "Mód. Aktuális állapot",
+        prompt: "Adjon meg egy lehetőséget (dev), vagy nyomja meg az ENTER billentyűt.",
+      },
+
+      debug: {
+        current: "Hibakeresés. Aktuális állapot",
+        prompt: "Adjon meg egy lehetőséget (true, false), vagy nyomja meg az ENTER billentyűt.",
+      },
+
+      provider: {
+        current: "Szolgáltató. Aktuális állapot",
+        prompt: "Adjon meg egy lehetőséget (baileys), vagy nyomja meg az ENTER billentyűt.",
+      },
+
+      changed: "Módosítva erre: {ops}.",
+      invalid: "A(z) '{ops}' lehetőség nem érhető el.",
+      timeout: "Várakozás {seconds} másodpercig...",
+      timeoutReached: "Időtúllépés. Az aktuális lehetőség lesz használva.",
+      emptyInput: "Az aktuális lehetőség lesz használva."
     },
 
     clean: {

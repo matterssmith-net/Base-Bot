@@ -16,13 +16,32 @@ export const gr = {
     },
 
     runtime: {
-      current: "Τρέχουσα γλώσσα ",
-      prompt: "Πληκτρολογήστε κωδικό γλώσσας (br, cn, cz, de, en, es, fr, gr, \n" +
-      "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) ή πατήστε ENTER ",
-      timeout: "Αναμονή {seconds} δευτερόλεπτα... ",
-      timeoutReached: "Έληξε ο χρόνος χρήση τρέχουσας γλώσσας ",
-      changed: "Η γλώσσα άλλαξε σε {locale} ",
-      invalid: "Η γλώσσα '{locale}' δεν είναι διαθέσιμη "
+      locale: {
+        current: "Γλώσσα. Τρέχουσα κατάσταση",
+        prompt: "Πληκτρολογήστε μια επιλογή (br, cn, cz, de, en, es, fr, gr, \n" +
+          "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) ή πατήστε ENTER.",
+      },
+
+      mode: {
+        current: "λειτουργία. Τρέχουσα κατάσταση",
+        prompt: "Πληκτρολογήστε μια επιλογή (dev) ή πατήστε ENTER.",
+      },
+
+      debug: {
+        current: "Αποσφαλμάτωση. Τρέχουσα κατάσταση",
+        prompt: "Πληκτρολογήστε μια επιλογή (true, false) ή πατήστε ENTER.",
+      },
+
+      provider: {
+        current: "Πάροχος. Τρέχουσα κατάσταση",
+        prompt: "Πληκτρολογήστε μια επιλογή (baileys) ή πατήστε ENTER.",
+      },
+
+      changed: "Άλλαξε σε {ops}.",
+      invalid: "Η επιλογή '{ops}' δεν είναι διαθέσιμη.",
+      timeout: "Αναμονή {seconds} δευτερολέπτων...",
+      timeoutReached: "Ο χρόνος έληξε. Θα χρησιμοποιηθεί η τρέχουσα επιλογή.",
+      emptyInput: "Θα χρησιμοποιηθεί η τρέχουσα επιλογή."
     },
 
     clean: {

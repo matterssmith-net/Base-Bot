@@ -16,13 +16,32 @@ export const de = {
     },
 
     runtime: {
-      current: "Aktuelle Sprache ",
-      prompt: "Sprache eingeben (br, cn, cz, de, en, es, fr, gr, \n" +
-      "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) oder ENTER drücken ",
-      timeout: "Warten {seconds} Sekunden... ",
-      timeoutReached: "Zeit abgelaufen Sprache bleibt aktiv ",
-      changed: "Sprache geändert zu {locale} ",
-      invalid: "Sprache '{locale}' ist nicht verfügbar "
+      locale: {
+        current: "Sprache. Aktueller Status",
+        prompt: "Geben Sie eine Option ein (br, cn, cz, de, en, es, fr, gr, \n" +
+          "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) oder drücken Sie ENTER.",
+      },
+
+      mode: {
+        current: "Modus. Aktueller Status",
+        prompt: "Geben Sie eine Option (dev) ein oder drücken Sie ENTER.",
+      },
+
+      debug: {
+        current: "Debug. Aktueller Status",
+        prompt: "Geben Sie eine Option (true, false) ein oder drücken Sie ENTER.",
+      },
+
+      provider: {
+        current: "Provider. Aktueller Status",
+        prompt: "Geben Sie eine Option (baileys) ein oder drücken Sie ENTER.",
+      },
+
+      changed: "Geändert zu {ops}.",
+      invalid: "Die Option '{ops}' ist nicht verfügbar.",
+      timeout: "Warte {seconds} Sekunden...",
+      timeoutReached: "Zeit abgelaufen. Die aktuelle Option wird verwendet.",
+      emptyInput: "Die aktuelle Option wird verwendet."
     },
 
     clean: {

@@ -16,13 +16,32 @@ export const sv = {
     },
 
     runtime: {
-      current: "Aktuellt språk ",
-      prompt: "Ange språkkod (br, cn, cz, de, en, es, fr, gr, \n" +
-      "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) eller tryck ENTER ",
-      timeout: "Väntar {seconds} sekunder... ",
-      timeoutReached: "Tiden har gått använder aktuellt språk ",
-      changed: "Språk ändrat till {locale} ",
-      invalid: "Språket '{locale}' är inte tillgängligt "
+      locale: {
+        current: "Språk. Aktuell status",
+        prompt: "Skriv ett alternativ (br, cn, cz, de, en, es, fr, gr, \n" +
+          "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) eller tryck på ENTER.",
+      },
+
+      mode: {
+        current: "Läge. Aktuell status",
+        prompt: "Skriv ett alternativ (dev) eller tryck på ENTER.",
+      },
+
+      debug: {
+        current: "Felsökning. Aktuell status",
+        prompt: "Skriv ett alternativ (true, false) eller tryck på ENTER.",
+      },
+
+      provider: {
+        current: "Leverantör. Aktuell status",
+        prompt: "Skriv ett alternativ (baileys) eller tryck på ENTER.",
+      },
+
+      changed: "Ändrad till {ops}.",
+      invalid: "Alternativet '{ops}' är inte tillgängligt.",
+      timeout: "Väntar {seconds} sekunder...",
+      timeoutReached: "Tiden gick ut. Det aktuella alternativet används.",
+      emptyInput: "Det aktuella alternativet används."
     },
 
     clean: {

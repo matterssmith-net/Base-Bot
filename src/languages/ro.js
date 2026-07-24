@@ -16,13 +16,32 @@ export const ro = {
     },
 
     runtime: {
-      current: "Limba curentă ",
-      prompt: "Introdu un cod de limbă (br, cn, cz, de, en, es, fr, gr, \n" +
-      "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) sau apasă ENTER ",
-      timeout: "Se așteaptă {seconds} secunde... ",
-      timeoutReached: "Timp expirat se folosește limba curentă ",
-      changed: "Limba a fost schimbată în {locale} ",
-      invalid: "Limba '{locale}' nu este disponibilă "
+      locale: {
+        current: "Limbă. Stare actuală",
+        prompt: "Introduceți o opțiune (br, cn, cz, de, en, es, fr, gr, \n" +
+          "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) sau apăsați ENTER.",
+      },
+
+      mode: {
+        current: "Mod. Stare actuală",
+        prompt: "Introduceți o opțiune (dev) sau apăsați ENTER.",
+      },
+
+      debug: {
+        current: "Depanare. Stare actuală",
+        prompt: "Introduceți o opțiune (true, false) sau apăsați ENTER.",
+      },
+
+      provider: {
+        current: "Furnizor. Stare actuală",
+        prompt: "Introduceți o opțiune (baileys) sau apăsați ENTER.",
+      },
+
+      changed: "Schimbat la {ops}.",
+      invalid: "Opțiunea '{ops}' nu este disponibilă.",
+      timeout: "Se așteaptă {seconds} secunde...",
+      timeoutReached: "Timp expirat. Va fi folosită opțiunea curentă.",
+      emptyInput: "Va fi folosită opțiunea curentă."
     },
 
     clean: {

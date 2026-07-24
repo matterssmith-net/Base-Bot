@@ -16,13 +16,32 @@ export const hi = {
     },
 
     runtime: {
-      current: "वर्तमान भाषा ",
-      prompt: "भाषा कोड दर्ज करें (br, cn, cz, de, en, es, fr, gr, \n" +
-      "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) या ENTER दबाएँ ",
-      timeout: "{seconds} सेकंड प्रतीक्षा कर रहा है... ",
-      timeoutReached: "समय समाप्त वर्तमान भाषा का उपयोग किया जा रहा है ",
-      changed: "भाषा बदलकर {locale} कर दी गई है ",
-      invalid: "भाषा '{locale}' उपलब्ध नहीं है "
+      locale: {
+        current: "भाषा। वर्तमान स्थिति",
+        prompt: "एक विकल्प दर्ज करें (br, cn, cz, de, en, es, fr, gr, \n" +
+          "hi, hu, id, it, jp, kr, nl, ph, pl, ro, ru, sv, th, uk, vn) या ENTER दबाएँ।",
+      },
+
+      mode: {
+        current: "मोड। वर्तमान स्थिति",
+        prompt: "एक विकल्प (dev) दर्ज करें या ENTER दबाएँ।",
+      },
+
+      debug: {
+        current: "डीबग। वर्तमान स्थिति",
+        prompt: "एक विकल्प (true, false) दर्ज करें या ENTER दबाएँ।",
+      },
+
+      provider: {
+        current: "प्रदाता। वर्तमान स्थिति",
+        prompt: "एक विकल्प (baileys) दर्ज करें या ENTER दबाएँ।",
+      },
+
+      changed: "{ops} में बदल दिया गया।",
+      invalid: "विकल्प '{ops}' उपलब्ध नहीं है।",
+      timeout: "{seconds} सेकंड प्रतीक्षा की जा रही है...",
+      timeoutReached: "समय समाप्त। वर्तमान विकल्प का उपयोग किया जाएगा।",
+      emptyInput: "वर्तमान विकल्प का उपयोग किया जाएगा।"
     },
 
     clean: {
