@@ -1241,3 +1241,47 @@ async function startBot() {
     );
 
 }
+
+/*
+|--------------------------------------------------------------------------
+| Main Installer
+|--------------------------------------------------------------------------
+*/
+
+async function main() {
+
+    Logger.line();
+
+    Logger.info(
+
+        "Base Bot Universal Installer"
+
+    );
+
+    Logger.line();
+
+
+    const updated = await updateInstaller();
+
+
+    if (updated) {
+
+        await restartInstaller();
+
+        return;
+
+    }
+
+
+    await synchronize();
+
+
+    await installDependencies();
+
+
+    await applyPatches();
+
+
+    await startBot();
+
+}
