@@ -11,7 +11,15 @@
   "packageManager": "npm@11.17.0",
   "scripts": {
     "start": "node src/cli/index.js",
-    "dev": "nodemon src/cli/index.js"
+    "dev": "nodemon src/cli/index.js",
+    "clean": "node scripts/clean.js",
+    "health": "node scripts/health.js",
+    "patches": "node patches.js",
+    "runtime": "node scripts/runtime.js",
+    "runtime:doctor": "node scripts/runtime/doctor.js",
+    "runtime:repair": "node scripts/runtime/repair.js",
+    "runtime:reset": "node scripts/runtime/reset.js",
+    "watchdog": "node scripts/watchdog.js"
   },
   "dependencies": {
     "baileys": "^7.0.0-rc13",

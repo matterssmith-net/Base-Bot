@@ -216,7 +216,7 @@ $line3
     
 sleep 15 && pkill mpv > /dev/null 2>&1 && sleep 2 && rm -f "/data/data/com.termux/files/usr/tmp/basebot_install.mp3"
 
-node scripts/pos-fix.js
+node scripts/patches.js
 sync && sleep 1
 
 echo -e "\033[01;32m\033[01m\nStarting Base Bot!!\033[0m"

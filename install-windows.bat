@@ -436,7 +436,7 @@ echo.
 echo Applying patches...
 echo.
 
-call node scripts\pos-fix.js
+call node scripts\patches.js
 
 set "_el=%errorlevel%"
 
