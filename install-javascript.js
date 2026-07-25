@@ -337,31 +337,57 @@ async function downloadWithProgress(url, destination) {
 
         https.get(url, response => {
 
+            if (
+                response.statusCode >= 300 &&
+                response.statusCode < 400 &&
+                response.headers.location
+            ) {
+
+                return downloadWithProgress(
+                    response.headers.location,
+                    destination
+                )
+                .then(resolve)
+                .catch(reject);
+
+            }
+
+
             if (response.statusCode !== 200) {
 
                 reject(
-                    new Error(`Download failed (HTTP ${response.statusCode})`)
+                    new Error(
+                        `Download failed (HTTP ${response.statusCode})`
+                    )
                 );
 
                 return;
 
             }
 
-            const total = Number(response.headers["content-length"] || 0);
+
+            const total = Number(
+                response.headers["content-length"] || 0
+            );
+
 
             let downloaded = 0;
 
+
             const file = fs.createWriteStream(destination);
+
 
             response.on("data", chunk => {
 
                 downloaded += chunk.length;
+
 
                 if (total > 0) {
 
                     const percent = (
                         downloaded / total * 100
                     ).toFixed(1);
+
 
                     process.stdout.write(
                         `\rDownloading... ${percent}%`
@@ -370,6 +396,7 @@ async function downloadWithProgress(url, destination) {
                 }
 
             });
+
 
             pipeline(response, file)
 
@@ -382,6 +409,7 @@ async function downloadWithProgress(url, destination) {
                 })
 
                 .catch(reject);
+
 
         })
 
