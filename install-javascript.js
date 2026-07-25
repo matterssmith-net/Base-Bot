@@ -310,3 +310,262 @@ function execute(command,args=[],cwd=process.cwd()){
 
 }
 
+/*
+|--------------------------------------------------------------------------
+| Internet Connection
+|--------------------------------------------------------------------------
+*/
+
+async function hasInternet() {
+
+    return new Promise(resolve => {
+
+        const request = https.request({
+
+            method: "HEAD",
+
+            host: "github.com",
+
+            timeout: 5000
+
+        }, () => resolve(true));
+
+        request.on("error", () => resolve(false));
+
+        request.on("timeout", () => {
+
+            request.destroy();
+
+            resolve(false);
+
+        });
+
+        request.end();
+
+    });
+
+}
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Download With Progress
+|--------------------------------------------------------------------------
+*/
+
+async function downloadWithProgress(url, destination) {
+
+    await ensureDirectory(path.dirname(destination));
+
+    return new Promise((resolve, reject) => {
+
+        https.get(url, response => {
+
+            if (response.statusCode !== 200) {
+
+                reject(
+                    new Error(`Download failed (HTTP ${response.statusCode})`)
+                );
+
+                return;
+
+            }
+
+            const total = Number(response.headers["content-length"] || 0);
+
+            let downloaded = 0;
+
+            const file = fs.createWriteStream(destination);
+
+            response.on("data", chunk => {
+
+                downloaded += chunk.length;
+
+                if (total > 0) {
+
+                    const percent = (
+                        downloaded / total * 100
+                    ).toFixed(1);
+
+                    process.stdout.write(
+                        `\rDownloading... ${percent}%`
+                    );
+
+                }
+
+            });
+
+            pipeline(response, file)
+
+                .then(() => {
+
+                    process.stdout.write("\n");
+
+                    resolve();
+
+                })
+
+                .catch(reject);
+
+        })
+
+        .on("error", reject);
+
+    });
+
+}
+
+
+
+/*
+|--------------------------------------------------------------------------
+| GitHub URLs
+|--------------------------------------------------------------------------
+*/
+
+function getRawURL(file) {
+
+    return `https://raw.githubusercontent.com/${CONFIG.repository}/refs/heads/${CONFIG.branch}/${file}`;
+
+}
+
+
+
+function getZipURL() {
+
+    return `https://github.com/${CONFIG.repository}/archive/refs/heads/${CONFIG.branch}.zip`;
+
+}
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Compare Files
+|--------------------------------------------------------------------------
+*/
+
+async function filesAreEqual(fileA, fileB) {
+
+    if (!await exists(fileA))
+
+        return false;
+
+    if (!await exists(fileB))
+
+        return false;
+
+    return (await sha256(fileA)) === (await sha256(fileB));
+
+}
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Update Installer
+|--------------------------------------------------------------------------
+*/
+
+async function updateInstaller() {
+
+    Logger.info("Checking installer updates...");
+
+    const online = await hasInternet();
+
+    if (!online) {
+
+        Logger.error("No Internet connection.");
+
+        process.exit(1);
+
+    }
+
+    await ensureDirectory(CONFIG.tempFolder);
+
+    const remoteInstaller = path.join(
+
+        CONFIG.tempFolder,
+
+        CONFIG.installer
+
+    );
+
+    await downloadWithProgress(
+
+        getRawURL(CONFIG.installer),
+
+        remoteInstaller
+
+    );
+
+    const currentInstaller = path.resolve(
+
+        CONFIG.installer
+
+    );
+
+    const equal = await filesAreEqual(
+
+        currentInstaller,
+
+        remoteInstaller
+
+    );
+
+    if (equal) {
+
+        Logger.success("Installer is already up to date.");
+
+        return false;
+
+    }
+
+    Logger.warning("New installer version found.");
+
+    await fsp.copyFile(
+
+        remoteInstaller,
+
+        currentInstaller
+
+    );
+
+    Logger.success("Installer updated.");
+
+    return true;
+
+}
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Restart Installer
+|--------------------------------------------------------------------------
+*/
+
+async function restartInstaller() {
+
+    Logger.info("Restarting installer...");
+
+    spawn(
+
+        process.execPath,
+
+        [path.resolve(CONFIG.installer)],
+
+        {
+
+            detached: true,
+
+            stdio: "inherit"
+
+        }
+
+    );
+
+    process.exit(0);
+
+}
