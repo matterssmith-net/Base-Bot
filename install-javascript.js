@@ -1187,3 +1187,57 @@ async function applyPatches() {
     );
 
 }
+
+/*
+|--------------------------------------------------------------------------
+| Start Bot
+|--------------------------------------------------------------------------
+*/
+
+async function startBot() {
+
+    Logger.info("Starting Base Bot...");
+
+
+    const packageFile = path.join(
+
+        process.cwd(),
+
+        "package.json"
+
+    );
+
+
+    if (!await exists(packageFile)) {
+
+        throw new Error(
+
+            "package.json not found. Cannot start bot."
+
+        );
+
+    }
+
+
+    await execute(
+
+        "npm",
+
+        [
+
+            "start"
+
+        ],
+
+        process.cwd()
+
+    );
+
+
+    Logger.success(
+
+        "Bot stopped."
+
+    );
+
+}
