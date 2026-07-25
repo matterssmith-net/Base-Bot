@@ -569,3 +569,167 @@ async function restartInstaller() {
     process.exit(0);
 
 }
+
+/*
+|--------------------------------------------------------------------------
+| Temporary Paths
+|--------------------------------------------------------------------------
+*/
+
+CONFIG.zipFile = path.join(
+    CONFIG.tempFolder,
+    CONFIG.zipName
+);
+
+CONFIG.extractFolder = path.join(
+    CONFIG.tempFolder,
+    "extract"
+);
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Prepare Temporary Directory
+|--------------------------------------------------------------------------
+*/
+
+async function prepareTemp() {
+
+    if (await exists(CONFIG.tempFolder)) {
+
+        await removeDirectory(CONFIG.tempFolder);
+
+    }
+
+    await ensureDirectory(CONFIG.tempFolder);
+
+}
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Download Repository
+|--------------------------------------------------------------------------
+*/
+
+async function downloadRepository() {
+
+    Logger.info("Downloading repository...");
+
+    await downloadWithProgress(
+
+        getZipURL(),
+
+        CONFIG.zipFile
+
+    );
+
+    Logger.success("Repository downloaded.");
+
+}
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Extract ZIP
+|--------------------------------------------------------------------------
+*/
+
+async function extractRepository() {
+
+    Logger.info("Extracting repository...");
+
+    if (await exists(CONFIG.extractFolder)) {
+
+        await removeDirectory(CONFIG.extractFolder);
+
+    }
+
+    await ensureDirectory(CONFIG.extractFolder);
+
+    const AdmZip = require("adm-zip");
+
+    const zip = new AdmZip(CONFIG.zipFile);
+
+    zip.extractAllTo(
+
+        CONFIG.extractFolder,
+
+        true
+
+    );
+
+    Logger.success("Repository extracted.");
+
+}
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Repository Root
+|--------------------------------------------------------------------------
+*/
+
+async function getRepositoryRoot() {
+
+    const items = await fsp.readdir(
+
+        CONFIG.extractFolder,
+
+        {
+
+            withFileTypes: true
+
+        }
+
+    );
+
+    for (const item of items) {
+
+        if (item.isDirectory()) {
+
+            return path.join(
+
+                CONFIG.extractFolder,
+
+                item.name
+
+            );
+
+        }
+
+    }
+
+    throw new Error(
+
+        "Repository root could not be found."
+
+    );
+
+}
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Remove ZIP
+|--------------------------------------------------------------------------
+*/
+
+async function removeZip() {
+
+    if (await exists(CONFIG.zipFile)) {
+
+        await fsp.unlink(
+
+            CONFIG.zipFile
+
+        );
+
+    }
+
+}
