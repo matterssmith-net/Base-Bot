@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+uyyy#!/usr/bin/env node
 
 "use strict";
 
@@ -881,5 +881,193 @@ async function synchronizeRepository() {
     );
 
     Logger.success("Repository synchronized.");
+
+}
+
+/*
+|--------------------------------------------------------------------------
+| Delete Obsolete Files
+|--------------------------------------------------------------------------
+*/
+
+async function removeObsolete(localDir, repoDir) {
+
+    const entries = await fsp.readdir(localDir, {
+
+        withFileTypes: true
+
+    });
+
+    for (const entry of entries) {
+
+        const localPath = path.join(localDir, entry.name);
+
+        const repoPath = path.join(repoDir, entry.name);
+
+        const relative = path.relative(
+
+            process.cwd(),
+
+            localPath
+
+        );
+
+        if (isIgnored(relative))
+
+            continue;
+
+        if (!(await exists(repoPath))) {
+
+            if (entry.isDirectory()) {
+
+                await removeDirectory(localPath);
+
+            }
+
+            else {
+
+                await fsp.unlink(localPath);
+
+            }
+
+            Logger.warning(
+
+                "Removed: " + relative
+
+            );
+
+            continue;
+
+        }
+
+        if (
+
+            entry.isDirectory()
+
+        ) {
+
+            await removeObsolete(
+
+                localPath,
+
+                repoPath
+
+            );
+
+        }
+
+    }
+
+}
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Clean Repository
+|--------------------------------------------------------------------------
+*/
+
+async function cleanRepository() {
+
+    Logger.info(
+
+        "Removing obsolete files..."
+
+    );
+
+    const repositoryRoot =
+
+        await getRepositoryRoot();
+
+    await removeObsolete(
+
+        process.cwd(),
+
+        repositoryRoot
+
+    );
+
+    Logger.success(
+
+        "Repository cleaned."
+
+    );
+
+}
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Synchronize Repository
+|--------------------------------------------------------------------------
+*/
+
+async function synchronize() {
+
+    await prepareTemp();
+
+    await downloadRepository();
+
+    await extractRepository();
+
+    await synchronizeRepository();
+
+    await cleanRepository();
+
+    await removeZip();
+
+}
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Cleanup
+|--------------------------------------------------------------------------
+*/
+
+async function cleanup() {
+
+    if (
+
+        await exists(CONFIG.tempFolder)
+
+    ) {
+
+        await removeDirectory(
+
+            CONFIG.tempFolder
+
+        );
+
+    }
+
+}
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Fatal Error
+|--------------------------------------------------------------------------
+*/
+
+async function fatal(error) {
+
+    Logger.line();
+
+    Logger.error(
+
+        error.message
+
+    );
+
+    Logger.line();
+
+    await cleanup();
+
+    process.exit(1);
 
 }
