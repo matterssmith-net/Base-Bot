@@ -637,7 +637,7 @@ async function extractRepository() {
 
     await ensureDirectory(CONFIG.extractFolder);
 
-    const AdmZip = require("adm-zip");
+    import AdmZip from "adm-zip";
 
     const zip = new AdmZip(CONFIG.zipFile);
 
