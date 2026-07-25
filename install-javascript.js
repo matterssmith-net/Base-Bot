@@ -733,3 +733,153 @@ async function removeZip() {
     }
 
 }
+
+/*
+|--------------------------------------------------------------------------
+| Ignored Files
+|--------------------------------------------------------------------------
+*/
+
+function isIgnored(relativePath) {
+
+    const normalized = relativePath.replace(/\\/g, "/");
+
+    return CONFIG.preserve.some(file =>
+
+        normalized === file ||
+
+        normalized.endsWith("/" + file)
+
+    );
+
+}
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Copy File
+|--------------------------------------------------------------------------
+*/
+
+async function copyFile(source, destination) {
+
+    await ensureDirectory(path.dirname(destination));
+
+    await fsp.copyFile(source, destination);
+
+}
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Synchronize File
+|--------------------------------------------------------------------------
+*/
+
+async function synchronizeFile(source, destination) {
+
+    if (!(await exists(destination))) {
+
+        await copyFile(source, destination);
+
+        Logger.success("Added: " + path.relative(process.cwd(), destination));
+
+        return;
+
+    }
+
+    const sourceHash = await sha256(source);
+
+    const destinationHash = await sha256(destination);
+
+    if (sourceHash === destinationHash)
+
+        return;
+
+    await copyFile(source, destination);
+
+    Logger.info("Updated: " + path.relative(process.cwd(), destination));
+
+}
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Synchronize Directory
+|--------------------------------------------------------------------------
+*/
+
+async function synchronizeDirectory(source, destination) {
+
+    const entries = await fsp.readdir(source, {
+
+        withFileTypes: true
+
+    });
+
+    for (const entry of entries) {
+
+        const sourcePath = path.join(source, entry.name);
+
+        const destinationPath = path.join(destination, entry.name);
+
+        const relative = path.relative(process.cwd(), destinationPath);
+
+        if (isIgnored(relative))
+
+            continue;
+
+        if (entry.isDirectory()) {
+
+            await synchronizeDirectory(
+
+                sourcePath,
+
+                destinationPath
+
+            );
+
+            continue;
+
+        }
+
+        await synchronizeFile(
+
+            sourcePath,
+
+            destinationPath
+
+        );
+
+    }
+
+}
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Repository Synchronization
+|--------------------------------------------------------------------------
+*/
+
+async function synchronizeRepository() {
+
+    Logger.info("Synchronizing repository...");
+
+    const repositoryRoot = await getRepositoryRoot();
+
+    await synchronizeDirectory(
+
+        repositoryRoot,
+
+        process.cwd()
+
+    );
+
+    Logger.success("Repository synchronized.");
+
+}
