@@ -1129,3 +1129,61 @@ async function installDependencies() {
     );
 
 }
+
+/*
+|--------------------------------------------------------------------------
+| Apply Patches
+|--------------------------------------------------------------------------
+*/
+
+async function applyPatches() {
+
+    Logger.info("Applying patches...");
+
+
+    const patchFile = path.join(
+
+        process.cwd(),
+
+        "scripts",
+
+        "patches.js"
+
+    );
+
+
+    if (!await exists(patchFile)) {
+
+        Logger.warning(
+
+            "No patch script found. Skipping."
+
+        );
+
+        return;
+
+    }
+
+
+    await execute(
+
+        process.execPath,
+
+        [
+
+            patchFile
+
+        ],
+
+        process.cwd()
+
+    );
+
+
+    Logger.success(
+
+        "Patches applied."
+
+    );
+
+}
