@@ -30,8 +30,6 @@ const { pipeline } = require("node:stream/promises");
 
 const { spawn } = require("node:child_process");
 
-
-
 /*
 |--------------------------------------------------------------------------
 | Configuration
@@ -62,8 +60,6 @@ const CONFIG = {
 
 };
 
-
-
 /*
 |--------------------------------------------------------------------------
 | Colors
@@ -91,8 +87,6 @@ const COLOR = {
     gray: "\x1b[90m"
 
 };
-
-
 
 /*
 |--------------------------------------------------------------------------
@@ -134,8 +128,6 @@ class Logger {
 
 }
 
-
-
 /*
 |--------------------------------------------------------------------------
 | Sleep
@@ -148,8 +140,6 @@ function sleep(ms){
 
 }
 
-
-
 /*
 |--------------------------------------------------------------------------
 | Ensure Directory
@@ -161,8 +151,6 @@ async function ensureDirectory(directory){
     await fsp.mkdir(directory,{recursive:true});
 
 }
-
-
 
 /*
 |--------------------------------------------------------------------------
@@ -181,8 +169,6 @@ async function removeDirectory(directory){
     });
 
 }
-
-
 
 /*
 |--------------------------------------------------------------------------
@@ -208,8 +194,6 @@ async function exists(file){
 
 }
 
-
-
 /*
 |--------------------------------------------------------------------------
 | SHA256
@@ -233,8 +217,6 @@ async function sha256(file){
     });
 
 }
-
-
 
 /*
 |--------------------------------------------------------------------------
@@ -271,8 +253,6 @@ async function download(url,destination){
     });
 
 }
-
-
 
 /*
 |--------------------------------------------------------------------------
@@ -346,8 +326,6 @@ async function hasInternet() {
 
 }
 
-
-
 /*
 |--------------------------------------------------------------------------
 | Download With Progress
@@ -416,8 +394,6 @@ async function downloadWithProgress(url, destination) {
 
 }
 
-
-
 /*
 |--------------------------------------------------------------------------
 | GitHub URLs
@@ -430,15 +406,11 @@ function getRawURL(file) {
 
 }
 
-
-
 function getZipURL() {
 
     return `https://github.com/${CONFIG.repository}/archive/refs/heads/${CONFIG.branch}.zip`;
 
 }
-
-
 
 /*
 |--------------------------------------------------------------------------
@@ -459,8 +431,6 @@ async function filesAreEqual(fileA, fileB) {
     return (await sha256(fileA)) === (await sha256(fileB));
 
 }
-
-
 
 /*
 |--------------------------------------------------------------------------
@@ -538,8 +508,6 @@ async function updateInstaller() {
 
 }
 
-
-
 /*
 |--------------------------------------------------------------------------
 | Restart Installer
@@ -586,8 +554,6 @@ CONFIG.extractFolder = path.join(
     "extract"
 );
 
-
-
 /*
 |--------------------------------------------------------------------------
 | Prepare Temporary Directory
@@ -605,8 +571,6 @@ async function prepareTemp() {
     await ensureDirectory(CONFIG.tempFolder);
 
 }
-
-
 
 /*
 |--------------------------------------------------------------------------
@@ -629,8 +593,6 @@ async function downloadRepository() {
     Logger.success("Repository downloaded.");
 
 }
-
-
 
 /*
 |--------------------------------------------------------------------------
@@ -665,8 +627,6 @@ async function extractRepository() {
     Logger.success("Repository extracted.");
 
 }
-
-
 
 /*
 |--------------------------------------------------------------------------
@@ -712,8 +672,6 @@ async function getRepositoryRoot() {
 
 }
 
-
-
 /*
 |--------------------------------------------------------------------------
 | Remove ZIP
@@ -754,8 +712,6 @@ function isIgnored(relativePath) {
 
 }
 
-
-
 /*
 |--------------------------------------------------------------------------
 | Copy File
@@ -769,8 +725,6 @@ async function copyFile(source, destination) {
     await fsp.copyFile(source, destination);
 
 }
-
-
 
 /*
 |--------------------------------------------------------------------------
@@ -803,8 +757,6 @@ async function synchronizeFile(source, destination) {
     Logger.info("Updated: " + path.relative(process.cwd(), destination));
 
 }
-
-
 
 /*
 |--------------------------------------------------------------------------
@@ -857,8 +809,6 @@ async function synchronizeDirectory(source, destination) {
     }
 
 }
-
-
 
 /*
 |--------------------------------------------------------------------------
@@ -930,11 +880,7 @@ async function removeObsolete(localDir, repoDir) {
 
             }
 
-            Logger.warning(
-
-                "Removed: " + relative
-
-            );
+            Logger.warning("Removed: " + relative);
 
             continue;
 
@@ -961,7 +907,6 @@ async function removeObsolete(localDir, repoDir) {
 }
 
 
-
 /*
 |--------------------------------------------------------------------------
 | Clean Repository
@@ -970,11 +915,7 @@ async function removeObsolete(localDir, repoDir) {
 
 async function cleanRepository() {
 
-    Logger.info(
-
-        "Removing obsolete files..."
-
-    );
+    Logger.info("Removing obsolete files...");
 
     const repositoryRoot =
 
@@ -988,15 +929,9 @@ async function cleanRepository() {
 
     );
 
-    Logger.success(
-
-        "Repository cleaned."
-
-    );
+    Logger.success("Repository cleaned.");
 
 }
-
-
 
 /*
 |--------------------------------------------------------------------------
@@ -1020,8 +955,6 @@ async function synchronize() {
 
 }
 
-
-
 /*
 |--------------------------------------------------------------------------
 | Cleanup
@@ -1036,17 +969,11 @@ async function cleanup() {
 
     ) {
 
-        await removeDirectory(
-
-            CONFIG.tempFolder
-
-        );
+        await removeDirectory(CONFIG.tempFolder);
 
     }
 
 }
-
-
 
 /*
 |--------------------------------------------------------------------------
@@ -1058,11 +985,7 @@ async function fatal(error) {
 
     Logger.line();
 
-    Logger.error(
-
-        error.message
-
-    );
+    Logger.error(error.message);
 
     Logger.line();
 
@@ -1094,11 +1017,7 @@ async function installDependencies() {
 
     if (!await exists(packageFile)) {
 
-        Logger.warning(
-
-            "package.json not found. Skipping npm install."
-
-        );
+        Logger.warning("package.json not found. Skipping npm install.");
 
         return;
 
@@ -1122,11 +1041,7 @@ async function installDependencies() {
     );
 
 
-    Logger.success(
-
-        "npm dependencies installed."
-
-    );
+    Logger.success("npm dependencies installed.");
 
 }
 
@@ -1154,11 +1069,7 @@ async function applyPatches() {
 
     if (!await exists(patchFile)) {
 
-        Logger.warning(
-
-            "No patch script found. Skipping."
-
-        );
+        Logger.warning("No patch script found. Skipping.");
 
         return;
 
@@ -1180,11 +1091,7 @@ async function applyPatches() {
     );
 
 
-    Logger.success(
-
-        "Patches applied."
-
-    );
+    Logger.success("Patches applied.");
 
 }
 
@@ -1210,11 +1117,7 @@ async function startBot() {
 
     if (!await exists(packageFile)) {
 
-        throw new Error(
-
-            "package.json not found. Cannot start bot."
-
-        );
+        throw new Error("package.json not found. Cannot start bot.");
 
     }
 
@@ -1234,11 +1137,7 @@ async function startBot() {
     );
 
 
-    Logger.success(
-
-        "Bot stopped."
-
-    );
+    Logger.success("Bot stopped.");
 
 }
 
@@ -1252,11 +1151,7 @@ async function main() {
 
     Logger.line();
 
-    Logger.info(
-
-        "Base Bot Universal Installer"
-
-    );
+    Logger.info("Base Bot Universal Installer");
 
     Logger.line();
 
@@ -1285,3 +1180,13 @@ async function main() {
     await startBot();
 
 }
+
+/*
+|--------------------------------------------------------------------------
+| Installer Entry Point
+|--------------------------------------------------------------------------
+*/
+
+main()
+
+    .catch(fatal);
