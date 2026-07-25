@@ -1071,3 +1071,61 @@ async function fatal(error) {
     process.exit(1);
 
 }
+
+/*
+|--------------------------------------------------------------------------
+| NPM Package Installation
+|--------------------------------------------------------------------------
+*/
+
+async function installDependencies() {
+
+    Logger.info("Installing npm dependencies...");
+
+
+    const packageFile = path.join(
+
+        process.cwd(),
+
+        "package.json"
+
+    );
+
+
+    if (!await exists(packageFile)) {
+
+        Logger.warning(
+
+            "package.json not found. Skipping npm install."
+
+        );
+
+        return;
+
+    }
+
+
+    await execute(
+
+        "npm",
+
+        [
+
+            "install",
+
+            "--prefer-online"
+
+        ],
+
+        process.cwd()
+
+    );
+
+
+    Logger.success(
+
+        "npm dependencies installed."
+
+    );
+
+}
