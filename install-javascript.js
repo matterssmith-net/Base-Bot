@@ -15,20 +15,17 @@
 |--------------------------------------------------------------------------
 */
 
-const fs = require("node:fs");
-const fsp = require("node:fs/promises");
+import fs from "node:fs";
+import fsp from "node:fs/promises";
 
-const path = require("node:path");
+import path from "node:path";
+import os from "node:os";
 
-const os = require("node:os");
+import crypto from "node:crypto";
+import https from "node:https";
 
-const crypto = require("node:crypto");
-
-const https = require("node:https");
-
-const { pipeline } = require("node:stream/promises");
-
-const { spawn } = require("node:child_process");
+import { pipeline } from "node:stream/promises";
+import { spawn } from "node:child_process";
 
 /*
 |--------------------------------------------------------------------------
