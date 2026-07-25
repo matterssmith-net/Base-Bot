@@ -1,21 +1,31 @@
-import { ProviderRegistry } from "../registry/index.js";
+import { ProviderContext } from "../context/index.js";
 
 export class ProviderManager {
-  constructor() {
-    this.registry = new ProviderRegistry();
+  constructor(registry, context = {}) {
+    if (!registry) {
+      throw new Error("ProviderRegistry is required.");
+    }
+
+    this.registry = registry;
+
+    this.context = context instanceof ProviderContext ? context : new ProviderContext(context);
+
     this.provider = null;
   }
 
-  register(name, provider) {
-    this.registry.register(name, provider);
-  }
+  async initialize(name) {
+    const Provider =
+      this.registry.get(name);
 
-  async initialize(name) {
-    const Provider = this.registry.get(name);
+    this.provider = typeof Provider === "function" ? new Provider(this.context) : Provider;
 
-    this.provider = new Provider();
+    this.context.set(this.provider);
 
-    await this.provider.initialize?.();
+    if (this.provider.initialize) {
+      await this.provider.initialize();
+    }
+
+    return this.provider;
   }
 
   async connect() {
@@ -23,7 +33,9 @@ export class ProviderManager {
       throw new Error("No provider initialized.");
     }
 
-    await this.provider.connect?.();
+    if (this.provider.connect) {
+      await this.provider.connect();
+    }
   }
 
   async disconnect() {
@@ -31,7 +43,9 @@ export class ProviderManager {
       return;
     }
 
-    await this.provider.disconnect?.();
+    if (this.provider.disconnect) {
+      await this.provider.disconnect();
+    }
   }
 
   async destroy() {
@@ -39,7 +53,11 @@ export class ProviderManager {
       return;
     }
 
-    await this.provider.destroy?.();
+    if (this.provider.destroy) {
+      await this.provider.destroy();
+    }
+
+    this.context.clear();
 
     this.provider = null;
   }
@@ -49,6 +67,12 @@ export class ProviderManager {
   }
 
   getStatus() {
-    return this.provider?.getStatus() ?? null;
+    return (this.provider?.getStatus?.() ?? null);
+  }
+
+  isReady() {
+    return (
+      this.getStatus() === "connected"
+    );
   }
 }

@@ -1,11 +1,7 @@
-import { BaileysProvider } from "./baileys/index.js";
+// import { BaileysProvider } from "./baileys/index.js";
 
-export function registerDefaultProviders(manager) {
-  manager.register("baileys", BaileysProvider);
-
-  // Próximamente...
-  // manager.register("official", OfficialProvider);
-  // manager.register("whiskeysockets", WhiskeySocketsProvider);
-  // manager.register("experimental", ExperimentalProvider);
-  // manager.register("custom", CustomProvider);
-}
+export { ProviderRegistry } from "./registry/index.js";
+export { ProviderManager } from "./manager/index.js";
+export { ProviderContext } from "./context/index.js";
+export { registerProviders } from "./register.js";
+export { createProviderRegistry } from "./bootstrap.js";

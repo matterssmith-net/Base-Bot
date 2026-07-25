@@ -5,6 +5,22 @@ export const es = {
     started: "Sistema iniciado",
     ready: "Sistema listo",
 
+    auth: {
+      title: "¿Cómo desea vincular WhatsApp?",
+      description: "Seleccione un método de autenticación.",
+      optionPairing: "Código por número",
+      optionQR: "Código QR",
+      select: "Seleccione una opción:",
+      invalidOption: "Opción inválida.",
+      enterPhone: "Ingrese el número telefónico:",
+      generatingCode: "Generando código de vinculación...",
+      code: "Código de vinculación:",
+      openBrowser: "Abra la siguiente dirección:",
+      waiting: "Esperando autenticación...",
+      success: "Autenticación completada.",
+      failed: "La autenticación ha fallado."
+    },
+
     bootstrap: {
       start: "Bootstrap iniciado",
       ready: "Bootstrap completado"

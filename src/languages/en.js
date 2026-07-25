@@ -5,6 +5,22 @@ export const en = {
     started: "System started",
     ready: "System ready",
 
+    auth: {
+      title: "How would you like to link WhatsApp?",
+      description: "Choose an authentication method.",
+      optionPairing: "Pairing code",
+      optionQR: "QR code",
+      select: "Select an option:",
+      invalidOption: "Invalid option.",
+      enterPhone: "Enter phone number:",
+      generatingCode: "Generating pairing code...",
+      code: "Pairing code:",
+      openBrowser: "Open the following address:",
+      waiting: "Waiting for authentication...",
+      success: "Authentication successful.",
+      failed: "Authentication failed."
+    },
+
     bootstrap: {
       start: "Bootstrap started",
       ready: "Bootstrap complete"

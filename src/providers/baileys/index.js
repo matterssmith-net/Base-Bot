@@ -1,16 +1,11 @@
-import {
-  BaseProvider,
-  ProviderStatus,
-  ProviderEvents
-} from "../core/index.js";
-
+import { BaseProvider, ProviderStatus, ProviderEvents } from "../core/index.js";
 import { getAuthState } from "./auth.js";
 import { createSocket } from "./socket.js";
 import { registerEvents } from "./events.js";
 
 export class BaileysProvider extends BaseProvider {
-  constructor() {
-    super("baileys");
+  constructor(context) {
+    super("baileys", context);
 
     this.auth = null;
     this.socket = null;
@@ -30,24 +25,22 @@ export class BaileysProvider extends BaseProvider {
   }
 
   async connect() {
+    this.setStatus(
+      ProviderStatus.CONNECTING
+    );
 
-    this.socket = await createSocket(this.auth);
+    this.socket =
+      await createSocket(
+        this.auth
+      );
 
     registerEvents(this);
-
-    this.setStatus(ProviderStatus.CONNECTED);
-
-    await this.dispatcher.dispatch(
-      ProviderEvents.READY,
-      {
-        provider: this.name
-      }
-    );
   }
 
   async disconnect() {
     if (this.socket) {
       this.socket.end?.();
+
       this.socket = null;
     }
 
@@ -62,11 +55,50 @@ export class BaileysProvider extends BaseProvider {
   }
 
   async destroy() {
+
     await this.disconnect();
+
 
     this.auth = null;
 
+
     this.setStatus(ProviderStatus.STOPPED);
+
+    await super.destroy();
+  }
+
+  async requestPairingCode(phoneNumber) {
+
+    if (!this.socket) {
+      throw new Error(
+        "Socket not connected."
+      );
+    }
+
+
+    if (!phoneNumber) {
+      throw new Error(
+        "Phone number is required."
+      );
+    }
+
+
+    const code =
+      await this.socket.requestPairingCode(
+        phoneNumber
+      );
+
+
+    await this.dispatcher.dispatch(
+      ProviderEvents.PAIRING_CODE,
+      {
+        code,
+        provider: this.name
+      }
+    );
+
+
+    return code;
   }
 
   getSocket() {

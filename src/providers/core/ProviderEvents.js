@@ -33,8 +33,9 @@ export const ProviderEvents = Object.freeze({
   // Auth
   AUTH_UPDATE: "auth.update",
 
-  // QR
+  // QR / Pairing
   QR_UPDATE: "qr.update",
+  PAIRING_CODE: "pairing.code",
 
   // Sync
   SYNC_START: "sync.start",

@@ -1,5 +1,4 @@
-import { ProviderManager } from "../providers/manager/index.js";
-import { registerDefaultProviders } from "../providers/index.js";
+import { ProviderContext, ProviderRegistry, ProviderManager, registerProviders, createProviderRegistry } from "../providers/index.js";
 import { bootstrap } from "../core/bootstrap/index.js";
 import { Container } from "../core/container/index.js";
 import { Config } from "../core/config/index.js";
@@ -9,6 +8,7 @@ import { Language } from "../languages/index.js";
 import { getRuntimeState, updateRuntimeState } from "../core/runtime/index.js";
 import { configureRuntime } from "../core/runtime/configure.js";
 import { runWatchdog } from "../../scripts/watchdog.js";
+import { AuthManager } from "../auth/index.js";
 
 export async function startCLI() {
   const container = new Container();
@@ -31,10 +31,24 @@ export async function startCLI() {
   container.register("logger", (c) => new Logger(c.get("config"), c.get("lang")));
   container.register("services", (c) => new Services(c));
 
-  container.register("provider", () => {
-    const manager = new ProviderManager();
-    registerDefaultProviders(manager);
-    return manager;
+  container.register("auth", () => new AuthManager());
+
+  container.register("provider", (c) => {
+    const registry = createProviderRegistry();
+
+    const context = new ProviderContext({
+      container: c,
+
+      logger: c.get("logger"),
+
+      config: c.get("config"),
+
+      runtime,
+
+      services: c.get("services")
+    });
+
+    return new ProviderManager(registry, context);
   });
 
   await container.get("lang").init();
@@ -49,9 +63,13 @@ export async function startCLI() {
   const services = container.get("services");
   await services.initialize();
 
+  const auth = container.get("auth");
 
   const provider = container.get("provider");
-  await provider.initialize(runtime.provider);
+  await provider.initialize(runtime.provider ?? "baileys");
+
+  auth.attach(provider.getProvider());
+
   await provider.connect();
 
   logger.info(lang.t("system.ready"));

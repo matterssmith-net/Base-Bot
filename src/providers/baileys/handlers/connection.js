@@ -3,9 +3,7 @@ import { ProviderEvents, ProviderStatus } from "../../core/index.js";
 
 export async function handleConnectionUpdate(provider, update) {
   if (!provider) {
-    throw new Error(
-      "Provider no disponible en connection handler"
-    );
+    throw new Error("Provider no disponible en connection handler");
   }
 
   const {
@@ -14,21 +12,17 @@ export async function handleConnectionUpdate(provider, update) {
     qr
   } = update;
 
-
   if (connection === "connecting") {
-    provider.setStatus(
-      ProviderStatus.CONNECTING
-    );
+    provider.setStatus(ProviderStatus.CONNECTING);
 
     console.log(
       "[BAILEYS] Connecting to WhatsApp..."
     );
   }
 
-
   if (qr) {
     console.log(
-      "[BAILEYS] QR generated. Scan required."
+      "[BAILEYS] QR generated. Waiting authentication..."
     );
 
     await provider.dispatcher.dispatch(
@@ -38,17 +32,20 @@ export async function handleConnectionUpdate(provider, update) {
         provider: provider.name
       }
     );
+
+    await provider.dispatcher.dispatch(
+      ProviderEvents.AUTH_REQUIRED,
+      {
+        method: "qr",
+        provider: provider.name
+      }
+    );
   }
 
-
   if (connection === "open") {
-    provider.setStatus(
-      ProviderStatus.CONNECTED
-    );
+    provider.setStatus(ProviderStatus.CONNECTED);
 
-    console.log(
-      "[BAILEYS] WhatsApp connected."
-    );
+    console.log("[BAILEYS] WhatsApp connected.");
 
     await provider.dispatcher.dispatch(
       ProviderEvents.READY,
@@ -60,30 +57,14 @@ export async function handleConnectionUpdate(provider, update) {
     return;
   }
 
-
   if (connection === "close") {
-    provider.setStatus(
-      ProviderStatus.DISCONNECTED
-    );
+    provider.setStatus(ProviderStatus.DISCONNECTED);
 
-    const statusCode =
-      lastDisconnect
-        ?.error
-        ?.output
-        ?.statusCode;
+    const statusCode = lastDisconnect ?.error ?.output ?.statusCode;
 
+    const reason = DisconnectReason[statusCode] ?? statusCode ?? "unknown";
 
-    const reason =
-      DisconnectReason[statusCode] ??
-      statusCode ??
-      "unknown";
-
-
-    console.log(
-      "[BAILEYS] Connection closed:",
-      reason
-    );
-
+    console.log("[BAILEYS] Connection closed:", reason);
 
     await provider.dispatcher.dispatch(
       ProviderEvents.DISCONNECT,
