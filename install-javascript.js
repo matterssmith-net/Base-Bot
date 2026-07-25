@@ -27,6 +27,8 @@ import https from "node:https";
 import { pipeline } from "node:stream/promises";
 import { spawn } from "node:child_process";
 
+import AdmZip from "adm-zip";
+
 /*
 |--------------------------------------------------------------------------
 | Configuration
@@ -636,8 +638,6 @@ async function extractRepository() {
     }
 
     await ensureDirectory(CONFIG.extractFolder);
-
-    import AdmZip from "adm-zip";
 
     const zip = new AdmZip(CONFIG.zipFile);
 
