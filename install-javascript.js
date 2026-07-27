@@ -419,6 +419,81 @@ async function downloadWithProgress(url, destination) {
 
 /*
 |--------------------------------------------------------------------------
+| Download Binary File
+|--------------------------------------------------------------------------
+*/
+
+async function downloadFile(url, destination) {
+
+    await ensureDirectory(
+        path.dirname(destination)
+    );
+
+    return new Promise((resolve, reject) => {
+
+        https.get(url, {
+
+            headers: {
+
+                "User-Agent": "BaseBotInstaller"
+
+            }
+
+        }, response => {
+
+
+            if (
+                response.statusCode >= 300 &&
+                response.statusCode < 400 &&
+                response.headers.location
+            ) {
+
+                return downloadFile(
+                    response.headers.location,
+                    destination
+                )
+                .then(resolve)
+                .catch(reject);
+
+            }
+
+
+            if (response.statusCode !== 200) {
+
+                reject(
+                    new Error(
+                        `Download failed (HTTP ${response.statusCode})`
+                    )
+                );
+
+                return;
+
+            }
+
+
+            const file = fs.createWriteStream(
+                destination
+            );
+
+
+            pipeline(
+                response,
+                file
+            )
+            .then(resolve)
+            .catch(reject);
+
+
+        })
+
+        .on("error", reject);
+
+    });
+
+}
+
+/*
+|--------------------------------------------------------------------------
 | GitHub URLs
 |--------------------------------------------------------------------------
 */
@@ -618,6 +693,83 @@ async function downloadRepository() {
     );
 
     Logger.success("Repository tree downloaded.");
+
+}
+
+/*
+|--------------------------------------------------------------------------
+| Download Repository Files
+|--------------------------------------------------------------------------
+*/
+
+async function downloadRepositoryFiles() {
+
+    Logger.info(
+        "Downloading repository files..."
+    );
+
+
+    const tree = JSON.parse(
+
+        await fsp.readFile(
+
+            CONFIG.treeFile,
+
+            "utf8"
+
+        )
+
+    );
+
+
+    await ensureDirectory(
+
+        CONFIG.downloadFolder
+
+    );
+
+
+    for (const item of tree.tree) {
+
+
+        if (item.type !== "blob")
+
+            continue;
+
+
+        const destination = path.join(
+
+            CONFIG.downloadFolder,
+
+            item.path
+
+        );
+
+
+        Logger.info(
+
+            "Downloading: " + item.path
+
+        );
+
+
+        await downloadFile(
+
+            getContentURL(item.path),
+
+            destination
+
+        );
+
+
+    }
+
+
+    Logger.success(
+
+        "Repository files downloaded."
+
+    );
 
 }
 
