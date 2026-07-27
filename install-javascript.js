@@ -1048,6 +1048,28 @@ async function synchronize() {
 
 /*
 |--------------------------------------------------------------------------
+| Prepare Temporary Directory
+|--------------------------------------------------------------------------
+*/
+
+async function prepareTemp() {
+
+    if (await exists(CONFIG.tempFolder)) {
+
+        await removeDirectory(
+            CONFIG.tempFolder
+        );
+
+    }
+
+    await ensureDirectory(
+        CONFIG.tempFolder
+    );
+
+}
+
+/*
+|--------------------------------------------------------------------------
 | Cleanup
 |--------------------------------------------------------------------------
 */
