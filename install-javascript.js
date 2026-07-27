@@ -27,8 +27,6 @@ import https from "node:https";
 import { pipeline } from "node:stream/promises";
 import { spawn } from "node:child_process";
 
-import AdmZip from "adm-zip";
-
 /*
 |--------------------------------------------------------------------------
 | Configuration
@@ -429,13 +427,19 @@ async function downloadWithProgress(url, destination) {
 
 function getRawURL(file) {
 
-    return `https://raw.githubusercontent.com/${CONFIG.repository}/refs/heads/${CONFIG.branch}/${file}`;
+    return `https://raw.githubusercontent.com/${CONFIG.repository}/${CONFIG.branch}/${file}`;
 
 }
 
-function getZipURL() {
+function getTreeURL() {
 
-    return `https://github.com/${CONFIG.repository}/archive/refs/heads/${CONFIG.branch}.zip`;
+    return `https://api.github.com/repos/${CONFIG.repository}/git/trees/${CONFIG.branch}?recursive=1`;
+
+}
+
+function getContentURL(file) {
+
+    return `https://raw.githubusercontent.com/${CONFIG.repository}/${CONFIG.branch}/${file}`;
 
 }
 
@@ -583,73 +587,55 @@ CONFIG.extractFolder = path.join(
 
 /*
 |--------------------------------------------------------------------------
-| Prepare Temporary Directory
+| Temporary Paths
 |--------------------------------------------------------------------------
 */
 
-async function prepareTemp() {
+CONFIG.treeFile = path.join(
+    CONFIG.tempFolder,
+    "tree.json"
+);
 
-    if (await exists(CONFIG.tempFolder)) {
-
-        await removeDirectory(CONFIG.tempFolder);
-
-    }
-
-    await ensureDirectory(CONFIG.tempFolder);
-
-}
+CONFIG.downloadFolder = path.join(
+    CONFIG.tempFolder,
+    "repository"
+);
 
 /*
 |--------------------------------------------------------------------------
-| Download Repository
+| Download Repository Tree
 |--------------------------------------------------------------------------
 */
 
 async function downloadRepository() {
 
-    Logger.info("Downloading repository...");
+    Logger.info("Downloading repository tree...");
 
-    await downloadWithProgress(
+    await ensureDirectory(CONFIG.tempFolder);
 
-        getZipURL(),
+    const response = await fetch(getTreeURL(), {
+        headers: {
+            "User-Agent": "BaseBotInstaller"
+        }
+    });
 
-        CONFIG.zipFile
+    if (!response.ok) {
 
-    );
-
-    Logger.success("Repository downloaded.");
-
-}
-
-/*
-|--------------------------------------------------------------------------
-| Extract ZIP
-|--------------------------------------------------------------------------
-*/
-
-async function extractRepository() {
-
-    Logger.info("Extracting repository...");
-
-    if (await exists(CONFIG.extractFolder)) {
-
-        await removeDirectory(CONFIG.extractFolder);
+        throw new Error(
+            `GitHub API returned HTTP ${response.status}`
+        );
 
     }
 
-    await ensureDirectory(CONFIG.extractFolder);
+    const tree = await response.json();
 
-    const zip = new AdmZip(CONFIG.zipFile);
-
-    zip.extractAllTo(
-
-        CONFIG.extractFolder,
-
-        true
-
+    await fsp.writeFile(
+        CONFIG.treeFile,
+        JSON.stringify(tree, null, 2),
+        "utf8"
     );
 
-    Logger.success("Repository extracted.");
+    Logger.success("Repository tree downloaded.");
 
 }
 
@@ -699,18 +685,16 @@ async function getRepositoryRoot() {
 
 /*
 |--------------------------------------------------------------------------
-| Remove ZIP
+| Remove Temporary Files
 |--------------------------------------------------------------------------
 */
 
-async function removeZip() {
+async function removeTemporaryFiles() {
 
-    if (await exists(CONFIG.zipFile)) {
+    if (await exists(CONFIG.treeFile)) {
 
         await fsp.unlink(
-
-            CONFIG.zipFile
-
+            CONFIG.treeFile
         );
 
     }
