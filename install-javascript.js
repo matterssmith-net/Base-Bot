@@ -41,8 +41,6 @@ const CONFIG = {
 
     installer: "install-javascript.js",
 
-    zipName: "repository.zip",
-
     tempFolder: path.join(os.tmpdir(), "BaseBotInstaller"),
 
     preserve: [
@@ -575,22 +573,6 @@ async function restartInstaller() {
 |--------------------------------------------------------------------------
 */
 
-CONFIG.zipFile = path.join(
-    CONFIG.tempFolder,
-    CONFIG.zipName
-);
-
-CONFIG.extractFolder = path.join(
-    CONFIG.tempFolder,
-    "extract"
-);
-
-/*
-|--------------------------------------------------------------------------
-| Temporary Paths
-|--------------------------------------------------------------------------
-*/
-
 CONFIG.treeFile = path.join(
     CONFIG.tempFolder,
     "tree.json"
@@ -636,50 +618,6 @@ async function downloadRepository() {
     );
 
     Logger.success("Repository tree downloaded.");
-
-}
-
-/*
-|--------------------------------------------------------------------------
-| Repository Root
-|--------------------------------------------------------------------------
-*/
-
-async function getRepositoryRoot() {
-
-    const items = await fsp.readdir(
-
-        CONFIG.extractFolder,
-
-        {
-
-            withFileTypes: true
-
-        }
-
-    );
-
-    for (const item of items) {
-
-        if (item.isDirectory()) {
-
-            return path.join(
-
-                CONFIG.extractFolder,
-
-                item.name
-
-            );
-
-        }
-
-    }
-
-    throw new Error(
-
-        "Repository root could not be found."
-
-    );
 
 }
 
@@ -829,11 +767,9 @@ async function synchronizeRepository() {
 
     Logger.info("Synchronizing repository...");
 
-    const repositoryRoot = await getRepositoryRoot();
-
     await synchronizeDirectory(
 
-        repositoryRoot,
+        CONFIG.downloadFolder,
 
         process.cwd()
 
@@ -926,15 +862,11 @@ async function cleanRepository() {
 
     Logger.info("Removing obsolete files...");
 
-    const repositoryRoot =
-
-        await getRepositoryRoot();
-
     await removeObsolete(
 
         process.cwd(),
 
-        repositoryRoot
+        CONFIG.downloadFolder
 
     );
 
@@ -954,13 +886,11 @@ async function synchronize() {
 
     await downloadRepository();
 
-    await extractRepository();
+    await downloadRepositoryFiles();
 
     await synchronizeRepository();
 
     await cleanRepository();
-
-    await removeZip();
 
 }
 
