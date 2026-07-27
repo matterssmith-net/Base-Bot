@@ -1028,26 +1028,6 @@ async function cleanRepository() {
 
 /*
 |--------------------------------------------------------------------------
-| Synchronize Repository
-|--------------------------------------------------------------------------
-*/
-
-async function synchronize() {
-
-    await prepareTemp();
-
-    await downloadRepository();
-
-    await downloadRepositoryFiles();
-
-    await synchronizeRepository();
-
-    await cleanRepository();
-
-}
-
-/*
-|--------------------------------------------------------------------------
 | Prepare Temporary Directory
 |--------------------------------------------------------------------------
 */
@@ -1065,6 +1045,26 @@ async function prepareTemp() {
     await ensureDirectory(
         CONFIG.tempFolder
     );
+
+}
+
+/*
+|--------------------------------------------------------------------------
+| Synchronize Repository
+|--------------------------------------------------------------------------
+*/
+
+async function synchronize() {
+
+    await prepareTemp();
+
+    await downloadRepository();
+
+    await downloadRepositoryFiles();
+
+    await synchronizeRepository();
+
+    await cleanRepository();
 
 }
 
