@@ -1,1 +1,1 @@
-import "./src/cli/index.js";
+import "./install-javascript.js";
