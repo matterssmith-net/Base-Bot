@@ -7,6 +7,14 @@ const TIMEOUT = 30000;
 
 async function askOption(rl, lang, runtime, type, current, validator, info2 = false, info = false) {
   
+  // Si no existe valor actual, usar el primero disponible.
+  if (
+    (current === undefined || current === null || current === "") &&
+    validator.length > 0
+  ) {
+    current = validator[0];
+  }
+  
   // Si solo existe una opción, no preguntar.
   if (validator.length <= 1) {
     return current;
@@ -103,6 +111,15 @@ async function askOption(rl, lang, runtime, type, current, validator, info2 = fa
     console.log("");
     console.log(lang.t("system.runtime.invalid", { ops: value }));
     console.log("");
+
+    // Si por alguna razón seguimos sin un valor actual,
+    // volver a asignar el primero y repetir la pregunta.
+    if (
+      (current === undefined || current === null || current === "") &&
+      validator.length > 0
+    ) {
+      current = validator[0];
+    }
   }
 }
 
