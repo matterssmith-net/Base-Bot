@@ -2,5 +2,10 @@
   "locale": "en",
   "mode": "dev",
   "debug": true,
-  "provider": "baileys"
+  "module": "bot",
+  "bot": {
+    "platform": "whatsapp",
+    "language": "javascript",
+    "provider": "baileys"
+  }
 }
