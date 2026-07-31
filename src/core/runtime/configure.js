@@ -78,12 +78,25 @@ async function askOption(rl, lang, runtime, type, current, validator, info2 = fa
       return current;
     }
 
+    // convertir automáticamente a boolean si aplica
+    let parsedValue = value;
+
+    if (validator.some(v => typeof v === "boolean")) {
+      const lower = value.toLowerCase();
+
+      if (lower === "true") {
+        parsedValue = true;
+      } else if (lower === "false") {
+        parsedValue = false;
+      }
+    }
+
     // opción válida
-    if (validator.includes(value)) {
+    if (validator.includes(parsedValue)) {
       console.log("");
       console.log(lang.t("system.runtime.changed", { ops: value }));
     
-      return value;
+      return parsedValue;
     }
 
     // opción inválida
@@ -111,29 +124,81 @@ export async function configureRuntime(runtime, info = true) {
   });
 
   let valid = [];
+//_____________________________________________________________________________________
 
   valid = ["br","cn","cz","de","en","es","fr","gr",
   "hi","hu","id","it","jp","kr","nl","ph","pl","ro","ru","sv","th","uk","vn"];
   
   runtime.locale = await askOption( rl, lang, runtime, "locale", runtime.locale, valid, info2);
 
+  await updateRuntimeState(runtime);
+
   lang = new Language(runtime.locale);
   await lang.init();
+//_____________________________________________________________________________________
 
-  valid = ["dev"];
+  valid = ["dev","prod"];
 
-  runtime.mode = await askOption( rl, lang, runtime, "mode", runtime.mode, valid, info2
-  );
+  runtime.mode = await askOption( rl, lang, runtime, "mode", runtime.mode, valid, info2);
 
-  valid = ["true","false"];
+  await updateRuntimeState(runtime);
+//_____________________________________________________________________________________
 
-  runtime.debug = await askOption( rl, lang, runtime, "debug", runtime.debug, valid, info2
-  );
+  valid = [true,false];
 
-  valid = ["baileys"];
+  runtime.debug = await askOption( rl, lang, runtime, "debug", runtime.debug, valid, info2);
 
-  runtime.provider = await askOption( rl, lang, runtime, "provider", runtime.provider, valid, info2, true
-  );
+  await updateRuntimeState(runtime);
+//_____________________________________________________________________________________
+
+  valid = ["bot","api"];
+
+  runtime.module = await askOption( rl, lang, runtime, "module", runtime.module, valid, info2);
+
+  await updateRuntimeState(runtime);
+//_____________________________________________________________________________________
+  switch (runtime.module) {
+    case "bot":
+      runtime.bot ??= {};
+
+      valid = ["whatsapp","telegram"];
+
+      runtime.bot.platform = await askOption( rl, lang, runtime.bot, "bot.platform", runtime.bot.platform, valid, info2);
+
+      await updateRuntimeState(runtime);
+//_____________________________________________________________________________________
+
+      valid = ["javascript","typescript"];
+
+      runtime.bot.language = await askOption( rl, lang, runtime.bot, "bot.language", runtime.bot.language, valid, info2);
+
+      await updateRuntimeState(runtime);
+//_____________________________________________________________________________________
+
+      switch (runtime.bot.platform) {
+
+        case "whatsapp":
+          valid = ["baileys","whiskeysockets"];
+          break;
+
+        default:
+          valid = [];
+          break;
+      }
+
+      runtime.bot.provider = await askOption( rl, lang, runtime.bot, "bot.provider", runtime.bot.provider, valid, info2);
+
+      await updateRuntimeState(runtime);
+      break;
+//_____________________________________________________________________________________
+
+    default:
+      delete runtime.bot;
+
+      await updateRuntimeState(runtime);
+      break;
+  }
+//_____________________________________________________________________________________
 
   valid = [];
 

@@ -10,7 +10,12 @@ export const DEFAULT_STATE = {
   locale: "en",
   mode: "dev",
   debug: true,
-  provider: "baileys"
+  module: "bot",
+  bot: {
+    platform: "whatsapp",
+    language: "javascript",
+    provider: "baileys"
+  }
 };
 
 export function getRuntimeState() {

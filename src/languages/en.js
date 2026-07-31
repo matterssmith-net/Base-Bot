@@ -48,9 +48,26 @@ export const en = {
         prompt: "Type an option (true, false) or press ENTER.",
       },
 
-      provider: {
-        current: "Provider. Current status",
-        prompt: "Type an option (baileys) or press ENTER.",
+      module: {
+        current: "Module. Current status",
+        prompt: "Type an option (bot) or press ENTER.",
+      },
+
+      bot: {
+        platform: {
+          current: "Platform. Current status",
+          prompt: "Type an option (whatsapp) or press ENTER.",
+        },
+
+        language: {
+          current: "Language. Current status",
+          prompt: "Type an option (javascript) or press ENTER.",
+        },
+
+        provider: {
+          current: "Provider. Current status",
+          prompt: "Type an option (baileys) or press ENTER.",
+        }
       },
 
       changed: "Changed to {ops}.",

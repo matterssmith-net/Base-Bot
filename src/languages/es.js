@@ -40,7 +40,7 @@ export const es = {
 
       mode: {
         current: "Modo. Estado actual",
-        prompt: "Escribe una opción (dev) o presiona ENTER.",
+        prompt: "Escribe una opción (dev, prod) o presiona ENTER.",
       },
 
       debug: {
@@ -48,9 +48,26 @@ export const es = {
         prompt: "Escribe una opción (true, false) o presiona ENTER.",
       },
 
-      provider: {
-        current: "Proveedor. Estado actual",
-        prompt: "Escribe una opción (baileys) o presiona ENTER.",
+      module: {
+        current: "Modulo. Estado actual",
+        prompt: "Escribe una opción (bot) o presiona ENTER.",
+      },
+
+      bot: {
+        platform: {
+          current: "Plataforma. Estado actual",
+          prompt: "Escribe una opción (whatsapp) o presiona ENTER.",
+        },
+
+        language: {
+          current: "Lenguaje. Estado actual",
+          prompt: "Escribe una opción (javascript) o presiona ENTER.",
+        },
+
+        provider: {
+          current: "Proveedor. Estado actual",
+          prompt: "Escribe una opción (baileys) o presiona ENTER.",
+        }
       },
 
       changed: "Se ha cambiado a {ops}.",

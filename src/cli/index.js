@@ -19,10 +19,7 @@ export async function startCLI() {
   // 2. permitir cambio interactivo
   await configureRuntime(runtime);
 
-  // 3. persistir cambios
-  updateRuntimeState(runtime);
-
-  // 4. usar locale final
+  // 3. usar locale final
   const locale = runtime.locale;
 
   // core registrations
