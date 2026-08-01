@@ -895,3 +895,262 @@ Matter Base Core
 The Core remains unchanged while the project adapts to its purpose.
 
 Start with the Core. Build the ecosystem you need.
+
+---
+
+# 🧩 Module Development
+
+Matter Base is designed around an extensible module architecture.
+
+Modules are independent components that add new capabilities without modifying the Core.
+
+The purpose of this system is to allow different project types to share the same foundation while maintaining their own logic and evolution.
+
+---
+
+# 🏗️ Module Concept
+
+A module represents a specialized branch of the ecosystem.
+
+Examples:
+
+```
+Matter Base
+
+Core
+
+├── Bots Module
+│
+├── API Module
+│
+├── Web Module
+│
+├── Automation Module
+│
+└── Custom Module
+```
+
+Each module contains its own:
+
+- Logic.
+- Configuration.
+- Services.
+- Integrations.
+- Internal components.
+
+The Core only provides the environment required for modules to operate.
+
+---
+
+# 🔌 Module Independence
+
+Modules should remain independent from each other.
+
+Example:
+
+```
+Incorrect:
+
+Core
+│
+├── WhatsApp Logic
+├── REST API Logic
+└── Database Logic
+```
+
+```
+Correct:
+
+Core
+
+├── Bots Module
+│ └── WhatsApp Integration
+│
+├── API Module
+│ └── REST Services
+│
+└── Database Module
+└── Storage System
+```
+
+This prevents unnecessary dependencies and keeps the architecture flexible.
+
+---
+
+# ⚙️ Module Registration
+
+Modules are loaded through the architecture registration system.
+
+A module can expose:
+
+- Initialization process.
+- Services.
+- Commands.
+- Events.
+- Configuration.
+- Internal dependencies.
+
+Example:
+```
+Module
+
+│
+
+├── Register
+
+│
+
+├── Initialize
+
+│
+
+└── Execute
+```
+
+---
+
+# 🔄 Module Lifecycle
+
+Every module follows a controlled lifecycle.
+
+Created
+```
+│
+▼
+```
+Registered
+```
+│
+▼
+```
+Configured
+```
+│
+▼
+```
+Initialized
+```
+│
+▼
+```
+Running
+```
+│
+▼
+```
+Stopped
+
+This allows the system to manage modules consistently.
+
+---
+
+# 🧠 Core Communication
+
+Modules communicate through shared architectural services.
+
+The Core provides:
+
+- Runtime access.
+- Configuration access.
+- Logging.
+- Service container.
+- Internal events.
+
+Modules should not directly modify other modules.
+
+Example:
+
+Module A
+```
+  │
+  ▼
+```
+Core Services
+```
+  │
+  ▼
+```
+Module B
+
+---
+
+# 📦 Future Module Structure
+
+Future modules may follow a structure similar to:
+
+```
+module-name
+
+├── index.js
+
+├── config
+
+├── services
+
+├── events
+
+├── commands
+
+├── providers
+
+└── utils
+```
+
+The internal organization can evolve depending on the purpose of each module.
+
+---
+
+# 🚀 Creating New Ecosystems
+
+The same architecture can generate completely different projects.
+
+Example:
+
+## Communication System
+
+```
+Matter Base Core
+·
+Bots Module
+·
+Messaging Providers
+=
+Communication Platform
+```
+
+---
+
+## Backend Platform
+
+```
+Matter Base Core
+·
+API Module
+·
+Database Module
+·
+Authentication Module
+=
+Backend Ecosystem
+```
+
+---
+
+## Automation System
+
+```
+Matter Base Core
+·
+Automation Module
+·
+Task Scheduler
+·
+External Integrations
+=
+Automation Platform
+```
+
+---
+
+> **Modules define what the system becomes.  
+> The Core defines how the system grows.**
