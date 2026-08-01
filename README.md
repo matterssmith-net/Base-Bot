@@ -6,8 +6,6 @@ src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColo
 width="100%"
 />
 
-<br>
-
 # Matter Base
 
 ### The Core Architecture.
