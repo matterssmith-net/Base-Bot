@@ -36,76 +36,76 @@ width="100%"
 # 📑 Table of Contents
 
 🧩 Introduction
-├── What is Matter Base? -------------------------- 109
-├── Build Anything from the Same Core ------------- 119
-└── Core Philosophy ------------------------------- 171
+├── What is Matter Base? -------------------------- 112
+├── Build Anything from the Same Core ------------- 122
+└── Core Philosophy ------------------------------- 174
 
 🏗 Architecture
-├── Architecture ---------------------------------- 197
-├── Project Structure ----------------------------- 376
-├── Core System ----------------------------------- 449
-├── Configuration --------------------------------- 484
-├── Dependency Container -------------------------- 499
-├── Logger ---------------------------------------- 512
-├── Internationalization -------------------------- 525
-├── Bootstrap Lifecycle --------------------------- 539
-├── Module Architecture --------------------------- 552
-├── Provider System ------------------------------- 582
-├── Development Tools ----------------------------- 607
-├── Documentation System -------------------------- 626
-├── Development Philosophy ------------------------ 644
-└── Future Architecture Direction ----------------- 680
+├── Architecture ---------------------------------- 200
+├── Project Structure ----------------------------- 379
+├── Core System ----------------------------------- 452
+├── Configuration --------------------------------- 487
+├── Dependency Container -------------------------- 502
+├── Logger ---------------------------------------- 515
+├── Internationalization -------------------------- 528
+├── Bootstrap Lifecycle --------------------------- 542
+├── Module Architecture --------------------------- 555
+├── Provider System ------------------------------- 585
+├── Development Tools ----------------------------- 610
+├── Documentation System -------------------------- 629
+├── Development Philosophy ------------------------ 647
+└── Future Architecture Direction ----------------- 683
 
 🚀 Started
-├── Getting Started ------------------------------- 759
-├── Requirements ---------------------------------- 767
-├── Supported Platforms --------------------------- 781
-├── Installation ---------------------------------- 796
-├── Automatic Installation ------------------------ 817
-├── Running Matter Base --------------------------- 860
-├── Command Line Interface ------------------------ 872
-├── Project Lifecycle ----------------------------- 902
-├── Development Mode ------------------------------ 937
-└── Creating a New Project ------------------------ 950
+├── Getting Started ------------------------------- 762
+├── Requirements ---------------------------------- 770
+├── Supported Platforms --------------------------- 784
+├── Installation ---------------------------------- 799
+├── Automatic Installation ------------------------ 820
+├── Running Matter Base --------------------------- 863
+├── Command Line Interface ------------------------ 875
+├── Project Lifecycle ----------------------------- 905
+├── Development Mode ------------------------------ 940
+└── Creating a New Project ------------------------ 953
 
 🧩 Development
-├── Module Development ---------------------------- 950
-├── Module Concept -------------------------------- 950
-├── Module Independence --------------------------- 980
-├── Module Registration --------------------------- 1010
-├── Module Lifecycle ------------------------------ 1040
-├── Core Communication ---------------------------- 1070
-├── Future Module Structure ----------------------- 1100
-└── Creating New Ecosystems ----------------------- 1130
+├── Module Development ---------------------------- 997
+├── Module Concept -------------------------------- 1007
+├── Module Independence --------------------------- 1041
+├── Module Registration --------------------------- 1076
+├── Module Lifecycle ------------------------------ 1108
+├── Core Communication ---------------------------- 1143
+├── Future Module Structure ----------------------- 1173
+└── Creating New Ecosystems ----------------------- 1199
 
 🔌 System
-├── Extension System ------------------------------ 1170
-├── Extension Layers ------------------------------ 1170
-├── Providers ------------------------------------- 1200
-├── Extension Independence ------------------------ 1230
-├── Registration Flow ----------------------------- 1260
-├── Universal Compatibility ----------------------- 1290
-└── Design Rule ----------------------------------- 1320
+├── Extension System ------------------------------ 1256
+├── Extension Layers ------------------------------ 1266
+├── Providers ------------------------------------- 1290
+├── Extension Independence ------------------------ 1404
+├── Registration Flow ----------------------------- 1428
+├── Universal Compatibility ----------------------- 1463
+└── Design Rule ----------------------------------- 1484
 
 ⚙ Configuration
-├── Configuration System -------------------------- 1360
-├── Runtime State --------------------------------- 1360
-├── Static Configuration -------------------------- 1390
-└── Configuration Flow ---------------------------- 1420
+├── Configuration System -------------------------- 1498
+├── Runtime State --------------------------------- 1508
+├── Static Configuration -------------------------- 1533
+└── Configuration Flow ---------------------------- 1549
 
 🌍 Shared Infrastructure
-├── Internationalization -------------------------- 1460
-├── Shared Services ------------------------------- 1490
-└── Scalability ----------------------------------- 1520
+├── Internationalization -------------------------- 1579
+├── Shared Services ------------------------------- 1622
+└── Scalability ----------------------------------- 1640
 
 🌎 Community
-├── Roadmap --------------------------------------- 1560
-├── Project Contributors -------------------------- 1590
-├── Contributing ---------------------------------- 1620
-├── Community ------------------------------------- 1650
-├── Support the Project --------------------------- 1680
-├── Credits --------------------------------------- 1710
-└── License --------------------------------------- 1740
+├── Roadmap --------------------------------------- 1688
+├── Project Contributors -------------------------- 1716
+├── Contributing ---------------------------------- 1766
+├── Community ------------------------------------- 1784
+├── Support the Project --------------------------- 1794
+├── Credits --------------------------------------- 1804
+└── License --------------------------------------- 1812
 
 ---
 
