@@ -57,18 +57,19 @@ width="100%"
 └── Future Architecture Direction ----------------- 680
 
 🚀 Started
-├── Getting Started ------------------------------- 691
-├── Requirements ---------------------------------- 690
-├── Supported Platforms --------------------------- 710
-├── Installation ---------------------------------- 730
-├── Automatic Installation ------------------------ 760
-├── Running Matter Base --------------------------- 790
-├── Command Line Interface ------------------------ 820
-├── Project Lifecycle ----------------------------- 850
-├── Development Mode ------------------------------ 880
-└── Creating a New Project ------------------------ 910
+├── Getting Started ------------------------------- 759
+├── Requirements ---------------------------------- 767
+├── Supported Platforms --------------------------- 781
+├── Installation ---------------------------------- 796
+├── Automatic Installation ------------------------ 817
+├── Running Matter Base --------------------------- 860
+├── Command Line Interface ------------------------ 872
+├── Project Lifecycle ----------------------------- 902
+├── Development Mode ------------------------------ 937
+└── Creating a New Project ------------------------ 950
 
-🧩 Module Development
+🧩 Development
+├── Module Development ---------------------------- 950
 ├── Module Concept -------------------------------- 950
 ├── Module Independence --------------------------- 980
 ├── Module Registration --------------------------- 1010
@@ -77,7 +78,8 @@ width="100%"
 ├── Future Module Structure ----------------------- 1100
 └── Creating New Ecosystems ----------------------- 1130
 
-🔌 Extension System
+🔌 System
+├── Extension System ------------------------------ 1170
 ├── Extension Layers ------------------------------ 1170
 ├── Providers ------------------------------------- 1200
 ├── Extension Independence ------------------------ 1230
@@ -85,7 +87,8 @@ width="100%"
 ├── Universal Compatibility ----------------------- 1290
 └── Design Rule ----------------------------------- 1320
 
-⚙ Configuration System
+⚙ Configuration
+├── Configuration System -------------------------- 1360
 ├── Runtime State --------------------------------- 1360
 ├── Static Configuration -------------------------- 1390
 └── Configuration Flow ---------------------------- 1420
@@ -824,7 +827,7 @@ Example:
 
 node install-javascript.js
 
-# 🪟 Windows
+## 🪟 Windows
 
 For Windows environments:
 
@@ -839,7 +842,7 @@ Initial configuration.
 
 ---
 
-# 📱 Termux
+## 📱 Termux
 
 For Android Termux environments:
 
@@ -849,7 +852,7 @@ The script prepares the required environment to execute Matter Base on mobile de
 
 ---
 
-# ⚙️ Configuration
+## ⚙️ Configuration
 
 After installation, Matter Base initializes its runtime configuration.
 
