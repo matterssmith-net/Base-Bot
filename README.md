@@ -40,7 +40,7 @@ width="100%"
 ├── Build Anything from the Same Core ------------- 122
 └── Core Philosophy ------------------------------- 174
 
-🏗 Architecture
+🏛️ Architecture
 ├── Architecture ---------------------------------- 200
 ├── Project Structure ----------------------------- 379
 ├── Core System ----------------------------------- 452
@@ -53,10 +53,10 @@ width="100%"
 ├── Provider System ------------------------------- 585
 ├── Development Tools ----------------------------- 610
 ├── Documentation System -------------------------- 629
-├── Development Philosophy ------------------------ 647
-└── Future Architecture Direction ----------------- 683
+├── Design Philosophy ----------------------------- 647
+└── Future Vision --------------------------------- 683
 
-🚀 Started
+🚀 Getting Started
 ├── Getting Started ------------------------------- 762
 ├── Requirements ---------------------------------- 770
 ├── Supported Platforms --------------------------- 784
@@ -68,7 +68,7 @@ width="100%"
 ├── Development Mode ------------------------------ 940
 └── Creating a New Project ------------------------ 953
 
-🧩 Development
+🛠️ Development
 ├── Module Development ---------------------------- 997
 ├── Module Concept -------------------------------- 1007
 ├── Module Independence --------------------------- 1041
@@ -78,10 +78,10 @@ width="100%"
 ├── Future Module Structure ----------------------- 1173
 └── Creating New Ecosystems ----------------------- 1199
 
-🔌 System
+🔌 Extensibility
 ├── Extension System ------------------------------ 1256
 ├── Extension Layers ------------------------------ 1266
-├── Providers ------------------------------------- 1290
+├── Extension Types ------------------------------- 1290
 ├── Extension Independence ------------------------ 1404
 ├── Registration Flow ----------------------------- 1428
 ├── Universal Compatibility ----------------------- 1463
@@ -93,12 +93,12 @@ width="100%"
 ├── Static Configuration -------------------------- 1533
 └── Configuration Flow ---------------------------- 1549
 
-🌍 Shared Infrastructure
+🌐 Shared Infrastructure
 ├── Internationalization -------------------------- 1579
 ├── Shared Services ------------------------------- 1622
-└── Scalability ----------------------------------- 1640
+└── Scalability & Stability ----------------------- 1640
 
-🌎 Community
+🤝 Community
 ├── Roadmap --------------------------------------- 1688
 ├── Project Contributors -------------------------- 1716
 ├── Contributing ---------------------------------- 1766
