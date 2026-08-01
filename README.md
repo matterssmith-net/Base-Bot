@@ -33,6 +33,30 @@ width="100%"
 
 ---
 
+# 📑 Table of Contents
+
+- 🧩 What is Matter Base?
+- 🎯 Build Anything from the Same Core
+- ✨ Core Philosophy
+- 🏗️ Architecture
+- 🧠 Core Concept
+- 📦 Current Architecture
+- 🚀 Future Expansion
+- 📂 Project Structure
+- ⚙️ Core System
+- 🧩 Module Development
+- 🔌 Extension System
+- ⚙️ Configuration System
+- 🌍 Internationalization
+- 🛠 Development Tools
+- 🚀 Getting Started
+- 🗺️ Roadmap
+- 👥 Project Contributors
+- 🤝 Contributing
+- 📜 License
+
+---
+
 # 🧩 What is Matter Base?
 
 Matter Base is an open modular foundation designed to accelerate the development of software projects through a reusable architecture.
@@ -138,7 +162,7 @@ The core remains independent, while each branch extends the platform according t
               │                 │                 │
        ┌──────┴──────┐    ┌─────┴─────┐    ┌──────┴──────┐
        │             │    │           │    │             │
-      Bots          API  Web Apps  CLI  Database     Cloud
+      Bots         API   Web Apps   CLI   Database     Cloud
        │
    WhatsApp
    Discord
@@ -542,8 +566,8 @@ Bots Module
              │
      ┌───────┼───────┐
      │       │       │
- WhatsApp Discord Telegram
- Provider Provider Provider
+WhatsApp  Discord  Telegram
+Provider  Provider Provider
 ```
 
 This design allows future integrations while maintaining the same internal architecture.
@@ -1154,3 +1178,620 @@ Automation Platform
 
 > **Modules define what the system becomes.  
 > The Core defines how the system grows.**
+
+---
+
+# 🔌 Extension System
+
+Matter Base is built to be extended without modifying its foundation.
+
+Instead of embedding platform-specific logic into the Core, every external integration belongs to an extension layer.
+
+This approach keeps the architecture clean, reusable and maintainable.
+
+---
+
+# 🧩 Extension Layers
+
+The ecosystem is divided into multiple responsibility layers.
+
+```
+                     Matter Base
+                          │
+                  ┌───────┴────────┐
+                  │                │
+             Core Layer      Module Layer
+                                   │
+                          ┌────────┴─────────┐
+                          │                  │
+                     Features          Extensions
+                                             │
+                                  ┌──────────┴──────────┐
+                                  │                     │
+                              Providers             Plugins
+```
+
+The Core knows nothing about external platforms.
+
+Only modules decide which extensions they require.
+
+# 🔌 Providers
+
+Providers connect a module to external platforms.
+
+Examples:
+
+```
+Bots Module
+
+        │
+        ├── WhatsApp Provider
+        │
+        ├── Discord Provider
+        │
+        ├── Telegram Provider
+        │
+        └── Slack Provider
+```
+
+Another module may expose completely different providers.
+
+Example:
+
+```
+Cloud Module
+
+        │
+        ├── AWS Provider
+        │
+        ├── Azure Provider
+        │
+        ├── Google Cloud Provider
+        │
+        └── Local Provider
+```
+
+Providers belong to the module they extend.
+
+Never to the Core.
+
+---
+
+# 🧠 Plugins
+
+Plugins extend a module with additional functionality.
+
+Unlike providers, plugins usually enhance behavior instead of connecting external platforms.
+
+Example:
+
+```
+API Module
+
+        │
+        ├── Authentication Plugin
+        │
+        ├── Rate Limit Plugin
+        │
+        ├── Cache Plugin
+        │
+        ├── Metrics Plugin
+        │
+        └── Documentation Plugin
+```
+
+Plugins should remain optional whenever possible.
+
+---
+
+# 🔄 Drivers
+
+Drivers communicate directly with hardware or low-level systems.
+
+Examples:
+
+```
+Embedded Module
+
+        │
+        ├── Serial Driver
+        │
+        ├── GPIO Driver
+        │
+        ├── USB Driver
+        │
+        └── Bluetooth Driver
+```
+
+Drivers abstract hardware communication from business logic.
+
+---
+
+# 🔗 Adapters
+
+Adapters translate different interfaces into a common architecture.
+
+Example:
+
+External Service
+```
+        │
+        ▼
+```
+Adapter
+```
+        │
+        ▼
+```
+Matter Base Module
+
+This allows different implementations to expose the same internal behavior.
+
+---
+
+# 📦 Extension Independence
+
+Every extension should remain isolated.
+
+Example:
+
+```
+Correct
+
+Bots Module
+│
+├── WhatsApp Provider
+│
+├── Telegram Provider
+│
+└── Discord Provider
+```
+
+Removing one provider should never affect the others.
+
+Likewise, removing an entire module should not affect the Core.
+
+---
+
+# ⚙ Registration Flow
+
+Every extension follows the same lifecycle.
+
+Extension
+```
+      │
+      ▼
+```
+Registration
+```
+      │
+      ▼
+```
+Validation
+```
+      │
+      ▼
+```
+Initialization
+```
+      │
+      ▼
+```
+Execution
+```
+      │
+      ▼
+```
+Shutdown
+
+This creates a predictable behavior across the entire ecosystem.
+
+---
+
+# 🌍 Universal Compatibility
+
+Matter Base is designed so that new technologies can be integrated without redesigning the architecture.
+
+Possible future integrations include:
+
+Communication platforms.
+Cloud providers.
+Artificial intelligence services.
+Databases.
+Hardware devices.
+External APIs.
+Automation engines.
+Monitoring platforms.
+Authentication systems.
+Payment gateways.
+
+The Core remains unchanged while new integrations continue to grow around it.
+
+---
+
+# 🎯 Design Rule
+
+The Core should never know how a platform works.
+
+It only provides the environment where modules and extensions can operate.
+
+This separation allows Matter Base to evolve without becoming tightly coupled to any technology.
+
+> The Core builds the foundation.
+> Modules define the purpose.
+> Extensions connect the outside world.
+
+---
+
+# ⚙️ Configuration System
+
+Matter Base centralizes project configuration through a unified configuration system.
+
+Instead of scattering settings across multiple files, the architecture provides a consistent way to access project information regardless of the module being executed.
+
+The objective is to simplify maintenance while keeping the Core independent from project-specific implementations.
+
+---
+
+# 🧠 Runtime State
+
+The runtime stores the current execution state of the application.
+
+Unlike static configuration files, the runtime represents values that may change while the application is running.
+
+Example:
+
+```
+{
+    "locale": "en",
+    "mode": "dev",
+    "debug": true
+}
+```
+
+Current runtime responsibilities:
+
+- Store execution mode.
+- Store active language.
+- Store debugging state.
+- Provide shared runtime information.
+
+---
+
+# 📄 Static Configuration
+
+Static configuration contains project settings that normally do not change during execution.
+
+Examples include:
+
+- Project metadata.
+- Default values.
+- Internal options.
+- Module configuration.
+- Environment variables.
+
+Separating static configuration from runtime data keeps the architecture predictable and easier to maintain.
+
+---
+
+# 🔄 Configuration Flow
+
+Every project follows the same configuration lifecycle.
+
+Configuration Files
+```
+        │
+        ▼
+```
+Validation
+```
+        │
+        ▼
+```
+Runtime Initialization
+```
+        │
+        ▼
+```
+Core Services
+```
+        │
+        ▼
+```
+Modules
+
+This allows every module to receive consistent configuration without implementing its own loading logic.
+
+---
+
+# 🌍 Internationalization
+
+Matter Base includes a built-in internationalization architecture.
+
+The language system is part of the Core, allowing every module to share the same translations without duplicating resources.
+
+Current capabilities:
+
+- Dynamic language loading.
+- Language switching.
+- Translation dictionaries.
+- Shared localization system.
+
+Current bundled languages include:
+
+- 🇺🇸 English
+- 🇪🇸 Spanish
+- 🇧🇷 Portuguese
+- 🇫🇷 French
+- 🇩🇪 German
+- 🇮🇹 Italian
+- 🇳🇱 Dutch
+- 🇵🇱 Polish
+- 🇷🇴 Romanian
+- 🇷🇺 Russian
+- 🇺🇦 Ukrainian
+- 🇸🇪 Swedish
+- 🇨🇿 Czech
+- 🇬🇷 Greek
+- 🇹🇭 Thai
+- 🇻🇳 Vietnamese
+- 🇮🇩 Indonesian
+- 🇵🇭 Filipino
+- 🇮🇳 Hindi
+- 🇨🇳 Chinese
+- 🇯🇵 Japanese
+- 🇰🇷 Korean
+- 🇭🇺 Hungarian
+
+The architecture allows additional languages to be incorporated without modifying existing modules.
+
+---
+
+# 🧰 Shared Services
+
+The Core provides reusable services that can be consumed by any module.
+
+Current shared services include:
+
+| Service | Purpose |
+|----------|---------|
+| ⚙ Runtime | Shared execution state |
+| 📝 Logger | Unified logging |
+| 🌍 i18n | Localization system |
+| 🧩 Dependency Container | Shared service management |
+| 🚀 Bootstrap | Application lifecycle |
+
+These services reduce duplicated logic while providing a common development experience across the ecosystem.
+
+---
+
+# 📈 Scalability
+
+Matter Base is designed to grow horizontally.
+
+Instead of expanding a single application, new capabilities are introduced through independent modules.
+
+```
+                    Matter Base Core
+                           │
+        ┌──────────────────┼──────────────────┐
+        │                  │                  │
+     Runtime          Shared Services     Configuration
+        │                  │                  │
+        └──────────────┬───┴──────────────────┘
+                       │
+              Independent Modules
+                       │
+      ┌────────┬────────┼────────┬────────┐
+      │        │        │        │        │
+    Bots      API      Web   Automation  Others
+```
+
+This architecture allows projects to evolve without increasing the complexity of the Core.
+
+---
+
+# 🛡 Stability Philosophy
+
+Matter Base prioritizes long-term stability over rapid expansion.
+
+Every new component should satisfy three principles before becoming part of the ecosystem:
+
+- Be modular.
+- Be reusable.
+- Be independent.
+
+If a feature cannot meet these principles, it should remain outside the Core.
+
+This philosophy keeps the architecture lightweight and maintainable even as the ecosystem grows.
+
+---
+
+> **Configuration defines the environment.  
+> Runtime defines the execution.  
+> Modules define the functionality.**
+
+---
+
+# 🗺️ Roadmap
+
+Matter Base is developed incrementally.
+
+The objective is to build a stable foundation before expanding into specialized ecosystems.
+
+| Phase | Status |
+|--------|:------:|
+| 🏗 Core Architecture | ✅ |
+| 🌍 Internationalization | ✅ |
+| 🖥 Interactive CLI | ✅ |
+| ⚙ Runtime Management | ✅ |
+| 🧩 Dependency Container | ✅ |
+| 📝 Logging System | ✅ |
+| 📚 Documentation | ✅ |
+| 📦 Installation Tools | ✅ |
+| 🔌 Module Architecture | 🚧 |
+| 🤖 Bots Module | 📋 Planned |
+| 🌐 API Module | 📋 Planned |
+| 🖥 Web Module | 📋 Planned |
+| ☁ Cloud Module | 📋 Planned |
+| ⚙ Automation Module | 📋 Planned |
+| 🔬 Research Modules | 📋 Planned |
+
+> **The roadmap represents the architectural direction of the project. Development priorities may evolve as the ecosystem grows.**
+
+---
+
+# 👥 Project Contributors
+
+<table align="center">
+
+<tr>
+
+<td align="center" width="33%">
+
+<img src="https://github.com/matterssmith-net.png" width="160" alt="TU-USUARIO"/>
+
+### 👑 Founder Matterssmith
+
+**[@matterssmith-net](https://github.com/matterssmith-net)**
+
+Lead Architect • Lead Developer • Project Design • Documentation • Support
+
+</td>
+
+<td align="center" width="33%">
+
+<img src="https://github.com/Lou-Nyx.png" width="160" alt="Lou-Nyx"/>
+
+### 🌸 Lourtnyx [Sakura]
+
+**[@Lou-Nyx](https://github.com/Lou-Nyx)**
+
+Community • Developer • Testing • Research • Support
+
+</td>
+
+<td align="center" width="33%">
+
+<img src="https://github.com/Edward-oficial.png" width="160" alt="Edward-oficial"/>
+
+### ⚙️ Duan
+
+**[@Edward-oficial](https://github.com/Edward-oficial)**
+
+Developer • Documentation • Research • Support
+
+</td>
+
+</tr>
+
+</table>
+
+> More contributors will be added as Matter Base continues to evolve.
+
+---
+
+# 🤝 Contributing
+
+Contributions are always welcome.
+
+Whether you are fixing bugs, improving documentation, proposing architectural ideas or helping expand the ecosystem, every contribution helps Matter Base become a stronger foundation for future projects.
+
+If you would like to contribute:
+
+- 🍴 Fork the repository.
+- 🌿 Create a new branch.
+- 💻 Implement your changes.
+- ✅ Test your modifications.
+- 📩 Open a Pull Request.
+
+Constructive discussions and architectural proposals are also encouraged through GitHub Issues.
+
+---
+
+# 📜 Design Principles
+
+Every contribution should follow the same architectural philosophy.
+
+✔ Keep the Core lightweight.
+
+✔ Prefer reusable components.
+
+✔ Avoid unnecessary dependencies.
+
+✔ Separate responsibilities clearly.
+
+✔ Maintain module independence.
+
+✔ Design for long-term scalability.
+
+These principles ensure that Matter Base remains clean, maintainable and adaptable as the ecosystem evolves.
+
+---
+
+# 🌎 Community
+
+Matter Base is intended to become a shared foundation for developers building different kinds of software.
+
+Whether your project is a bot, an API, a web platform or something entirely different, the architecture is designed to help you start from a solid and organized base.
+
+Community feedback plays an important role in shaping future improvements.
+
+---
+
+# ⭐ Support the Project
+
+If Matter Base helps you build your projects, consider supporting its development.
+
+Giving the repository a **⭐ Star** is one of the simplest ways to help the project reach more developers.
+
+Every contribution, suggestion and discussion helps improve the ecosystem.
+
+---
+
+# 👥 Credits
+
+Matter Base is developed as part of the broader engineering vision behind the Matterssmith ecosystem.
+
+While Matter Base remains an independent open foundation, it follows the same principles of modularity, scalability and long-term maintainability.
+
+---
+
+# 📄 License
+
+This project is released under the **MIT License**.
+
+You are free to use, modify and distribute Matter Base according to the terms of the license.
+
+See the **LICENSE** file for complete details.
+
+---
+
+<div align="center">
+
+# Matter Base
+
+### The Core Architecture.
+
+**Powered by Matterssmith.**  
+**Engineered for the Future.**
+
+*A reusable modular foundation for building scalable software ecosystems.*
+
+---
+
+### 🧩 Build Once.
+
+### ♻️ Reuse Everywhere.
+
+### 🚀 Scale Without Limits.
+
+<br>
+
+**If you can imagine it, Matter Base can become its foundation.**
+
+<br>
+
+⭐ **Thank you for supporting Matter Base.**
+
+</div>
