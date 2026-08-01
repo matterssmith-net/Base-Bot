@@ -39,21 +39,68 @@ width="100%"
 - 🎯 Build Anything from the Same Core
 - ✨ Core Philosophy
 - 🏗️ Architecture
-- 🧠 Core Concept
-- 📦 Current Architecture
-- 🚀 Future Expansion
 - 📂 Project Structure
 - ⚙️ Core System
+- ⚙️ Configuration
+- 🧩 Dependency Container
+- 📝 Logger
+- 🌍 Internationalization
+- 🚀 Bootstrap Lifecycle
+- 🧩 Module Architecture
+- 🔌 Provider System
+- 🛠 Development Tools
+- 📚 Documentation System
+- 🌱 Development Philosophy
+
+- 🔮 Future Architecture Direction
+
+- 🚀 Getting Started
 - 🧩 Module Development
 - 🔌 Extension System
 - ⚙️ Configuration System
 - 🌍 Internationalization
 - 🛠 Development Tools
-- 🚀 Getting Started
+- 🚀 Getting Started -690
+- 📋 Requirements
+- 💻 Supported Platforms
+- 📦 Installation
+- 🟢 Automatic Installation
+- ▶️ Running Matter Base
+- 🖥 Command Line Interface
+- 🔄 Project Lifecycle
+- 🧪 Development Mode
+- 📁 Creating a New Project
+- 🧩 Module Development
+- 🏗️ Module Concept
+- 🔌 Module Independence
+- ⚙️ Module Registration
+- 🔄 Module Lifecycle
+- 🧠 Core Communication
+- 📦 Future Module Structure
+- 🚀 Creating New Ecosystems
+- 🔌 Extension System
+- 🧩 Extension Layers
+- 🔌 Providers
+
+- 📦 Extension Independence
+- ⚙ Registration Flow
+- 🌍 Universal Compatibility
+- 🎯 Design Rule
+- ⚙️ Configuration System
+- 🧠 Runtime State
+- 📄 Static Configuration
+- 🔄 Configuration Flow
+- 🌍 Internationalization
+- 🧰 Shared Services
+- 📈 Scalability
+
 - 🗺️ Roadmap
 - 👥 Project Contributors
 - 🤝 Contributing
-- 📜 License
+- 🌎 Community
+- ⭐ Support the Project
+- 👥 Credits
+- 📄 License
 
 ---
 
@@ -260,25 +307,6 @@ Available components:
 | 🖥 CLI | Interactive project configuration |
 | 🛠 Scripts | Maintenance and diagnostic tools |
 | 📚 Documentation | Internal architecture references |
-
----
-
-# 🚀 Future Expansion
-
-Matter Base is designed to grow as an ecosystem.
-
-Future branches can introduce:
-
-## 🤖 Bots Platform
-
-A dedicated module for creating communication systems across different platforms.
-
-Possible integrations:
-
-- Messaging platforms.
-- Social platforms.
-- Automation bots.
-- Intelligent assistants.
 
 ---
 
@@ -627,6 +655,26 @@ The objective is not only to create working software, but to create a foundation
 
 ---
 
+# 📜 Design Principles
+
+Every contribution should follow the same architectural philosophy.
+
+✔ Keep the Core lightweight.
+
+✔ Prefer reusable components.
+
+✔ Avoid unnecessary dependencies.
+
+✔ Separate responsibilities clearly.
+
+✔ Maintain module independence.
+
+✔ Design for long-term scalability.
+
+These principles ensure that Matter Base remains clean, maintainable and adaptable as the ecosystem evolves.
+
+---
+
 # 🔮 Future Architecture Direction
 
 Matter Base is designed to evolve into a complete modular ecosystem.
@@ -679,6 +727,25 @@ Matter Base is created as a foundation for building different types of technolog
 The goal is to provide a common structure where developers can create, expand and maintain projects without rebuilding the same essential systems repeatedly.
 
 Each new module becomes another part of the ecosystem while preserving compatibility with the original Core.
+
+---
+
+# 🚀 Future Expansion
+
+Matter Base is designed to grow as an ecosystem.
+
+Future branches can introduce:
+
+## 🤖 Bots Platform
+
+A dedicated module for creating communication systems across different platforms.
+
+Possible integrations:
+
+- Messaging platforms.
+- Social platforms.
+- Automation bots.
+- Intelligent assistants.
 
 ---
 
@@ -1706,26 +1773,6 @@ If you would like to contribute:
 - 📩 Open a Pull Request.
 
 Constructive discussions and architectural proposals are also encouraged through GitHub Issues.
-
----
-
-# 📜 Design Principles
-
-Every contribution should follow the same architectural philosophy.
-
-✔ Keep the Core lightweight.
-
-✔ Prefer reusable components.
-
-✔ Avoid unnecessary dependencies.
-
-✔ Separate responsibilities clearly.
-
-✔ Maintain module independence.
-
-✔ Design for long-term scalability.
-
-These principles ensure that Matter Base remains clean, maintainable and adaptable as the ecosystem evolves.
 
 ---
 
