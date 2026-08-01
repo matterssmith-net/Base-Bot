@@ -34,8 +34,8 @@ width="100%"
 ---
 
 # 📑 Table of Contents
-
-```🧩 Introduction
+```
+🧩 Introduction
 ├── What is Matter Base? -------------------------- 112
 ├── Build Anything from the Same Core ------------- 122
 └── Core Philosophy ------------------------------- 174
