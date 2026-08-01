@@ -537,6 +537,7 @@ Their purpose is allowing different external platforms to connect with a module 
 
 Example:
 
+```
 Bots Module
 
         Bot Engine
@@ -545,6 +546,7 @@ Bots Module
      │       │       │
  WhatsApp Discord Telegram
  Provider Provider Provider
+```
 
 This design allows future integrations while maintaining the same internal architecture.
 
