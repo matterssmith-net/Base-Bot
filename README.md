@@ -36,27 +36,28 @@ width="100%"
 # 📑 Table of Contents
 
 🧩 Introduction
-├── What is Matter Base? -------------------------- 108
-├── Build Anything from the Same Core ------------- 118
-└── Core Philosophy ------------------------------- 170
+├── What is Matter Base? -------------------------- 109
+├── Build Anything from the Same Core ------------- 119
+└── Core Philosophy ------------------------------- 171
 
 🏗 Architecture
-├── Architecture ---------------------------------- 060
-├── Project Structure ----------------------------- 095
-├── Core System ----------------------------------- 120
-├── Configuration --------------------------------- 145
-├── Dependency Container -------------------------- 170
-├── Logger ---------------------------------------- 190
-├── Internationalization -------------------------- 210
-├── Bootstrap Lifecycle --------------------------- 230
-├── Module Architecture --------------------------- 255
-├── Provider System ------------------------------- 285
-├── Development Tools ----------------------------- 315
-├── Documentation System -------------------------- 345
-├── Development Philosophy ------------------------ 370
-└── Future Architecture Direction ----------------- 400
+├── Architecture ---------------------------------- 197
+├── Project Structure ----------------------------- 376
+├── Core System ----------------------------------- 449
+├── Configuration --------------------------------- 484
+├── Dependency Container -------------------------- 499
+├── Logger ---------------------------------------- 512
+├── Internationalization -------------------------- 525
+├── Bootstrap Lifecycle --------------------------- 539
+├── Module Architecture --------------------------- 552
+├── Provider System ------------------------------- 582
+├── Development Tools ----------------------------- 607
+├── Documentation System -------------------------- 626
+├── Development Philosophy ------------------------ 644
+└── Future Architecture Direction ----------------- 680
 
-🚀 Getting Started
+🚀 Started
+├── Getting Started ------------------------------- 691
 ├── Requirements ---------------------------------- 690
 ├── Supported Platforms --------------------------- 710
 ├── Installation ---------------------------------- 730
