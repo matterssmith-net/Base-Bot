@@ -2,7 +2,7 @@
 <div align="center">
 
 <img
-src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,19,24&height=260&section=header&text=Matter%20Base&desc=The%20Core%20Architecture&fontSize=56&fontColor=FFFFFF&animation=fadeIn&fontAlignY=38&descAlignY=58&descSize=22"
+src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,19,24&height=260&section=header&text=𝐌𝖆𝖙𝖙𝖊𝖗%20𝐁𝖆𝖘𝖊&desc=The%20Core%20Architecture&fontSize=56&fontColor=FFFFFF&animation=fadeIn&fontAlignY=38&descAlignY=58&descSize=22"
 width="100%"
 />
 
