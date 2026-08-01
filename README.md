@@ -62,7 +62,7 @@ width="100%"
 ├── Supported Platforms --------------------------- 784
 ├── Installation ---------------------------------- 799
 ├── Automatic Installation ------------------------ 820
-├── Running Matter Base --------------------------- 863
+├── Running the Project --------------------------- 863
 ├── Command Line Interface ------------------------ 875
 ├── Project Lifecycle ----------------------------- 905
 ├── Development Mode ------------------------------ 940
@@ -860,7 +860,7 @@ This allows the architecture to maintain project state without hardcoding values
 
 ---
 
-# ▶️ Running Matter Base
+# ▶️ Running the Project
 
 Install dependencies:
 
