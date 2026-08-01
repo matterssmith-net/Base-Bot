@@ -35,72 +35,73 @@ width="100%"
 
 # 📑 Table of Contents
 
-- 🧩 What is Matter Base?
-- 🎯 Build Anything from the Same Core
-- ✨ Core Philosophy
-- 🏗️ Architecture
-- 📂 Project Structure
-- ⚙️ Core System
-- ⚙️ Configuration
-- 🧩 Dependency Container
-- 📝 Logger
-- 🌍 Internationalization
-- 🚀 Bootstrap Lifecycle
-- 🧩 Module Architecture
-- 🔌 Provider System
-- 🛠 Development Tools
-- 📚 Documentation System
-- 🌱 Development Philosophy
+🧩 Introduction
+├── What is Matter Base? -------------------------- 108
+├── Build Anything from the Same Core ------------- 118
+└── Core Philosophy ------------------------------- 170
 
-- 🔮 Future Architecture Direction
+🏗 Architecture
+├── Architecture ---------------------------------- 060
+├── Project Structure ----------------------------- 095
+├── Core System ----------------------------------- 120
+├── Configuration --------------------------------- 145
+├── Dependency Container -------------------------- 170
+├── Logger ---------------------------------------- 190
+├── Internationalization -------------------------- 210
+├── Bootstrap Lifecycle --------------------------- 230
+├── Module Architecture --------------------------- 255
+├── Provider System ------------------------------- 285
+├── Development Tools ----------------------------- 315
+├── Documentation System -------------------------- 345
+├── Development Philosophy ------------------------ 370
+└── Future Architecture Direction ----------------- 400
 
-- 🚀 Getting Started
-- 🧩 Module Development
-- 🔌 Extension System
-- ⚙️ Configuration System
-- 🌍 Internationalization
-- 🛠 Development Tools
-- 🚀 Getting Started -690
-- 📋 Requirements
-- 💻 Supported Platforms
-- 📦 Installation
-- 🟢 Automatic Installation
-- ▶️ Running Matter Base
-- 🖥 Command Line Interface
-- 🔄 Project Lifecycle
-- 🧪 Development Mode
-- 📁 Creating a New Project
-- 🧩 Module Development
-- 🏗️ Module Concept
-- 🔌 Module Independence
-- ⚙️ Module Registration
-- 🔄 Module Lifecycle
-- 🧠 Core Communication
-- 📦 Future Module Structure
-- 🚀 Creating New Ecosystems
-- 🔌 Extension System
-- 🧩 Extension Layers
-- 🔌 Providers
+🚀 Getting Started
+├── Requirements ---------------------------------- 690
+├── Supported Platforms --------------------------- 710
+├── Installation ---------------------------------- 730
+├── Automatic Installation ------------------------ 760
+├── Running Matter Base --------------------------- 790
+├── Command Line Interface ------------------------ 820
+├── Project Lifecycle ----------------------------- 850
+├── Development Mode ------------------------------ 880
+└── Creating a New Project ------------------------ 910
 
-- 📦 Extension Independence
-- ⚙ Registration Flow
-- 🌍 Universal Compatibility
-- 🎯 Design Rule
-- ⚙️ Configuration System
-- 🧠 Runtime State
-- 📄 Static Configuration
-- 🔄 Configuration Flow
-- 🌍 Internationalization
-- 🧰 Shared Services
-- 📈 Scalability
+🧩 Module Development
+├── Module Concept -------------------------------- 950
+├── Module Independence --------------------------- 980
+├── Module Registration --------------------------- 1010
+├── Module Lifecycle ------------------------------ 1040
+├── Core Communication ---------------------------- 1070
+├── Future Module Structure ----------------------- 1100
+└── Creating New Ecosystems ----------------------- 1130
 
-- 🗺️ Roadmap
-- 👥 Project Contributors
-- 🤝 Contributing
-- 🌎 Community
-- ⭐ Support the Project
-- 👥 Credits
-- 📄 License
+🔌 Extension System
+├── Extension Layers ------------------------------ 1170
+├── Providers ------------------------------------- 1200
+├── Extension Independence ------------------------ 1230
+├── Registration Flow ----------------------------- 1260
+├── Universal Compatibility ----------------------- 1290
+└── Design Rule ----------------------------------- 1320
+
+⚙ Configuration System
+├── Runtime State --------------------------------- 1360
+├── Static Configuration -------------------------- 1390
+└── Configuration Flow ---------------------------- 1420
+
+🌍 Shared Infrastructure
+├── Internationalization -------------------------- 1460
+├── Shared Services ------------------------------- 1490
+└── Scalability ----------------------------------- 1520
+
+🌎 Community
+├── Roadmap --------------------------------------- 1560
+├── Project Contributors -------------------------- 1590
+├── Contributing ---------------------------------- 1620
+├── Community ------------------------------------- 1650
+├── Support the Project --------------------------- 1680
+├── Credits --------------------------------------- 1710
+└── License --------------------------------------- 1740
 
 ---
 
