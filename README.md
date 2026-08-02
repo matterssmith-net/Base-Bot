@@ -1721,7 +1721,7 @@ The objective is to build a stable foundation before expanding into specialized 
 
 <td align="center" width="33%">
 
-<img src="https://github.com/matterssmith-net.png" width="160" alt="TU-USUARIO"/>
+<img src="https://github.com/matterssmith-net.png" width="160" alt="Matterssmith-net"/>
 
 ### 👑 Founder Matterssmith
 
