@@ -81,10 +81,10 @@ color 1F
 :: ###                   Configuration ###
 ::==================================================
 
-set REPO=https://github.com/matterssmith-net/Base-Bot.git
+set REPO=https://github.com/matterssmith-net/Matter-Base.git
 set BRANCH=master
 
-set "TMP_DIR=%TEMP%\BaseBot_%RANDOM%"
+set "TMP_DIR=%TEMP%\MatterBase_%RANDOM%"
 set INSTALLER=install-windows.bat
 
 set "RAW_REPO=%REPO%"
