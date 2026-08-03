@@ -37,7 +37,7 @@ const CONFIG = {
 
     repository: "matterssmith-net/Matter-Base",
 
-    branch: "master",
+    branch: "matter",
 
     installer: "install-javascript.js",
 
