@@ -2,7 +2,7 @@
 
 clear
 
-REPO="https://github.com/matterssmith-net/Base-Bot.git"
+REPO="https://github.com/matterssmith-net/Matter-Base.git"
 BRANCH="master"
 
 TMP_DIR="$(mktemp -d)"
