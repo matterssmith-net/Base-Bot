@@ -82,7 +82,7 @@ color 1F
 ::==================================================
 
 set REPO=https://github.com/matterssmith-net/Matter-Base.git
-set BRANCH=master
+set BRANCH=matter
 
 set "TMP_DIR=%TEMP%\MatterBase_%RANDOM%"
 set INSTALLER=install-windows.bat
