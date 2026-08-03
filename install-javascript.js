@@ -35,7 +35,7 @@ import { spawn } from "node:child_process";
 
 const CONFIG = {
 
-    repository: "matterssmith-net/Base-Bot",
+    repository: "matterssmith-net/Matter-Base",
 
     branch: "master",
 
