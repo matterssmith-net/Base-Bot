@@ -3,7 +3,7 @@
 clear
 
 REPO="https://github.com/matterssmith-net/Matter-Base.git"
-BRANCH="master"
+BRANCH="matter"
 
 TMP_DIR="$(mktemp -d)"
 INSTALLER="install-termux.sh"
